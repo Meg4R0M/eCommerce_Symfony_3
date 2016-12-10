@@ -22,27 +22,43 @@ class Produits
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=100)
+     * @ORM\OneToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Media", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $nom;
+    private $image;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="prix", type="float")
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Categories", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
+    private $categorie;
 
-    private $prix;
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Tva", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tva;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=125)
+     */
+    private $nom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
-
     private $description;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix", type="float")
+     */
+    private $prix;
 
     /**
      * @var bool
@@ -50,27 +66,6 @@ class Produits
      * @ORM\Column(name="disponible", type="boolean")
      */
     private $disponible;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie", type="string", length=80)
-     */
-    private $categorie;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255)
-     */
-    private $image;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="tva", type="float")
-     */
-    private $tva;
 
 
     /**
@@ -105,6 +100,30 @@ class Produits
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Produits
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -154,77 +173,4 @@ class Produits
     {
         return $this->disponible;
     }
-
-    /**
-     * Set categorie
-     *
-     * @param string $categorie
-     *
-     * @return Produits
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return string
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Produits
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set tva
-     *
-     * @param float $tva
-     *
-     * @return Produits
-     */
-    public function setTva($tva)
-    {
-        $this->tva = $tva;
-
-        return $this;
-    }
-
-    /**
-     * Get tva
-     *
-     * @return float
-     */
-    public function getTva()
-    {
-        return $this->tva;
-    }
 }
-

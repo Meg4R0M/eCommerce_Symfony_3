@@ -22,27 +22,43 @@ class Produits
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=100)
+     * @ORM\OneToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Media", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $nom;
+    private $image;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="prix", type="float")
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Categories", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
+    private $categorie;
 
-    private $prix;
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Tva", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tva;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=125)
+     */
+    private $nom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
-
     private $description;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix", type="float")
+     */
+    private $prix;
 
     /**
      * @var bool
@@ -50,27 +66,6 @@ class Produits
      * @ORM\Column(name="disponible", type="boolean")
      */
     private $disponible;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie", type="string", length=80)
-     */
-    private $categorie;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255)
-     */
-    private $image;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="tva", type="float")
-     */
-    private $tva;
 
 
     /**
@@ -105,6 +100,30 @@ class Produits
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Produits
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -156,37 +175,13 @@ class Produits
     }
 
     /**
-     * Set categorie
-     *
-     * @param string $categorie
-     *
-     * @return Produits
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return string
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-
-    /**
      * Set image
      *
-     * @param string $image
+     * @param \Ecommerce\EcommerceBundle\Entity\Media $image
      *
      * @return Produits
      */
-    public function setImage($image)
+    public function setImage(\Ecommerce\EcommerceBundle\Entity\Media $image)
     {
         $this->image = $image;
 
@@ -196,7 +191,7 @@ class Produits
     /**
      * Get image
      *
-     * @return string
+     * @return \Ecommerce\EcommerceBundle\Entity\Media
      */
     public function getImage()
     {
@@ -204,13 +199,37 @@ class Produits
     }
 
     /**
-     * Set tva
+     * Set categorie
      *
-     * @param float $tva
+     * @param \Ecommerce\EcommerceBundle\Entity\Categories $categorie
      *
      * @return Produits
      */
-    public function setTva($tva)
+    public function setCategorie(\Ecommerce\EcommerceBundle\Entity\Categories $categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Ecommerce\EcommerceBundle\Entity\Categories
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * Set tva
+     *
+     * @param \Ecommerce\EcommerceBundle\Entity\Tva $tva
+     *
+     * @return Produits
+     */
+    public function setTva(\Ecommerce\EcommerceBundle\Entity\Tva $tva)
     {
         $this->tva = $tva;
 
@@ -220,34 +239,10 @@ class Produits
     /**
      * Get tva
      *
-     * @return float
+     * @return \Ecommerce\EcommerceBundle\Entity\Tva
      */
     public function getTva()
     {
         return $this->tva;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Produits
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 }
