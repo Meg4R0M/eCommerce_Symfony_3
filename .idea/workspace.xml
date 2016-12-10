@@ -22,72 +22,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Commandes.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Commandes.php">
+      <file leaf-file-name="MediaData.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/MediaData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="43" lean-forward="false" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+            <state relative-caret-position="270">
+              <caret line="15" column="74" lean-forward="false" selection-start-line="15" selection-start-column="74" selection-end-line="15" selection-end-column="74" />
+              <folding>
+                <element signature="e#6#84#0#PHP" expanded="true" />
+                <element signature="e#141#190#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoriesData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/CategoriesData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="15" column="79" lean-forward="false" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+              <folding>
+                <element signature="e#141#190#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TvaData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/TvaData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utilisateurs.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Utilisateurs/UtilisateursBundle/Entity/Utilisateurs.php">
+      <file leaf-file-name="ProduitsData.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/ProduitsData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UtilisateursAdresses.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/UtilisateursAdresses.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="43" lean-forward="false" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Categories.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Categories.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Media.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Media.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Produits.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Produits.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="35" column="7" lean-forward="false" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tva.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Tva.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="180">
+              <caret line="15" column="77" lean-forward="false" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
+              <folding>
+                <element signature="e#141#190#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,7 +83,6 @@
         <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Controller/ProduitsController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/modulesUsed/navigation.html.twig" />
         <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Resources/views/Default/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Pages/PagesBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/layout/layout.html.twig" />
@@ -121,6 +97,13 @@
         <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Produits.php" />
         <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/UtilisateursAdresses.php" />
         <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Commandes.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/app/AppKernel.php" />
+        <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/newEmptyPHP.php" />
+        <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/ProduitsData.php" />
+        <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/TvaData.php" />
+        <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/CategoriesData.php" />
+        <option value="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/MediaData.php" />
       </list>
     </option>
   </component>
@@ -170,6 +153,8 @@
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
@@ -343,6 +328,50 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecommerce" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecommerce" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ecommerce" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EcommerceBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataFixtures" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ORM" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecommerce" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecommerce" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -357,11 +386,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM" />
       <recent name="$PROJECT_DIR$/web" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/app/Resources/views" />
       <recent name="$PROJECT_DIR$/app/Resources/views/modulesUsed" />
-      <recent name="$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Resources/views/Default" />
     </key>
   </component>
   <component name="RunManager">
@@ -438,12 +467,12 @@
       <workItem from="1481046522619" duration="9364000" />
       <workItem from="1481374823829" duration="24000" />
       <workItem from="1481374896407" duration="51000" />
-      <workItem from="1481375014118" duration="13946000" />
+      <workItem from="1481375014118" duration="20289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23385000" />
+    <option name="totallyTimeSpent" value="29728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="40" width="1920" height="992" extended-state="6" />
@@ -481,39 +510,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/layout/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="48" lean-forward="false" selection-start-line="58" selection-start-column="48" selection-end-line="58" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/layout/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="48" lean-forward="false" selection-start-line="58" selection-start-column="48" selection-end-line="58" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Resources/views/Default/second.html.twig" />
     <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Resources/views/Default/first.html.twig" />
     <entry file="file://$PROJECT_DIR$/web/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -626,14 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="975">
           <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="48" lean-forward="true" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -799,14 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Media.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Produits.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -844,6 +824,69 @@
         <state relative-caret-position="432">
           <caret line="24" column="43" lean-forward="false" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="21" column="72" lean-forward="false" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="57" lean-forward="false" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/Entity/Media.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="16" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/ProduitsData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="77" lean-forward="false" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
+          <folding>
+            <element signature="e#141#190#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/TvaData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/CategoriesData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="79" lean-forward="false" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+          <folding>
+            <element signature="e#141#190#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ecommerce/EcommerceBundle/DataFixtures/ORM/MediaData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="74" lean-forward="false" selection-start-line="15" selection-start-column="74" selection-end-line="15" selection-end-column="74" />
+          <folding>
+            <element signature="e#6#84#0#PHP" expanded="true" />
+            <element signature="e#141#190#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
