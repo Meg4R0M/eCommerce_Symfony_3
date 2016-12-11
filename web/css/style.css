@@ -2,3 +2,11 @@ body {
 	padding-bottom: 40px;
     padding-top: 60px;
 }
+
+.thumbnail{
+    min-height: 400px;
+}
+
+h4{
+    min-height: 40px;
+}

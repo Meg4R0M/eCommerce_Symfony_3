@@ -3,7 +3,7 @@ produits:
     defaults: { _controller: EcommerceBundle:Produits:produits }
 
 presentation:
-    path:  /produit
+    path:  /produit/{id}
     defaults: { _controller: EcommerceBundle:Produits:presentation }
 
 panier:
@@ -18,6 +18,6 @@ validation:
     path:  /panier/validation
     defaults: { _controller: EcommerceBundle:Panier:validation }
 
-test:
-    path:  /test
-    defaults: { _controller: EcommerceBundle:Test:testFormulaire }
+categorieProduits:
+    path:  /categorie/{categorie}
+    defaults: { _controller: EcommerceBundle:Produits:categorie }
