@@ -165,11 +165,11 @@ class Commandes
     /**
      * Set utilisateur
      *
-     * @param \Utilisteurs\UtilisateursBundle\Entity\Utilisateurs $utilisateur
+     * @param \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateur
      *
      * @return Commandes
      */
-    public function setUtilisateur(\Utilisteurs\UtilisateursBundle\Entity\Utilisateurs $utilisateur = null)
+    public function setUtilisateur(\Utilisateurs\UtilisateursBundle\Entity\Utilisateurs $utilisateur = null)
     {
         $this->utilisateur = $utilisateur;
 
@@ -179,7 +179,7 @@ class Commandes
     /**
      * Get utilisateur
      *
-     * @return \Utilisteurs\UtilisateursBundle\Entity\Utilisateurs
+     * @return \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
      */
     public function getUtilisateur()
     {
