@@ -8,7 +8,7 @@ presentation:
 
 categorieProduits:
     path:  /categorie/{categorie}
-    defaults: { _controller: EcommerceBundle:Produits:categorie }
+    defaults: { _controller: EcommerceBundle:Produits:produits }
 
 rechercheProduits:
     path:  /recherche
