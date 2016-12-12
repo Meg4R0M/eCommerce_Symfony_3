@@ -1,5 +1,8 @@
 {% extends "::layout/layout.html.twig" %}
 
+{% block titre %}Canturla - {{ produit.nom }}{% endblock %}
+{% block description %}{{ produit.description }}{% endblock %}
+
 {% block body %}
 <div class="container">
     <div class="row">
@@ -18,7 +21,7 @@
                         <h4>{{ produit.nom }}</h4>
                         <h5>{{ produit.categorie.nom }}</h5>
                         <p>{{ produit.description }}</p>
-                        <h4>{{ produit.prix }}€</h4>
+                        <h4>{{ produit.prix|tva(produit.tva.multiplicate) }}€</h4>
                         <form action="panier.php">
                             <select name="qte" class="span1">
                                 <option>1</option>
