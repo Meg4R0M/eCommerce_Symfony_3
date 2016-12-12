@@ -21,10 +21,7 @@
                     </button>
                     <a class="brand" href="{{ path('produits') }}">Canturla</a>
                     <div class="nav-collapse collapse">
-                        <form class="navbar-form form-search pull-right">
-                            <input id="Search" name="Search" type="text" class="input-medium search-query">
-                            <button type="submit" class="btn">Rechercher</button>
-                        </form>
+                        {{ render(controller('EcommerceBundle:Produits:recherche')) }}
                     </div>
                 </div>
             </div>
@@ -42,20 +39,20 @@
                     </div> 
 
                     <div class="span4">
-                        <h4>Notre entrepôt</h4>
-                        <p><i class="icon-map-marker"></i>&nbsp;Paris 75 000 - 3 rue des jardins</p>
+                        <h4>Notre magasin</h4>
+                        <p><i class="icon-map-marker"></i>&nbsp;{{ adresse }}</p>
                     </div>
 
                     <div class="span2">
                         <h4>Nous contacter</h4>
-                        <p><i class="icon-phone"></i>&nbsp;Tel: 02 35 00 00 00</p>
-                        <p><i class="icon-print"></i>&nbsp;Fax: 02 35 00 00 00</p>
+                        <p><i class="icon-phone"></i>&nbsp;Tel: {{ telephone }}</p>
+                        <p><i class="icon-print"></i>&nbsp;Fax: {{ fax }}</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="span4">
-                        <p>&copy; Copyright 2016 - Canturla</p>
+                        <p>&copy; Copyright {{ "now"|date('Y') }} - Canturla</p>
                     </div>
                 </div>
             </div>

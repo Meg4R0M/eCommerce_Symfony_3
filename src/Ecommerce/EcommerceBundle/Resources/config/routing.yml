@@ -1,23 +1,7 @@
-produits:
-    path:  /
-    defaults: { _controller: EcommerceBundle:Produits:produits }
+routingPanier:
+    resource: "@EcommerceBundle/Resources/config/routing/routingPanier.yml"
+    prefix: /panier
 
-presentation:
-    path:  /produit/{id}
-    defaults: { _controller: EcommerceBundle:Produits:presentation }
-
-panier:
-    path:  /panier
-    defaults: { _controller: EcommerceBundle:Panier:panier }
-
-livraison:
-    path:  /panier/livraison
-    defaults: { _controller: EcommerceBundle:Panier:livraison }
-
-validation:
-    path:  /panier/validation
-    defaults: { _controller: EcommerceBundle:Panier:validation }
-
-categorieProduits:
-    path:  /categorie/{categorie}
-    defaults: { _controller: EcommerceBundle:Produits:categorie }
+routingProduits:
+    resource: "@EcommerceBundle/Resources/config/routing/routingProduits.yml"
+    prefix: /
