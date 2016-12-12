@@ -11,6 +11,7 @@
             {% else %}
                 {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
             {% endif %}
+            {{ render(controller('EcommerceBundle:Panier:menu')) }}
         </div>
         
         <div class="span9">
@@ -24,7 +25,9 @@
                                 <h4>{{ produit.nom }}</h4>
                                 <p>{{ produit.prix|tva(produit.tva.multiplicate) }}€</p>
                                 <a class="btn btn-primary" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
-                                <a class="btn btn-success" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
+                                {% if panier[produit.id] is not defined %}
+                                    <a class="btn btn-success" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
+                                {% endif %}
                             </div>
                         </div>
                     </li>

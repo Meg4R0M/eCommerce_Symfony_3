@@ -19,22 +19,41 @@ class ProduitsController extends Controller
         return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits));
     }
 
-    public function produitsAction()
+    public function produitsAction(Request $request)
     {
+        $session = $request->getSession();
         $em = $this->getDoctrine()->getManager();
-        $produits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
 
-        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits));
+        $produits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
+        if ($session->has('panier'))
+        {
+            $panier = $session->get('panier');
+        }else{
+            $panier = false;
+        }
+
+
+        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
+                                                                                                 'panier' => $panier));
     }
     
-    public function presentationAction($id)
+    public function presentationAction($id, Request $request)
     {
+        $session = $request->getSession();
         $em = $this->getDoctrine()->getManager();
         $produit = $em->getRepository('EcommerceBundle:Produits')->find($id);
 
         if (!$produit) throw $this->createNotFoundException('La page n\'existe pas.');
 
-        return $this->render('EcommerceBundle:Default:produits/layout/presentation.html.twig', array('produit' => $produit));
+        if ($session->has('panier'))
+        {
+            $panier = $session->get('panier');
+        }else{
+            $panier = false;
+        }
+
+        return $this->render('EcommerceBundle:Default:produits/layout/presentation.html.twig', array('produit' => $produit,
+                                                                                                     'panier' => $panier));
     }
 
     public function rechercheAction()
