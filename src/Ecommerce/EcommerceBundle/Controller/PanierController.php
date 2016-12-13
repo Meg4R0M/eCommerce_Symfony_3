@@ -6,6 +6,7 @@ use Ecommerce\EcommerceBundle\Entity\UtilisateursAdresses;
 use Ecommerce\EcommerceBundle\Form\UtilisateursAdressesType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Form;
 
 class PanierController extends Controller
 {
@@ -111,9 +112,45 @@ class PanierController extends Controller
         return $this->render('EcommerceBundle:Default:panier/layout/livraison.html.twig', array('utilisateur' => $utilisateur,
                                                                                                 'form' => $form->createView()));
     }
-    
+
+    public function setLivraisonOnSession(Request $request)
+    {
+        $session = $this->get('request_stack')->getCurrentRequest()->getSession();
+
+        if (!$session->has('adresse')) $session->set('adresse',array());
+        $adresse = $session->get('adresse');
+
+        if ($this->get('request_stack')->getCurrentRequest()->request->get('livraison') != null && $this->get('request_stack')->getCurrentRequest()->request->get('facturation') != null)
+        {
+            $adresse['livraison'] = $this->get('request_stack')->getCurrentRequest()->request->get('livraison');
+            $adresse['facturation'] = $this->get('request_stack')->getCurrentRequest()->request->get('facturation');
+        } else {
+            return $this->redirect($this->generateUrl('validation'));
+        }
+
+        $session->set('adresse',$adresse);
+        return $this->get('request_stack')->getCurrentRequest()->request->get('validation');
+    }
+
     public function validationAction()
     {
-        return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig');
+        $request = Request::createFromGlobals();
+        if ($request->getMethod() == 'POST')
+        {
+            $this->setLivraisonOnSession($request);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->get('request_stack')->getCurrentRequest()->getSession();
+        $adresse =$session->get('adresse');
+
+        $produits = $em->getRepository('EcommerceBundle:Produits')->findArray(array_keys($session->get('panier')));
+        $livraison = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['livraison']);
+        $facturation = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['facturation']);
+
+        return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig', array('produits' => $produits,
+                                                                                                 'livraison' => $livraison,
+                                                                                                 'facturation' => $facturation,
+                                                                                                 'panier' => $session->get('panier')));
     }
 }

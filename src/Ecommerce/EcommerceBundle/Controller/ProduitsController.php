@@ -5,27 +5,28 @@ namespace Ecommerce\EcommerceBundle\Controller;
 use Ecommerce\EcommerceBundle\Form\RechercheType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Ecommerce\EcommerceBundle\Entity\Categories;
 
 class ProduitsController extends Controller
 {
-    //public function produitsAction(Categories $categorie = null, Request $request)
     public function produitsAction($categorie = null, Request $request)
     {
         $session = $request->getSession();
         $em = $this->getDoctrine()->getManager();
-
-        if ($categorie != null)
-        {
-            $produits = $em->getRepository('EcommerceBundle:Produits')->byCategorie($categorie);
-        } else {
-            $produits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
+        if ($categorie != null) {
+            $exist = $em->getRepository('EcommerceBundle:Categories')->find($categorie);
         }
 
-        if ($session->has('panier'))
-        {
+        if ($categorie != null && $exist != "" ) {
+            $produits = $em->getRepository('EcommerceBundle:Produits')->byCategorie($categorie);
+        } elseif ($categorie == null) {
+            $produits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
+        } else {
+            throw $this->createNotFoundException('La page n\'existe pas.');
+        }
+
+        if ($session->has('panier')) {
             $panier = $session->get('panier');
-        }else{
+        } else {
             $panier = false;
         }
 

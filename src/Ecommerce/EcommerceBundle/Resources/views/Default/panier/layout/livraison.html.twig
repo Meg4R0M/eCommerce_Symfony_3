@@ -1,4 +1,4 @@
-{% extends "::layout/layout.html.twig" %}        
+{% extends "::layout/layout.html.twig" %}
 
 {% block body %}
 <div class="container">
@@ -9,11 +9,12 @@
                 <div class="accordion-inner">
                     <div class="span4">
                         {% if utilisateur.adresses|length != 0 %}
-                            <form action="{{ path('validation') }}">
+                            <form action="{{ path('validation') }}" method="post">
+
                                 <h4>Adresse de livraison</h4>
                                 {% for adresse in utilisateur.adresses %}
                                     <label class="radio">
-                                        <input type="radio" name="livraison" id="optionsRadios1" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
+                                        <input type="radio" name="livraison" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
                                         {{ adresse.prenom }} {{ adresse.nom }}<br />
                                         {{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }}<a href="{{ path('livraisonAdresseSuppression', { 'id' : adresse.id }) }}"><i class="icon-trash"></i></a>
                                     </label>
@@ -24,7 +25,7 @@
                                 <h4>Adresse de facturation</h4>
                                 {% for adresse in utilisateur.adresses %}
                                     <label class="radio">
-                                        <input type="radio" name="facturation" id="optionsRadios1" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
+                                        <input type="radio" name="facturation" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
                                         {{ adresse.prenom }} {{ adresse.nom }}<br />
                                         {{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }}<a href="{{ path('livraisonAdresseSuppression', { 'id' : adresse.id }) }}"><i class="icon-trash"></i></a>
                                     </label>
