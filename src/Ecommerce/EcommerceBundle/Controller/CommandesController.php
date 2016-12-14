@@ -2,21 +2,22 @@
 
 namespace Ecommerce\EcommerceBundle\Controller;
 
-use Ecommerce\EcommerceBundle\Entity\Commandes;
-use Ecommerce\EcommerceBundle\Entity\Produits;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Ecommerce\EcommerceBundle\Entity\UtilisateursAdresses;
+use Ecommerce\EcommerceBundle\Entity\Commandes;
+use Ecommerce\EcommerceBundle\Entity\Produits;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class CommandesController extends Controller
 {
-    public function facture($session)
+    public function facture()
     {
         $em = $this->getDoctrine()->getManager();
         $generator = $this->container->get('security.util.secure_random');
-        //$session = $request->getSession();
+        $session = $this->get('request_stack')->getCurrentRequest()->getSession();
         $adresse = $session->get('adresse');
         $panier = $session->get('panier');
         $commande = array();
@@ -67,8 +68,8 @@ class CommandesController extends Controller
         $commande['prixTTC'] = round($totalTTC,2);
         $commande['token'] = bin2hex($generator->nextBytes(20));
 
-        var_dump($commande);
-        die('facture');
+        /*var_dump($commande);
+        die('facture');*/
 
         return $commande;
         // verification faite c'est ok, le var_dump de commande renvoi bien les données
@@ -90,15 +91,14 @@ class CommandesController extends Controller
         $commande->setUtilisateur($this->container->get('security.token_storage')->getToken()->getUser());
         $commande->setValider(0);
         $commande->setReference(0);
-        $commande->setCommandes($this->facture($session));
+        $commande->setCommandes($this->facture());
 
         if (!$session->has('commande'))
         {
             $em->persist($commande);
             $session->set('commande',$commande);
         }
-        var_dump($commande);
-        die('prepareCommandeAction');
+
         $em->flush();
 
         return new Response($commande->getId());

@@ -21,11 +21,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for produit in commande.commande.produit %}
+                    {% for produit in commande.commandes.produit %}
                         <tr>
                             <td>{{ produit.reference }}</td>
                             <td>
-                                {{ panier.quantite }}
+                                {{ produit.quantite }}
                             </td>
                             <td>{{ produit.prixHT }} €</td>
                             <td>{{ produit.prixHT * produit.quantite }} €</td>
@@ -35,32 +35,32 @@
                 </table>
                 <dl class="dl-horizontal pull-right">
                     <dt>Total HT :</dt>
-                    <dd>{{ commande.commande.prixHT }} €</dd>
+                    <dd>{{ commande.commandes.prixHT }} €</dd>
 
-                    {% for key, tva in commande.commande.tva %}
+                    {% for key, tva in commande.commandes.tva %}
                         <dt>TVA {{ key }}:</dt>
                         <dd>{{ tva }} €</dd>
                     {% endfor %}
 
                     <dt>Total TTC:</dt>
-                    <dd>{{ commande.commande.prixTTC }} €</dd>
+                    <dd>{{ commande.commandes.prixTTC }} €</dd>
                 </dl>
 
                 <div class="span3 pull-left">
                     <dl class="pull-left">
                         <dt><h4>Adresse de livraison</h4></dt>
-                        <dt>{{ commande.commande.livraison.prenom }} {{ commande.commande.livraison.nom }}</dt>
-                        <dt>{{ commande.commande.livraison.adresse }} {{ commande.commande.livraison.nom }}</dt>
-                        <dt>{{ commande.commande.livraison.cp }} {{ commande.commande.livraison.ville }} - {{ commande.commande.livraison.pays }}</dt>
+                        <dt>{{ commande.commandes.livraison.prenom }} {{ commande.commandes.livraison.nom }}</dt>
+                        <dt>{{ commande.commandes.livraison.adresse }} {{ commande.commandes.livraison.nom }}</dt>
+                        <dt>{{ commande.commandes.livraison.cp }} {{ commande.commandes.livraison.ville }} - {{ commande.commandes.livraison.pays }}</dt>
                     </dl>
                 </div>
 
                 <div class="span3 pull-left">
                     <dl class="pull-left">
                         <dt><h4>Adresse de facturation</h4></dt>
-                        <dt>{{ commande.commande.facturation.prenom }} {{ commande.commande.facturation.nom }}</dt>
-                        <dt>{{ commande.commande.facturation.adresse }} {{ commande.commande.facturation.nom }}</dt>
-                        <dt>{{ commande.commande.facturation.cp }} {{ commande.commande.facturation.ville }} - {{ commande.commande.facturation.pays }}</dt>
+                        <dt>{{ commande.commandes.facturation.prenom }} {{ commande.commandes.facturation.nom }}</dt>
+                        <dt>{{ commande.commandes.facturation.adresse }} {{ commande.commandes.facturation.nom }}</dt>
+                        <dt>{{ commande.commandes.facturation.cp }} {{ commande.commandes.facturation.ville }} - {{ commande.commandes.facturation.pays }}</dt>
                     </dl>
                 </div>
 
