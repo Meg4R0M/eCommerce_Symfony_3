@@ -113,40 +113,43 @@ class PanierController extends Controller
                                                                                                 'form' => $form->createView()));
     }
 
-    public function setLivraisonOnSession()
+    public function setLivraisonOnSession(Request $request)
     {
-        $session = $this->get('request_stack')->getCurrentRequest()->getSession();
+        $session = $request->getSession();
 
         if (!$session->has('adresse')) $session->set('adresse',array());
         $adresse = $session->get('adresse');
 
-        if ($this->get('request_stack')->getCurrentRequest()->request->get('livraison') != null && $this->get('request_stack')->getCurrentRequest()->request->get('facturation') != null)
+        if ($request->request->get('livraison') != null && $request->request->get('facturation') != null)
         {
-            $adresse['livraison'] = $this->get('request_stack')->getCurrentRequest()->request->get('livraison');
-            $adresse['facturation'] = $this->get('request_stack')->getCurrentRequest()->request->get('facturation');
+            $adresse['livraison'] = $request->request->get('livraison');
+            $adresse['facturation'] = $request->request->get('facturation');
         } else {
             return $this->redirect($this->generateUrl('validation'));
         }
 
         $session->set('adresse',$adresse);
-        return $this->get('request_stack')->getCurrentRequest()->request->get('validation');
+
+        return $this->redirect($this->generateUrl('validation'));
     }
 
-    public function validationAction()
+    public function validationAction(Request $request)
     {
-        $request = Request::createFromGlobals();
+        //$request = Request::createFromGlobals();
         if ($request->getMethod() == 'POST')
         {
             $this->setLivraisonOnSession($request);
         }
 
         $em = $this->getDoctrine()->getManager();
-        $prepareCommande = $this->forward('EcommerceBundle:Commandes:prepareCommande');
-        $commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
+        // ne renvoi pas ce qu'il faut !
+        $prepareCommande = $this->forward('EcommerceBundle:Commandes:prepareCommande')->getContent();
 
-        //var_dump($commande);
-        //die('test3');
+        var_dump($prepareCommande);
+        die('test3');
 
-        return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig', array('commande' => $commande));
+        /*$commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
+
+        return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig', array('commande' => $commande));*/
     }
 }
