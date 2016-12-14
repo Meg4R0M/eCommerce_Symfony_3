@@ -65,7 +65,14 @@
                 </div>
 
                 <div class="clearfix"></div>
-                <a href="#" class="btn btn-success pull-right">Payer</a>
+
+                <form action="{{ path('validationCommande', { 'id' : commande.id }) }}" method="post" >
+                    <input name="token" type="hidden" value="{{ commande.commandes.token }}" />
+                    <input name="prix" type="hidden" value="{{ commande.commandes.prixTTC }}" />
+                    <input name="date" type="hidden" value="{{ commande.date|date('dmyhms') }}" />
+                    <button type="submit" class="btn btn-success pull-right">Payer</button>
+                </form>
+
                 <a href="{{ path('livraison') }}" class="btn btn-primary">retour</a>
             </div>
 

@@ -103,4 +103,30 @@ class CommandesController extends Controller
 
         return new Response($commande->getId());
     }
+
+    /*
+     * Cette methode remplace l'API banque
+     */
+    public function validationCommandeAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $commande = $em->getRepository('EcommerceBundle:Commandes')->find($id);
+
+        if (!$commande || $commande->getValider() == 1)
+        {
+            throw $this->createNotFoundException('La commande n\'existe pas !');
+        }
+
+        $commande->setValider(1);
+        $commande->setReference(1); //Service a faire
+        $em->flush();
+
+        $session = $request->getSession();
+        $session->remove('adresse');
+        $session->remove('panier');
+        $session->remove('commande');
+
+        $this->get('session')->getFlashBag()->add('success','Votre commande est validée avec succès');
+        return $this->redirect($this->generateUrl('produits'));
+    }
 }
