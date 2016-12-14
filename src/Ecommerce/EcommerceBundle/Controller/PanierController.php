@@ -135,14 +135,12 @@ class PanierController extends Controller
 
     public function validationAction(Request $request)
     {
-        //$request = Request::createFromGlobals();
         if ($request->getMethod() == 'POST')
         {
             $this->setLivraisonOnSession($request);
         }
 
         $em = $this->getDoctrine()->getManager();
-        // ne renvoi pas ce qu'il faut !
         $prepareCommande = $this->forward('EcommerceBundle:Commandes:prepareCommande');
         $commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
 

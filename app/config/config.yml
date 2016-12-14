@@ -79,7 +79,7 @@ swiftmailer:
 jms_security_extra:
     # Whether you want to secure all services (true), or only secure specific
     # services (false); see also below
-    secure_all_services: false
+    secure_all_services: true
 
     # Enabling this setting will add an additional special attribute "ROLE_IDDQD".
     # Anybody with this attribute will effectively bypass all security checks.

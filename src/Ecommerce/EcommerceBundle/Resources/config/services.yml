@@ -2,6 +2,10 @@ parameters:
 #    ecommerce.example.class: Ecommerce\EcommerceBundle\Example
 
 services:
+    setNewReference:
+        class: Ecommerce\EcommerceBundle\Services\GetReference
+        arguments: ['@security.authorization_checker','@doctrine.orm.entity_manager']
+
     tva:
         class: Ecommerce\EcommerceBundle\Twig\Extension\TvaExtension
         tags:

@@ -68,11 +68,8 @@ class CommandesController extends Controller
         $commande['prixTTC'] = round($totalTTC,2);
         $commande['token'] = bin2hex($generator->nextBytes(20));
 
-        /*var_dump($commande);
-        die('facture');*/
 
         return $commande;
-        // verification faite c'est ok, le var_dump de commande renvoi bien les données
     }
 
     public function prepareCommandeAction(Request $request)
@@ -118,7 +115,7 @@ class CommandesController extends Controller
         }
 
         $commande->setValider(1);
-        $commande->setReference(1); //Service a faire
+        $commande->setReference($this->container->get('setNewReference')->reference()); //Service a faire
         $em->flush();
 
         $session = $request->getSession();
@@ -127,6 +124,6 @@ class CommandesController extends Controller
         $session->remove('commande');
 
         $this->get('session')->getFlashBag()->add('success','Votre commande est validée avec succès');
-        return $this->redirect($this->generateUrl('produits'));
+        return $this->redirect($this->generateUrl('factures'));
     }
 }
