@@ -141,14 +141,13 @@ class PanierController extends Controller
             $this->setLivraisonOnSession($request);
         }
 
-        $em = $this->getDoctrine()->getManager();
+        var_dump($this->forward('EcommerceBundle:Commandes:prepareCommande')->getContent());
+        die('validationaction');
+
+        /*$em = $this->getDoctrine()->getManager();
         // ne renvoi pas ce qu'il faut !
         $prepareCommande = $this->forward('EcommerceBundle:Commandes:prepareCommande')->getContent();
-
-        var_dump($prepareCommande);
-        die('test3');
-
-        /*$commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
+        $commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
 
         return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig', array('commande' => $commande));*/
     }

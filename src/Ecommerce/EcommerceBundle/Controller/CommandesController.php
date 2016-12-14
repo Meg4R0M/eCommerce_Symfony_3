@@ -8,13 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Ecommerce\EcommerceBundle\Entity\UtilisateursAdresses;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class CommandesController extends Controller
 {
     public function facture($session)
     {
         $em = $this->getDoctrine()->getManager();
-        $generator = $this->container->get('security.Secure_Random');
+        $generator = $this->container->get('security.util.secure_random');
         //$session = $request->getSession();
         $adresse = $session->get('adresse');
         $panier = $session->get('panier');
@@ -25,9 +26,6 @@ class CommandesController extends Controller
         $facturation = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['facturation']);
         $livraison = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['livraison']);
         $produits = $em->getRepository('EcommerceBundle:Produits')->findArray(array_keys($session->get('panier')));
-
-        /*var_dump($facturation);
-        die('facture');*/
 
         foreach($produits as $produit) {
             $prixHT = ($produit->getPrix() * $panier[$produit->getId()]);
@@ -69,6 +67,9 @@ class CommandesController extends Controller
         $commande['prixTTC'] = round($totalTTC,2);
         $commande['token'] = bin2hex($generator->nextBytes(20));
 
+        var_dump($commande);
+        die('facture');
+
         return $commande;
         // verification faite c'est ok, le var_dump de commande renvoi bien les données
     }
@@ -78,31 +79,28 @@ class CommandesController extends Controller
         $session = $request->getSession();
         $em = $this->getDoctrine()->getManager();
 
-        if ($session->has('commande'))
+        if (!$session->has('commande'))
         {
             $commande = new Commandes();
         } else {
             $commande = $em->getRepository('EcommerceBundle:Commandes')->find($session->get('commande'));
         }
 
-
         $commande->setDate(new \DateTime());
-        //$commande->setUtilisateur($this->container->get('security.token_storage')->getToken()->getUser());
+        $commande->setUtilisateur($this->container->get('security.token_storage')->getToken()->getUser());
         $commande->setValider(0);
         $commande->setReference(0);
         $commande->setCommandes($this->facture($session));
 
-        var_dump($commande);
-        die('prepareCommandeAction');
-
-        /*if (!$session->has('commande'))
+        if (!$session->has('commande'))
         {
             $em->persist($commande);
             $session->set('commande',$commande);
         }
-
+        var_dump($commande);
+        die('prepareCommandeAction');
         $em->flush();
 
-        return new Response($commande->getId());*/
+        return new Response($commande->getId());
     }
 }
