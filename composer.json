@@ -25,7 +25,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "jms/security-extra-bundle": "dev-master"
+        "jms/security-extra-bundle": "dev-master",
+        "ensepar/html2pdf-bundle" : "~2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

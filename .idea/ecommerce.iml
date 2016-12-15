@@ -2,6 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ensepar/html2pdf" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ensepar/html2pdf-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ensepar/tcpdf" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jms/aop-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jms/cg" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jms/di-extra-bundle" />
@@ -38,6 +41,9 @@
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/ensepar/html2pdf" />
+          <root url="file://$MODULE_DIR$/vendor/ensepar/html2pdf-bundle" />
+          <root url="file://$MODULE_DIR$/vendor/ensepar/tcpdf" />
           <root url="file://$MODULE_DIR$/vendor/jms/aop-bundle" />
           <root url="file://$MODULE_DIR$/vendor/jms/cg" />
           <root url="file://$MODULE_DIR$/vendor/jms/di-extra-bundle" />
@@ -48,6 +54,9 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/security-acl" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/ensepar/html2pdf" />
+          <root url="file://$MODULE_DIR$/vendor/ensepar/html2pdf-bundle" />
+          <root url="file://$MODULE_DIR$/vendor/ensepar/tcpdf" />
           <root url="file://$MODULE_DIR$/vendor/jms/aop-bundle" />
           <root url="file://$MODULE_DIR$/vendor/jms/cg" />
           <root url="file://$MODULE_DIR$/vendor/jms/di-extra-bundle" />

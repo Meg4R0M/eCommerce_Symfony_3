@@ -40,12 +40,12 @@
                                 </tr>
                             {% endif %}
                             {% for facture in factures %}
-                            <tr>
-                                <td>ref : {{ facture.reference }}</td>
-                                <td>{{ facture.date|date('d/m/Y') }}</td>
-                                <td>{{ facture.commandes.prixTTC }} €</td>
-                                <td><a href="#"><i class="icon-refresh"></i></a></td>
-                            </tr>
+                                <tr>
+                                    <td>ref : {{ facture.reference }}</td>
+                                    <td>{{ facture.date|date('d/m/Y') }}</td>
+                                    <td>{{ facture.commandes.prixTTC }} €</td>
+                                    <td><a href="{{ path('facturePDF', { 'id' : facture.id }) }}" target="_blank"><i class="icon-refresh"></i></a></td>
+                                </tr>
                             {% endfor %}
                         </tbody>
                     </table>
