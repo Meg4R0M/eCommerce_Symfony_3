@@ -5,7 +5,7 @@ Site eCommerce, résultat d'un projet de formation, CODA by Simplon.
 
 Si vous souhaitez tester ce site vous devez ajouter ceci à votre installation.
 
-Parametres à ajouter
+Paramêtres à ajouter
 --------------
 
 Veuillez ajouter au fichier app/config/parameters.yml:
@@ -14,8 +14,8 @@ Veuillez ajouter au fichier app/config/parameters.yml:
 ```
 twig:
     globals:
-        telephone: '04 34 13 91 83'
-        facebook: 'https://www.facebook.com/canturla/'
-        adresse: '49 av. Gaston Ribot'
-        cpville: ' 30100 Alès'
+        telephone: 'Votre num Telephone'
+        facebook: 'Votre lien facebook'
+        adresse: 'Votre adresse'
+        cpville: ' Code postal - Ville'
 ```
