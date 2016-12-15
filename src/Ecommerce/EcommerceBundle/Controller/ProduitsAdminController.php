@@ -62,10 +62,7 @@ class ProduitsAdminController extends Controller
      */
     private function createCreateForm(Produits $entity)
     {
-        $form = $this->createForm(ProduitsType::class, $entity, array(
-            'action' => $this->generateUrl('adminProduits_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(ProduitsType::class, $entity);
 
         $form->add('submit', SubmitType::class, array('label' => 'Create'));
 
@@ -141,10 +138,7 @@ class ProduitsAdminController extends Controller
      */
     private function createEditForm(Produits $entity)
     {
-        $form = $this->createForm(ProduitsType::class, $entity, array(
-            'action' => $this->generateUrl('adminProduits_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(ProduitsType::class, $entity);
 
         $form->add('submit', SubmitType::class, array('label' => 'Update'));
 

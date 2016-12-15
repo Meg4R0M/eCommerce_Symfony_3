@@ -1,9 +1,11 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
-{% block body -%}
+{% block body %}
     <h1>Produits edit</h1>
 
-    {{ form(edit_form) }}
+    {{ form_start(edit_form, {'action': path('adminProduits_create', { 'id' : entity.id }), 'method': 'POST' }) }}
+    {{ form_widget(edit_form) }}
+    {{ form_end(edit_form) }}
 
     <ul class="record_actions">
         <li>
