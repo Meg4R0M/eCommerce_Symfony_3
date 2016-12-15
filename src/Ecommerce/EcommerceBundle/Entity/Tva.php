@@ -124,4 +124,9 @@ class Tva
     {
         return $this->valeur;
     }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
 }
