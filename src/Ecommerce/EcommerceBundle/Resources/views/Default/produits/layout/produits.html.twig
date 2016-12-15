@@ -34,17 +34,10 @@
                     {% endfor %}
                 </ul>
 
-                <div class="pagination">
-                    <ul>
-                        <li class="disabled"><span>Précédent</span></li>
-                        <li class="disabled"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">Suivant</a></li>
-                    </ul>
+                <div class="navigation">
+                    {{ knp_pagination_render(produits) }}
                 </div>
+
             {% else %}
                 Aucun Produit
             {% endif %}

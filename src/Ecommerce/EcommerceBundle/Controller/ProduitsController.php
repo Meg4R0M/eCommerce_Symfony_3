@@ -17,9 +17,9 @@ class ProduitsController extends Controller
         }
 
         if ($categorie != null && $exist != "" ) {
-            $produits = $em->getRepository('EcommerceBundle:Produits')->byCategorie($categorie);
+            $findProduits = $em->getRepository('EcommerceBundle:Produits')->byCategorie($categorie);
         } elseif ($categorie == null) {
-            $produits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
+            $findProduits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
         } else {
             throw $this->createNotFoundException('La page n\'existe pas.');
         }
@@ -29,6 +29,8 @@ class ProduitsController extends Controller
         } else {
             $panier = false;
         }
+
+        $produits  = $this->get('knp_paginator')->paginate($findProduits,$request->query->get('page', 1),8);
 
         return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
                                                                                                  'panier' => $panier));
