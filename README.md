@@ -3,7 +3,7 @@ e-Commerce Symfony 3
 
 Site eCommerce, résultat d'un projet de formation, CODA by Simplon.
 
-Si vous souhaitez tester ce site vous devez [ajouter][1] ceci à votre installation.
+Si vous souhaitez tester ce site vous devez ajouter ceci à votre installation.
 
 Parametres à ajouter
 --------------
