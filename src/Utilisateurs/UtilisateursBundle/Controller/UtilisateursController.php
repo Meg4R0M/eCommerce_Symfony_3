@@ -28,16 +28,11 @@ class UtilisateursController extends Controller
             return $this->redirect($this->generateUrl('factures'));
         }
 
-        $html = $this->renderView('UtilisateursBundle:Default:layout/facturePDF.html.twig', array('facture' => $facture));
-        $html2pdf = $this->get('html2pdf_factory')->create('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
-        $html2pdf->pdf->SetAuthor('Canturla');
-        $html2pdf->pdf->SetTitle('Canturla - Facture '.$facture->getReference());
-        $html2pdf->pdf->SetSubject('Facture Canturla');
-        $html2pdf->pdf->SetKeywords('facture,canturla');
-        $html2pdf->pdf->SetDisplayMode('real');
-        $html2pdf->writeHTML($html);
+        $this->container->get('setNewFacture')->facture($facture)->Output('Facture.pdf');
+        $response = new Response();
+        $response->headers->set('Content-type' , 'application/pdf');
 
-        return new Response($html2pdf->Output('facture.pdf'), 200, array('Content-Type' => 'application/pdf'));;
+        return $response;
     }
 
 }

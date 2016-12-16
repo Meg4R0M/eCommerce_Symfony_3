@@ -2,6 +2,10 @@ parameters:
 #    ecommerce.example.class: Ecommerce\EcommerceBundle\Example
 
 services:
+    setNewFacture:
+        class: Ecommerce\EcommerceBundle\Services\GetFacture
+        arguments: ['@service_container']
+
     setNewReference:
         class: Ecommerce\EcommerceBundle\Services\GetReference
         arguments: ['@security.authorization_checker','@doctrine.orm.entity_manager']
