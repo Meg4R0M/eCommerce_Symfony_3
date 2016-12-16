@@ -1,54 +1,84 @@
 {% extends "::layout/layout.html.twig" %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="span12">
-            <h2>Livraison</h2>
-            <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                    <div class="span4">
+    <div class="container">
+        <div class="columns">
+
+            <div class="column is-12">
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <h2 class="title is-3">Livraison</h2>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="column is-6">
                         {% if utilisateur.adresses|length != 0 %}
                             <form action="{{ path('validation') }}" method="post">
 
-                                <h4>Adresse de livraison</h4>
-                                {% for adresse in utilisateur.adresses %}
-                                    <label class="radio">
-                                        <input type="radio" name="livraison" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
-                                        {{ adresse.prenom }} {{ adresse.nom }}<br />
-                                        {{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }}<a href="{{ path('livraisonAdresseSuppression', { 'id' : adresse.id }) }}"><i class="icon-trash"></i></a>
-                                    </label>
-                                {% endfor %}
+                                <div class="tile is-ancestor">
+                                    <div class="tile is-parent is-12">
+                                        <article class="tile is-child box is-12">
+                                            <h4 class="title is-4">Adresse de livraison</h4>
+                                            {% for adresse in utilisateur.adresses %}
+                                                <label class="radio">
+                                                    <input type="radio" name="livraison" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
+                                                    {{ adresse.prenom }} {{ adresse.nom }} -
+                                                    {{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }}<a href="{{ path('livraisonAdresseSuppression', { 'id' : adresse.id }) }}"><i class="icon-trash"></i></a>
+                                                </label>
+                                                {% if loop.index is divisible by(1) %}
+                                                    <br /><br />
+                                                {% endif %}
+                                            {% endfor %}
+                                        </article>
+                                    </div>
+                                </div>
 
-                                <br /><br />
+                                <div class="tile is-ancestor">
+                                    <div class="tile is-parent is-12">
+                                        <article class="tile is-child box is-12">
+                                            <h4 class="title is-4">Adresse de facturation</h4>
+                                            {% for adresse in utilisateur.adresses %}
+                                                <label class="radio">
+                                                    <input type="radio" name="facturation" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
+                                                    {{ adresse.prenom }} {{ adresse.nom }} -
+                                                    {{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }}<a href="{{ path('livraisonAdresseSuppression', { 'id' : adresse.id }) }}"><i class="icon-trash"></i></a>
+                                                </label>
+                                                {% if loop.index is divisible by(1) %}
+                                                    <br /><br />
+                                                {% endif %}
+                                            {% endfor %}
+                                        </article>
+                                    </div>
+                                </div>
 
-                                <h4>Adresse de facturation</h4>
-                                {% for adresse in utilisateur.adresses %}
-                                    <label class="radio">
-                                        <input type="radio" name="facturation" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
-                                        {{ adresse.prenom }} {{ adresse.nom }}<br />
-                                        {{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }}<a href="{{ path('livraisonAdresseSuppression', { 'id' : adresse.id }) }}"><i class="icon-trash"></i></a>
-                                    </label>
-                                {% endfor %}
-
-                                <br />
-
-                                <button class="btn btn-primary">Valider mes adresses</button>
+                                <button class="button button-vert">Valider mes adresses</button>
                             </form>
                         {% endif %}
                     </div>
 
 
-                    <div class="span4 offset2">
-                        <h4>Ajouter une nouvelle adresse</h4>
-                        <form action="{{ path('livraison') }}" method="post">
-                            {{ form_widget(form) }}
-                            <button class="btn btn-primary" type="submit">Ajouter</button>
-                        </form>
+                    <div class="column is-6">
+                        <div class="tile is-ancestor">
+                            <div class="tile is-parent is-12">
+                                <article class="tile is-child box is-12">
+                                    <h4 class="title is-4">Ajouter une nouvelle adresse</h4>
+                                    <form action="{{ path('livraison') }}" method="post">
+                                        {{ form_widget(form) }}
+                                        <br />
+                                        <button class="button button-vert" type="submit">Ajouter</button>
+                                    </form>
+                                </article>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
+                </div>
+
+            </div>
         </div>
     </div>
 {% endblock %}

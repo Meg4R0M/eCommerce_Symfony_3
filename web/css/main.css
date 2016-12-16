@@ -78,7 +78,20 @@ PRODUITS
 .title{
     font-size: 20px;
     font-weight: bold;
+}
+
+.minheight40px{
     min-height: 40px;
+}
+
+.categorie{
+    font-size: 16px;
+    color: #006A43;
+    margin-bottom: 10px;
+}
+
+.margin5perc{
+    margin-right: 5% !important;
 }
 
 img{
