@@ -1,3 +1,7 @@
+routingUtilisateursAdmin:
+    resource: "@UtilisateursBundle/Resources/config/routing/routingUtilisateursAdmin.yml"
+    prefix: /admin/utilisateurs
+
 factures:
     path:    /profile/factures
     defaults: { _controller: UtilisateursBundle:Utilisateurs:factures }
