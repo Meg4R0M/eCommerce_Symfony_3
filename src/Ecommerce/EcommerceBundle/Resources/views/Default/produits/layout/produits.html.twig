@@ -20,7 +20,7 @@
                     {% for produit in produits %}
                     <li class="span3">
                         <div class="thumbnail">
-                            <img src="{{ asset(produit.image.AssetPath) }}" alt="{{ produit.image.name }}" width="300" height="300">
+                            <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
                             <div class="caption">
                                 <h4>{{ produit.nom }}</h4>
                                 <p>{{ produit.prix|tva(produit.tva.multiplicate) }}€</p>

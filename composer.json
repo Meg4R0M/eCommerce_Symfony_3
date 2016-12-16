@@ -27,7 +27,8 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "jms/security-extra-bundle": "dev-master",
         "ensepar/html2pdf-bundle" : "~2.0",
-        "knplabs/knp-paginator-bundle": "dev-master"
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "liip/imagine-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

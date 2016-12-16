@@ -15,7 +15,7 @@
             <div class="span9">
                 <div class="row">
                     <div class="span5">
-                        <img src="{{ asset(produit.image.AssetPath) }}" alt="{{ produit.image.name }}" width="470" height="310">
+                        <img src="{{ produit.image.AssetPath|imagine_filter('produit') }}" alt="{{ produit.image.name }}" width="470" height="310">
                     </div>
 
                     <div class="span4">
