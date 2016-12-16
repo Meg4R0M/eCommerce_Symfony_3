@@ -124,6 +124,17 @@ class CommandesController extends Controller
         $session->remove('panier');
         $session->remove('commande');
 
+        // ici le mail de validation
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Validation de votre commande')
+            ->setFrom(array('psykotero@gmail.com' => "Canturla"))
+            ->setTo($commande->getUtilisateur()->getEmailCanonical())
+            ->setCharset('utf-8')
+            ->setContentType('text/html')
+            ->setBody($this->renderView('EcommerceBundle:Default:SwiftLayout/validationCommande.html.twig',array('utilisateur' => $commande->getUtilisateur())));
+
+        $this->get('mailer')->send($message);
+
         $this->get('session')->getFlashBag()->add('success','Votre commande est validée avec succès');
         return $this->redirect($this->generateUrl('factures'));
     }

@@ -10,7 +10,17 @@ Paramêtres à ajouter
 
 Veuillez ajouter au fichier app/config/parameters.yml:
 
+Paramêtrages Mail:
+```
+    mailer_transport: smtp
+    mailer_encryption: ssl
+    mailer_host: smtp.gmail.com
+    mailer_user: votremail@gmail.com
+    mailer_password: votreMDP
+```
 
+
+Paramêtrages Twig:
 ```
 twig:
     globals:
@@ -18,4 +28,14 @@ twig:
         facebook: 'Votre lien facebook'
         adresse: 'Votre adresse'
         cpville: ' Code postal - Ville'
+```
+
+Veuillez également ajouter cette ligne dans votre app/config/config.yml
+
+Paramêtrage swiftmailer:
+```
+swiftmailer:
+    ...
+    encryption: "%mailer_encryption%"
+    ...
 ```
