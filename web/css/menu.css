@@ -1,0 +1,40 @@
+/*******************************************************************************
+Les boutons
+*******************************************************************************/
+
+.button-orange {
+    background-color: #F4742B;
+    border: none;
+    color: white !important;
+}
+
+.button-orange:hover {
+    background-color: #F4742B;
+    color: black !important;
+}
+
+#button2 {
+    background-color: #BA172A;
+    /*#BA172A rouge*/
+}
+
+.button-vert {
+    background-color: #006A43;
+    border: none;
+    color: white !important;
+}
+
+.button-vert:hover {
+    background-color: #006A43;
+    border: none;
+    color: black !important;
+}
+
+#button4 {
+    background-color: #BA172A;
+    /*#BA172A rouge*/
+}
+
+#button5 {
+    background-color: #006A43
+}

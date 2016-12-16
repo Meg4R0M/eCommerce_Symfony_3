@@ -124,10 +124,14 @@ liip_imagine:
     filter_sets:
         cache: ~
         produitThumb:
-            quality: 80
+            quality: 100
             filters:
                 thumbnail: { size: [270, 270], mode: inset }
         produit:
-            quality: 75
+            quality: 100
             filters:
                 thumbnail: { size: [470, 470], mode: inset }
+        logocanturla:
+            quality: 100
+            filters:
+                thumbnail: { size: [100, 100], mode: inset }

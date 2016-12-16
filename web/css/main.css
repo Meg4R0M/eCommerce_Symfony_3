@@ -1,0 +1,100 @@
+/*******************************************************************************
+HEADER
+*******************************************************************************/
+.spacer {
+    height:20px;
+}
+
+/*******************************************************************************
+partie blabla
+*******************************************************************************/
+.sisi {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.text {
+    height: 250px;
+    width: 500px;
+    margin: 10px;
+}
+
+main section div h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+main section div p {
+    text-align: justify;
+
+}
+
+
+/*******************************************************************************
+partie photo
+*******************************************************************************/
+.coco {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.coco1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.photo {
+    height: 200px;
+    width: 800px;
+    margin: 1px;
+    background-color: red;
+}
+
+.photo1 {
+    height: 200px;
+    width: 800px;
+    margin: 1px;
+    background-color: green;
+}
+
+.ligne {
+    display: flex;
+    justify-content: center;
+}
+
+/***********************************************************************
+PRODUITS
+***********************************************************************/
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    min-height: 40px;
+}
+
+img{
+    border-radius: 5px;
+}
+/***********************************************************************
+FOOTER
+***********************************************************************/
+.canturlacontact{
+    vertical-align: middle;
+}
+
+.adressemr{
+    margin-right: 40px;
+}
+
+.adressemt{
+    margin-top: -60px;
+}
