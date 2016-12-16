@@ -10,6 +10,11 @@ routingProduitsAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingProduitsAdmin.yml"
     prefix: /admin/produits
 
+routingCategoriesAdmin:
+    resource: "@EcommerceBundle/Resources/config/routing/routingCategoriesAdmin.yml"
+    prefix:   /admin/categories
+
+
 routingCommandes:
     resource: "@EcommerceBundle/Resources/config/routing/routingCommandes.yml"
     prefix: /
