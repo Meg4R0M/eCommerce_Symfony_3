@@ -42,14 +42,14 @@ class Media
      * @ORM\Column(name="name",type="string",length=255)
      * @Assert\NotBlank()
      */
-    public $name;
+    private $name;
 
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
      */
-    public $path;
+    private $path;
 
-    public $file;
+    private $file;
 
     public function getUploadRootDir()
     {
@@ -126,7 +126,11 @@ class Media
 
     public function getName()
     {
-        var_dump($this->name);
         return $this->name;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
     }
 }

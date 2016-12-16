@@ -1,3 +1,7 @@
+routingAdmin:
+    resource: "@EcommerceBundle/Resources/config/routing/routingAdmin.yml"
+    prefix: /admin
+
 routingPanier:
     resource: "@EcommerceBundle/Resources/config/routing/routingPanier.yml"
     prefix: /panier

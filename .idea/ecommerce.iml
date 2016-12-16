@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/vendor/ensepar/html2pdf" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/ensepar/html2pdf-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/ensepar/tcpdf" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/aop-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/cg" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/di-extra-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/metadata" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/parser-lib" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/security-extra-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-components" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-paginator-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/security-acl" />
-    </content>
+    <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
@@ -31,46 +17,12 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
           <root url="phar://$MODULE_DIR$/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
           <root url="phar://$MODULE_DIR$/vendor/twig/twig/test/Twig/Tests/Loader/Fixtures/phar/phar-sample.phar/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="PHP" type="php">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/ensepar/html2pdf" />
-          <root url="file://$MODULE_DIR$/vendor/ensepar/html2pdf-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/ensepar/tcpdf" />
-          <root url="file://$MODULE_DIR$/vendor/jms/aop-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/jms/cg" />
-          <root url="file://$MODULE_DIR$/vendor/jms/di-extra-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/jms/metadata" />
-          <root url="file://$MODULE_DIR$/vendor/jms/parser-lib" />
-          <root url="file://$MODULE_DIR$/vendor/jms/security-extra-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/knplabs/knp-components" />
-          <root url="file://$MODULE_DIR$/vendor/knplabs/knp-paginator-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
-          <root url="file://$MODULE_DIR$/vendor/symfony/security-acl" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/ensepar/html2pdf" />
-          <root url="file://$MODULE_DIR$/vendor/ensepar/html2pdf-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/ensepar/tcpdf" />
-          <root url="file://$MODULE_DIR$/vendor/jms/aop-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/jms/cg" />
-          <root url="file://$MODULE_DIR$/vendor/jms/di-extra-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/jms/metadata" />
-          <root url="file://$MODULE_DIR$/vendor/jms/parser-lib" />
-          <root url="file://$MODULE_DIR$/vendor/jms/security-extra-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/knplabs/knp-components" />
-          <root url="file://$MODULE_DIR$/vendor/knplabs/knp-paginator-bundle" />
-          <root url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
-          <root url="file://$MODULE_DIR$/vendor/symfony/security-acl" />
+          <root url="phar://$MODULE_DIR$/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Tests/Fixtures/includes/ProjectWithXsdExtensionInPhar.phar/" />
         </SOURCES>
       </library>
     </orderEntry>
