@@ -18,7 +18,7 @@
             <div class="column is-9">
 
                 {% for flashMessage in app.session.flashbag.get('success') %}
-                    <div class="alert alert-success">
+                    <div class="notification is-success">
                         {{ flashMessage }}
                     </div>
                 {% endfor %}
