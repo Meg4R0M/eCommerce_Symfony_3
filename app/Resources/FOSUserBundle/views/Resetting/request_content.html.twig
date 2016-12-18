@@ -1,25 +1,47 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="row">
-    <div class="span12">
-        <h2>Mot de passe perdu</h2>
-        <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
-                <div class="span4">
-                    <h4>Vous avez perdu votre mot de passe ?</h4>
-                    <em>
-                        Compléter le formulaire, un email vous seras envoyé.<br />
-                        Il contiendra la procèdure à suivre pour récupérer votre mot de passe.
-                    </em>
-                </div>
+<div class="container">
 
-                <div class="span4 offset2">
-                    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-                        <label for="username">{{ 'resetting.request.username'|trans }}</label>
-                        <input type="text" id="username" name="username" required="required" />
-                        <br />
-                        <input class="btn btn-primary" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
-                    </form>
+    <div class="columns">
+        <div class="column is-12">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-12">
+                    <article class="tile is-child box is-12">
+                        <h2 class="title is-3">Mot de passe perdu</h2>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns">
+
+        <div class="column is-6">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-12">
+                    <article class="tile is-child box is-12">
+                        <h2 class="title is-3">Vous avez perdu votre mot de passe ?</h2>
+                        <em>
+                            Complétez ce formulaire et un email vous seras envoyé.<br />
+                            Celui-ci contiendra la procèdure à suivre afin de récupérer votre mot de passe.<br />
+                            Vous pourrez ainsi continuer à utiliser votre compte.
+                        </em>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-12">
+                    <article class="tile is-child box is-12">
+                        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                            <label for="username" class="label">{{ 'resetting.request.username'|trans }}</label>
+                            <input type="text" id="username" name="username" required="required" class="input" placeholder="Nom d'utilisateur ou Email"/>
+                            <br /><br />
+                            <input class="button button-vert" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+                        </form>
+                    </article>
                 </div>
             </div>
         </div>

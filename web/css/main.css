@@ -5,6 +5,18 @@ HEADER
     height:20px;
 }
 
+header{
+    height: 100px;
+    position: fixed;
+}
+
+.navbar-fixed {
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+}
+
 /*******************************************************************************
 partie blabla
 *******************************************************************************/
@@ -109,5 +121,5 @@ FOOTER
 }
 
 .adressemt{
-    margin-top: -60px;
+    margin-top: -65px;
 }

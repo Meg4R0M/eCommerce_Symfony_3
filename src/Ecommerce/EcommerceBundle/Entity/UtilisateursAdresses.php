@@ -309,4 +309,9 @@ class UtilisateursAdresses
     {
         return $this->utilisateur;
     }
+
+    public function __toString()
+    {
+        return $this->getAdresse().", ".$this->getCp()." ".$this->getVille();
+    }
 }
