@@ -10,3 +10,6 @@
         <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
     </ul>
 </div>
+{% if is_granted('ROLE_ADMIN') %}
+    {% include '::modulesUsed/navigationAdmin.html.twig' %}
+{% endif %}

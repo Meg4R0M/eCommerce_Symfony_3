@@ -5,11 +5,6 @@ HEADER
     height:20px;
 }
 
-header{
-    height: 100px;
-    position: fixed;
-}
-
 .navbar-fixed {
     top: 0;
     z-index: 100;

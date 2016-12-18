@@ -1,53 +1,71 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block titre %}Canturla - By Meg4R0M{% endblock %}</title>
-        <meta name="keywords" content="{% block motsCles %}{% endblock %}" />
-        <meta name="description" content="{% block description %}{% endblock %}" />
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block titre %}Canturla - By Meg4R0M{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="{% block motsCles %}{% endblock %}" />
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bulma.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/menu.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+    <header class="header">
+        <nav class="nav has-shadow hero is-dark">
             <div class="container">
-                <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="brand" href="{{ path('admin') }}">Administration</a>
+                <div class="nav-left">
+                    <a class="nav-item" href="{{ path('adminProduits_index') }}"><h3 class="nav-item title is-5">Administration - Canturla Drive</h3></a>
+                    <a class="nav-item" href="{{ path('produits') }}"><img src="images/logo-small.png" alt="Canturla Logo Min"></a>
+                </div>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
+
+    <div class="spacer"></div>
 
     <div class="container">
-        <div class="row">
-            {% include '::modulesUsed/navigationAdmin.html.twig' %}
-            <div class="span9">
+        <div class="columns">
+
+            <div class="column is-3">
+                {% include '::modulesUsed/navigationAdmin.html.twig' %}
+            </div>
+
+            <div class="column is-9">
                 {% block body %}{% endblock %}
             </div>
+
         </div>
     </div>
 
     <hr />
-    <footer id="footer" class="vspace20">
+    <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="span4">
-                    <p>&copy; Copyright {{ "now"|date('Y') }} - Canturla - Developped by <a href="http://meg4r0m.ovh" target="_blank">Meg4R0M</a></p>
-                </div>
+            <div class="content has-text-centered">
+                <p>Copyright {{ "now"|date('Y') }} - <b>Geek-Avenue</b> (<a href="http://meg4r0m.ovh" target="_blank">Meg4R0M</a>)</p>
             </div>
         </div>
     </footer>
-    <script src="{{ asset('js/jquery-1.10.0.min.js') }}"></script>
-    <script src="{{ asset('/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('bundles/pages/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/js/bulma.js') }}"></script>
+
     {% block javascripts %}{% endblock %}
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var headerHeight = $('header').height();
+                if($(window).scrollTop() > headerHeight) {
+                    $('header.header').addClass('navbar-fixed').fadeIn('fast');
+                } else if($(window).scrollTop() < headerHeight) {
+                    $('header.header').removeClass('navbar-fixed').fadeIn('fast');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

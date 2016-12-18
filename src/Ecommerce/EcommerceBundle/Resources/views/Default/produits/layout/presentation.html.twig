@@ -8,54 +8,76 @@
         <div class="columns">
 
             <div class="column is-3">
-            {% include '::modulesUsed/navigation.html.twig' %}
-            {{ render(controller('EcommerceBundle:Panier:menu')) }}
-        </div>
-
-            <div class="column is-5">
-                <div class="tile is-ancestor is-12">
-                    <div class="tile is-parent">
-                        <article class="tile is-child box">
-                            <img src="{{ produit.image.AssetPath|imagine_filter('produit') }}" alt="{{ produit.image.name }}" width="470" height="310">
-                        </article>
-                    </div>
-                </div>
+                {% include '::modulesUsed/navigation.html.twig' %}
+                {{ render(controller('EcommerceBundle:Panier:menu')) }}
             </div>
-            <div class="column is-4">
+
+            <div class="column is-9">
                 <div class="tile is-ancestor is-12">
                     <div class="tile is-parent">
                         <article class="tile is-child box">
-                            <h4 class="title">{{ produit.nom }}</h4>
-                            <h5 class="categorie">{{ produit.categorie.nom }}</h5>
-                            <p>{{ produit.description }}</p>
-                            <br />
-                            <h4 class="has-text-right"><b>{{ produit.prix|tva(produit.tva.multiplicate) }}€</b></h4>
-                            <br />
-                            {% if panier[produit.id] is not defined %}
-                                <form action="{{  path('ajouter', { 'id' :  produit.id }) }}" method="get" class="is-centered">
-                                    <p class="control has-addons">
-                                        <span class="select">
-                                            <select name="qte">
-                                                {% for i in 1..10 %}
-                                                    <option value="{{ i }}">{{ i }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </span>
-                                        <button class="button button-vert">Ajouter au panier</button>
-                                    </p>
+                            <div class="columns">
 
-                                    <div>
-
-                                    </div>
-                                </form>
-                            {% else %}
-                                <div>
-                                    <a href="{{ path('panier') }}" class="button button-vert">Ce produit est déjà dans votre panier</a>
+                                <div class="column is-7">
+                                    <img src="{{ produit.image.AssetPath|imagine_filter('produit') }}" alt="{{ produit.image.name }}" width="470" height="310">
                                 </div>
-                            {% endif %}
+
+                                <div class="column is-5">
+                                    <h5 class="categorie"><a href="{{ path('categorieProduits', { 'categorie' : produit.categorie.id }) }}">{{ produit.categorie.nom }}</a> >></h5>
+                                    <div class="title is-3">{{ produit.nom }}</div>
+                                    <p class="title is-5 has-text-muted has-text-right">{{ produit.prix|tva(produit.tva.multiplicate) }} €</p>
+                                    <hr>
+                                    <p>{{ produit.description }}</p>
+                                    <br /><br />
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="has-text-right">
+                                                    <strong>Référence</strong>
+                                                </td>
+                                                <td>{{ produit.id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="has-text-right">
+                                                    <strong>Ajouté le</strong>
+                                                </td>
+                                                <td>A faire (SQL)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="has-text-right">
+                                                    <strong>Vues</strong>
+                                                </td>
+                                                <td>A faire (SQL)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    {% if panier[produit.id] is not defined %}
+                                        <form action="{{  path('ajouter', { 'id' :  produit.id }) }}" method="get">
+                                            <p class="control has-addons">
+                                                <span class="select">
+                                                    <select name="qte">
+                                                        {% for i in 1..10 %}
+                                                            <option value="{{ i }}">{{ i }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </span>
+                                                <button class="button button-vert">Ajouter au panier</button>
+                                            </p>
+                                        </form>
+                                    {% else %}
+                                        <div class="has-text-right">
+                                            <a href="{{ path('panier') }}" class="button button-vert">Ce produit est déjà dans votre panier</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                            </div>
                         </article>
                     </div>
                 </div>
             </div>
+
         </div>
+    </div>
 {% endblock %}

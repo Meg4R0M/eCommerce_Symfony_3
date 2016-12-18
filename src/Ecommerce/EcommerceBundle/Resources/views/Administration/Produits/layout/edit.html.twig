@@ -1,18 +1,28 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Produits edit</h1>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3">Edition du Produit</h2>
+            </article>
+        </div>
+    </div>
 
-    {{ form_start(edit_form, {'action': path('adminProduits_create', { 'id' : entity.id }), 'method': 'POST' }) }}
-    {{ form_widget(edit_form) }}
-    {{ form_end(edit_form) }}
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                {{ form_start(edit_form, {'action': path('adminProduits_create', { 'id' : entity.id }), 'method': 'POST' }) }}
+                {{ form_widget(edit_form) }}
+                {{ form_end(edit_form) }}
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('adminProduits_index') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+                <div class="control is-grouped">
+                    <p class="control">
+                        <a href="{{ path('adminProduits_index') }}" class="button is-info is-outlined">Retour à la liste</a>
+                    </p>
+                    <p class="control">{{ form(delete_form) }}</p>
+                </div>
+            </article>
+        </div>
+    </div>
 {% endblock %}

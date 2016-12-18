@@ -1,44 +1,67 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Produits</h1>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3">Details du Produit</h2>
+            </article>
+        </div>
+    </div>
 
-    <table class="record_properties">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Nom</th>
-            <td>{{ entity.nom }}</td>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <td>{{ entity.description }}</td>
-        </tr>
-        <tr>
-            <th>Prix</th>
-            <td>{{ entity.prix }}</td>
-        </tr>
-        <tr>
-            <th>Disponible</th>
-            <td>{{ entity.disponible }}</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12 media">
+                <div class="columns">
+                <div class="column media-left is-2">
+                    <figure class="image is-128x128">
+                        <img src="{{ entity.image.AssetPath|imagine_filter('produitThumbAdmin') }}" alt="{{ entity.nom }}">
+                    </figure>
+                </div>
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('adminProduits_index') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}">
-                Edit
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+                <div class="column media-content is-10">
+                    <div class="content">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ entity.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ entity.nom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ entity.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prix</th>
+                                <td>{{ entity.prix }}</td>
+                            </tr>
+                            <tr>
+                                <th>Disponible</th>
+                                <td>{{ entity.disponible }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+
+                <nav class="level">
+                    <div class="control is-grouped">
+                        <p class="control">
+                            <a href="{{ path('adminProduits_index') }}" class="button is-info is-outlined">Retour à la liste</a>
+                        </p>
+                        <p class="control">
+                            <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}" class="button is-info is-outlined">Editer</a>
+                        </p>
+                        <p class="control">{{ form(delete_form) }}</p>
+                    </div>
+                </nav>
+
+            </article>
+        </div>
+    </div>
 {% endblock %}

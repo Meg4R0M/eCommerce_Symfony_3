@@ -123,6 +123,10 @@ liip_imagine:
 
     filter_sets:
         cache: ~
+        produitThumbAdmin:
+            quality: 100
+            filters:
+                thumbnail: { size: [135, 135], mode: inset }
         produitThumb:
             quality: 100
             filters:

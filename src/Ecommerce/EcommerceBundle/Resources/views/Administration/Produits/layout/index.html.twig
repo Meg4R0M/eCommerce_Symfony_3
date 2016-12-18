@@ -1,37 +1,53 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Produits list</h1>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3">Liste des Produits</h2>
+            </article>
+        </div>
+    </div>
 
-    <table class="table table-striped table-hover">
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Prix</th>
-            <th>Disponible</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td>{{ entity.nom }}</td>
-                <td>{{ entity.prix }}</td>
-                <td>{{ entity.disponible }}</td>
-                <td>
-                    <a href="{{ path('adminProduits_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
-                    <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Categorie</th>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th>Disponible</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entity in entities %}
+                            <tr>
+                                <td>{{ entity.categorie }}</td>
+                                <td>{{ entity.nom }}</td>
+                                <td>{{ entity.prix }}</td>
+                                {% if entity.disponible == 1 %}
+                                    <td class="has-text-centered">Oui</td>
+                                {% else %}
+                                    <td class="has-text-centered">Non</td>
+                                {% endif %}
+                                <td>
+                                    <a href="{{ path('adminProduits_show', { 'id': entity.id }) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('adminProduits_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+                <ul class="has-text-right">
+                    <li>
+                        <a href="{{ path('adminProduits_new') }}" class="button is-info is-outlined">Ajouter un nouveau produit</a>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </div>
 {% endblock %}
