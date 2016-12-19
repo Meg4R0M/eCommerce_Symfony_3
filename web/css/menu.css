@@ -2,13 +2,13 @@
 Les boutons
 *******************************************************************************/
 
-.button-orange {
+.buttonmenu-orange {
     background-color: #F4742B;
     border: none;
     color: white !important;
 }
 
-.button-orange:hover {
+.buttonmenu-orange:hover {
     background-color: #F4742B;
     color: black !important;
 }

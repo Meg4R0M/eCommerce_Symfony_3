@@ -13,8 +13,14 @@
 
             <div class="column is-3">
                 {% include '::modulesUsed/navigation.html.twig' %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+                {% else %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+                {% endif %}
+                {{ render(controller('EcommerceBundle:Panier:menu')) }}
             </div>
-        
+
             <div class="column is-9">
 
                 {% for flashMessage in app.session.flashbag.get('success') %}
@@ -26,84 +32,140 @@
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-12">
                         <article class="tile is-child box is-12">
-                            <h2 class="title is-3">Votre panier</h2>
+                            <div class="columns">
+                                <div class="column has-text-left">
+                                    <h2 class="title is-3">Votre panier</h2>
+                                </div>
+                                <div class="column has-text-right">
+                                    <h2 class="title is-4">
+                                        {% if produits|length == 0 %}
+                                            (Aucun article)
+                                        {% elseif produits|length == 1 %}
+                                            (1 article)
+                                        {% else %}
+                                            ({{ produits|length }} articles)
+                                        {% endif %}
+                                    </h2>
+                                </div>
+                            </div>
+
                         </article>
                     </div>
                 </div>
+
+                {% if produits|length == 0 %}
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent is-12">
+                            <article class="tile is-child box is-12">
+                                <p>Aucun articles dans votre panier</p>
+                            </article>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% for produit in produits %}
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-two-thirds">
+                                <div class="content has-text-centered">
+
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <div class="image">
+                                                <figure class="image is-96x96">
+                                                    <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}"
+                                                         alt="{{ produit.image.name }}">
+                                                </figure>
+                                            </div>
+                                        </div>
+
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <h3><strong>{{ produit.nom }}</strong></h3>
+                                                <div class="texte">
+                                                    <p>{{ produit.description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </article>
+
+                                </div>
+                            </div>
+
+                            <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
+                                <div class="column">
+                                    <div class="has-text-left">
+                                        <h1 class="title">Quantité:</h1>
+                                        <p class="control has-addons">
+                                            <span class="select">
+                                                <select name="qte" onchange="this.form.submit()">
+                                                    {% for i in 1..10 %}
+                                                        <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </span>
+                                            <a href="{{ path('supprimer', { 'id' : produit.id }) }}" class="button"><i class="fa fa-trash"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="column">
+                                <div class="has-text-right">
+                                    <h1 class="title">Total HT</h1>
+                                    <div class="prix">
+                                        {{ panier[produit.id] }} x {{ produit.prix }} €
+                                        <br/>
+                                        <b>=</b>
+                                    </div>
+                                    <div class="prix">
+                                        <h3 class="title is-3">{{ produit.prix * panier[produit.id] }}€</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% set totalHT = totalHT + (produit.prix * panier[produit.id]) %}
+                    {% set totalTTC = totalTTC + (produit.prix * panier[produit.id])|tva(produit.tva.multiplicate) %}
+                    {% set refTva = refTva|merge({ ('%' ~ produit.tva.valeur) : refTva['%' ~ produit.tva.valeur] + ( produit.prix * panier[produit.id])|montantTva(produit.tva.multiplicate) }) %}
+                {% endfor %}
 
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-12">
                         <article class="tile is-child box is-12">
-                            <table class="table is-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Références</th>
-                                        <th>Quantité</th>
-                                        <th>Prix unitaire</th>
-                                        <th>Total HT</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% if produits|length == 0 %}
-                                        <tr>
-                                            <td colspan="4">Aucun articles dans votre panier</td>
-                                        </tr>
-                                    {% endif %}
-                                    {% for produit in produits %}
-                                        <tr>
-                                            <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
-                                                <td>{{ produit.nom }}</td>
-                                                <td>
-                                                    <p class="control has-addons">
-                                                        <span class="select is-small">
-                                                            <select name="qte" onchange="this.form.submit()">
-                                                                {% for i in 1..10 %}
-                                                                    <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
-                                                                {% endfor %}
-                                                            </select>
-                                                        </span>
-                                                        <a href="{{ path('supprimer', { 'id' : produit.id }) }}" class="button is-small"><i class="fa fa-trash"></i></a>
-                                                    </p>
-                                                </td>
-                                                <td>{{ produit.prix }} €</td>
-                                                <td>{{ produit.prix * panier[produit.id] }}€</td>
-                                            </form>
-                                        </tr>
-                                        {% set totalHT = totalHT + (produit.prix * panier[produit.id]) %}
-                                        {% set totalTTC = totalTTC + (produit.prix * panier[produit.id])|tva(produit.tva.multiplicate) %}
-                                        {% set refTva = refTva|merge({ ('%' ~ produit.tva.valeur) : refTva['%' ~ produit.tva.valeur] + ( produit.prix * panier[produit.id])|montantTva(produit.tva.multiplicate) }) %}
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-
                             {% if produits|length != 0 %}
-                            <div class="column is-3 is-pulled-right">
-                                <table class="table is-striped">
-                                    <tr>
-                                        <td><b>Total HT:</b></td><td>{{ totalHT }} €</td>
-                                    </tr>
-
-                                    {% for key, tva in refTva %}
+                                <div class="column is-3 is-pulled-right">
+                                    <table class="table is-striped">
                                         <tr>
-                                            <td><b>TVA {{ key }}:</b></td><td>{{ tva }} €</td>
+                                            <td><b>Total HT:</b></td>
+                                            <td>{{ totalHT }} €</td>
                                         </tr>
-                                    {% endfor %}
 
-                                    <tr>
-                                        <td><b>Total TTC:</b></td><td>{{ totalTTC }} €</td>
-                                    </tr>
-                                </table>
-                            </div>
+                                        {% for key, tva in refTva %}
+                                            <tr>
+                                                <td><b>TVA {{ key }}:</b></td>
+                                                <td>{{ tva }} €</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        <tr>
+                                            <td><b>Total TTC:</b></td>
+                                            <td>{{ totalTTC }} €</td>
+                                        </tr>
+                                    </table>
+                                </div>
                                 <div class="is-clearfix"></div>
                                 <a href="{{ path('livraison') }}" class="button button-vert is-pulled-right">Valider mon panier</a>
                             {% endif %}
                             <a href="{{ path('produits') }}" class="button button-vert">Continuer mes achats</a>
-
                         </article>
                     </div>
                 </div>
-        </div>
 
+            </div>
+
+        </div>
     </div>
-</div>
 {% endblock %}

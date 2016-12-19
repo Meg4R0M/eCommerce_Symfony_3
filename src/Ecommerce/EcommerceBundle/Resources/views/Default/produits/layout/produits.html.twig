@@ -23,8 +23,8 @@
                                 <article class="tile is-child box is-12">
                                     <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
                                     <div class="caption">
-                                        <h4 class="title minheight40px">{{ produit.nom }}</h4>
-                                        <p class="has-text-right"><b>{{ produit.prix|tva(produit.tva.multiplicate) }}€</b></p>
+                                        <h4 class="title is-4 minheight40px indieflower">{{ produit.nom }}</h4>
+                                        <p class="has-text-right title is-4 indieflower"><b>{{ produit.prix|tva(produit.tva.multiplicate) }}€/100Gr</b></p>
                                         <br />
                                         <div class="control is-grouped">
                                             <p class="control has-text-left">
@@ -32,7 +32,7 @@
                                             </p>
                                             {% if panier[produit.id] is not defined %}
                                                 <p class="control has-text-right">
-                                                    <a class="button button-vert is-outlined" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
+                                                    <a class="button button-orange is-outlined" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
                                                 </p>
                                             {% endif %}
                                         </div>
@@ -45,10 +45,11 @@
                         {% endfor %}
 
                     </div>
+                    {% if '/produits/' in app.request.requestUri %}
                     <div class="navigation">
                         {{ knp_pagination_render(produits) }}
                     </div>
-
+                    {% endif %}
                 {% else %}
                     Aucun Produit
                 {% endif %}

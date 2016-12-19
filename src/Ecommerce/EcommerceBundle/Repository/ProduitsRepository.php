@@ -32,12 +32,12 @@ class ProduitsRepository extends \Doctrine\ORM\EntityRepository
 
     public function recherche($chaine)
     {
-        $qb = $this->createQueryBuilder('u')
-            ->select('u')
-            ->where('u.nom like :chaine')
+        $qb = $this->createQueryBuilder('u');
+            $qb->select('u')
+            ->where($qb->expr()->like('u.nom', ':chaine'))
             ->andWhere('u.disponible = 1')
             ->orderBy('u.id')
-            ->setParameter('chaine', $chaine);
+            ->setParameter('chaine', '%'.$chaine.'%');
         return $qb->getQuery()->getResult();
     }
 }
