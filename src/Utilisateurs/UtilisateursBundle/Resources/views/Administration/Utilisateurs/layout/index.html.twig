@@ -26,11 +26,11 @@
                             <td>
                                 {% if utilisateur.adresses|length != 0 %}
                                     <a href="{{ path('adminAdressesUtilisateurs', { 'id': utilisateur.id }) }}"
-                                       title="Consulter les Adresses"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                       title="Consulter les Adresses"><i class="fa fa-map-signs" aria-hidden="true"></i></a>
                                 {% endif %}
                                 {% if utilisateur.commandes|length != 0 %}
                                     <a href="{{ path('adminFacturesUtilisateurs', { 'id': utilisateur.id }) }}"
-                                       title="Consulter les Factures"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                       title="Consulter les Factures"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
                                 {% endif %}
                             </td>
                         </tr>

@@ -12,6 +12,19 @@ HEADER
     width: 100%;
 }
 
+.button-vert {
+    background-color: transparent;
+    border: 1px solid #006A43;
+    color: #006A43 !important;
+}
+
+.button-vert:hover {
+    background-color: #006A43;
+    border: 1px solid #006A43;
+    color: white !important;
+    transition: all 800ms;
+}
+
 /*******************************************************************************
 partie blabla
 *******************************************************************************/

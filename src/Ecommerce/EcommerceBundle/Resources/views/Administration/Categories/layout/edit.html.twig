@@ -1,16 +1,46 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Categories edit</h1>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3">Edition de la categorie</h2>
+            </article>
+        </div>
+    </div>
 
-    {{ form(edit_form) }}
-
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('adminCategories_index') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                {{ form_start(edit_form, {'action': path('adminProduits_create', { 'id' : entity.id }), 'method': 'POST' }) }}
+                <p class="control">
+                    {{ form_label(edit_form.nom) }}
+                    {{ form_widget(edit_form.nom) }}
+                </p>
+                <fieldset style="border: none; margin-bottom: 5px">
+                    <legend>{{ form_label(edit_form.image) }}</legend>
+                    <p class="control has-addons">
+                        {{ form_widget(edit_form.image.file) }}
+                    </p>
+                    <p class="control">
+                        {{ form_label(edit_form.image.name) }}
+                        {{ form_widget(edit_form.image.name) }}
+                    </p>
+                </fieldset>
+                <br />
+                <div class="control is-grouped">
+                    <p class="control">
+                        <a href="{{ path('adminCategories_index') }}" class="button is-info is-outlined">Retour à la liste</a>
+                    </p>
+                    <p class="control">
+                        {{ form_widget(edit_form.submit) }}
+                    </p>
+                    {{ form_end(edit_form) }}
+                    <p class="control">
+                        {{ form(delete_form) }}
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
 {% endblock %}

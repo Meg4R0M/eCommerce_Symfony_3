@@ -1,18 +1,42 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
-{% block body -%}
-    <h2>Pages edit</h2>
-    <div class="span9">
-        {{ form(edit_form) }}
+{% block body %}
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3">Edition d'une page</h2>
+            </article>
+        </div>
     </div>
-    <div class="span12">
-        <ul class="record_actions">
-            <li>
-                <a href="{{ path('adminPages') }}">
-                    Retour
-                </a>
-            </li>
-            <li>{{ form(delete_form) }}</li>
-        </ul>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <p class="control">
+                    {{ form_label(edit_form.titre) }}
+                    {{ form_widget(edit_form.titre) }}
+                </p>
+                <p class="control">
+                    {{ form_label(edit_form.contenu) }}
+                    {{ form_widget(edit_form.contenu) }}
+                </p>
+
+
+                <div class="control is-grouped">
+                    <p class="control">
+                        {{ form_widget(edit_form.submit) }}
+                    </p>
+                    <p class="control">
+                        {{ form_end(edit_form) }}
+                    </p>
+                    <p class="control">
+                        <a href="{{ path('adminPages') }}" class="button is-info is-outlined">Retour</a>
+                    </p>
+                    <p class="control">
+                        {{ form(delete_form) }}
+                    </p>
+                </div>
+            </article>
+        </div>
     </div>
 {% endblock %}

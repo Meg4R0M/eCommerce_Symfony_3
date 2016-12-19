@@ -23,12 +23,19 @@
                                 <article class="tile is-child box is-12">
                                     <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
                                     <div class="caption">
-                                        <h4 class="title">{{ produit.nom }}</h4>
+                                        <h4 class="title minheight40px">{{ produit.nom }}</h4>
                                         <p class="has-text-right"><b>{{ produit.prix|tva(produit.tva.multiplicate) }}€</b></p>
-                                        <a class="button is-default" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
-                                        {% if panier[produit.id] is not defined %}
-                                            <a class="button is-default" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
-                                        {% endif %}
+                                        <br />
+                                        <div class="control is-grouped">
+                                            <p class="control has-text-left">
+                                                <a class="button button-vert is-outlined" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
+                                            </p>
+                                            {% if panier[produit.id] is not defined %}
+                                                <p class="control has-text-right">
+                                                    <a class="button button-vert is-outlined" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
+                                                </p>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </article>
                             </div>

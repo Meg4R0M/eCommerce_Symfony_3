@@ -17,8 +17,17 @@ class PagesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre',TextType::class)
-            ->add('contenu',TextareaType::class,array('attr' => array('class' => 'ckeditor')));
+            ->add('titre', TextType::class, array('required' => true,
+                'label'  => 'Titre de la page',
+                'attr'=> array('class'=>'input is-9',
+                    'placeholder'=>'Titre de la page'),
+                'label_attr'=> array('class'=>'label is-3')
+            ))
+            ->add('contenu',TextareaType::class, array('required' => true,
+                'label'  => 'Contenu',
+                'attr'=> array('class'=>'ckeditor is-9'),
+                'label_attr'=> array('class'=>'label is-3')
+            ));
     }
 
     /**

@@ -1,32 +1,42 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Categories</h1>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3">Details de la categorie {{ entity.nom }}</h2>
+            </article>
+        </div>
+    </div>
 
-    <table class="record_properties">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Nom</th>
-            <td>{{ entity.nom }}</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('adminCategories_index') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('adminCategories_edit', { 'id': entity.id }) }}">
-                Edit
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ entity.nom }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br />
+                <div class="control is-grouped">
+                    <p class="control">
+                        <a href="{{ path('adminCategories_index') }}" class="button is-info is-outlined">Retour a la liste</a>
+                    </p>
+                    <p class="control">
+                        <a href="{{ path('adminCategories_edit', { 'id': entity.id }) }}" class="button is-success is-outlined">Editer</a>
+                    </p>
+                    <p class="control">
+                        {{ form(delete_form) }}
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
 {% endblock %}

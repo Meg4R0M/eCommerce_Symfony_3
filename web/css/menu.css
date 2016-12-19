@@ -18,13 +18,13 @@ Les boutons
     /*#BA172A rouge*/
 }
 
-.button-vert {
+.buttonmenu-vert {
     background-color: #006A43;
     border: none;
     color: white !important;
 }
 
-.button-vert:hover {
+.buttonmenu-vert:hover {
     background-color: #006A43;
     border: none;
     color: black !important;

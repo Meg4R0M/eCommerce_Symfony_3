@@ -12,7 +12,7 @@
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
             <article class="tile is-child box is-12">
-                <table class="record_properties">
+                <table class="table">
                     <tbody>
                     <tr>
                         <th>Id</th>
@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <th>Contenu</th>
-                        <td>{{ entity.contenu }}</td>
+                        <td class="box">{{ entity.contenu|raw }}</td>
                     </tr>
                     </tbody>
                 </table>
