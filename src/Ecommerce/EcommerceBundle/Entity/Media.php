@@ -50,11 +50,7 @@ class Media
     private $path;
 
     /**
-     * @Assert\File(
-     *     maxSize = "1024k",
-     *     mimeTypes = {"image/png", "image/jpg", "image/bmp"},
-     *     mimeTypesMessage = "Please upload a valid PDF"
-     * )
+     * @var string $file
      */
     public $file;
 

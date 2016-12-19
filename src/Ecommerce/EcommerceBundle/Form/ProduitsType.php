@@ -41,7 +41,7 @@ class ProduitsType extends AbstractType
             ->add('disponible', CheckboxType::class, array('label'  => 'Disponible',
                                                            'label_attr'=> array('class'=>'checkbox')
                                                           ))
-            ->add('image', MediaType::class, array('label'  => ' ',
+            ->add('image', MediaType::class, array('label'  => 'Image du produit',
                                                   'attr'=> array('class'=>'is-9'),
                                                   'label_attr'=> array('class'=>'label is-3')
                                                  ))

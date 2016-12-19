@@ -64,7 +64,7 @@ class ProduitsAdminController extends Controller
     {
         $form = $this->createForm(ProduitsType::class, $entity);
 
-        $form->add('submit', SubmitType::class, array('label' => 'Ajouter'));
+        $form->add('submit', SubmitType::class, array('label' => 'Ajouter', 'attr'=> array('class'=>'button is-success is-outlined',)));
 
         return $form;
     }
