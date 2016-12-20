@@ -8,7 +8,11 @@ routingPanier:
 
 routingProduits:
     resource: "@EcommerceBundle/Resources/config/routing/routingProduits.yml"
-    prefix: /
+    prefix: /produits
+
+index:
+    path:  /
+    defaults: { _controller: EcommerceBundle:Index:index }
 
 routingProduitsAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingProduitsAdmin.yml"

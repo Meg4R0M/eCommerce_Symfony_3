@@ -21,60 +21,33 @@
         <nav class="nav has-shadow hero is-dark">
             <div class="container">
                 <div class="nav-left">
-                    <a href="{{ path('produits') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" width="250px"></a>
+                    <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" width="250px"></a>
                 </div>
                 <span id="nav-toggle" class="nav-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                <div id="nav-menu" class="nav-right nav-menu">
-                        <span class="nav-item">
-                            <a class="button" href="{{ path('produits') }}">
-                                <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
-                                <span>Accueil</span>
-                            </a>
-                        </span>
-                    <span class="nav-item">
-                            <a class="button" href="../produits.php">
-                                <span class="icon"><i class="fa fa-coffee" aria-hidden="true"></i></span>
-                                <span>Produit</span>
-                            </a>
-                        </span>
-                    <span class="nav-item">
-                            <a class="button button-orange" href="panier.php">
-                                <span class="icon"><i class="fa fa-shopping-basket" aria-hidden="true"></i></span>
-                                <span>Panier</span>
-                            </a>
-                        </span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <div id="nav-menu" class="nav-center nav-menu">
+                    <a class="nav-item is-tab{% if app.request.get('_route') == 'index' %} is-active{% endif %}" href="{{ path('index') }}">Accueil</a>
+                    <a class="nav-item is-tab{% if '/produits/' in app.request.requestUri %} is-active{% endif %}" href="{{ path('produits') }}">Produits</a>
+                    <a class="nav-item is-tab{% if '/panier/' in app.request.requestUri %} is-active{% endif %}" href="{{ path('panier') }}">Panier</a>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <span class="nav-item">
-                                <a class="button buttonmenu-vert" href="../espaceMembre.php">
-                                    <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                    <span>Profil</span>
-                                </a>
-                            </span>
-                        <span class="nav-item">
-                                <a id="button4" class="button is-danger">
-                                    <span class="icon"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
-                                    <span>Deconnection</span>
-                                </a>
-                            </span>
+                        <a class="nav-item is-tab{% if '/profile/' in app.request.requestUri %} is-active{% endif %}" href="{{ path('fos_user_profile_show') }}">Profil</a>
+                        <a class="nav-item is-tab{% if '/logout/' in app.request.requestUri %} is-active{% endif %}" href="{{ path('fos_user_security_logout') }}">Deconnection</a>
                     {% else %}
-                        <span class="nav-item">
-                                <a id="button2" class="button is-danger" href="../connection.php">
-                                    <span class="icon"><i class="fa fa-sign-in" aria-hidden="true"></i></span>
-                                    <span>Connection</span>
-                                </a>
-                            </span>
+                        <a class="nav-item is-tab{% if '/login' in app.request.requestUri %} is-active{% endif %}" href="{{ path('fos_user_security_login') }}">Connection</a>
+                        <a class="nav-item is-tab{% if '/register/' in app.request.requestUri %} is-active{% endif %}" href="{{ path('fos_user_registration_register') }}">Inscription</a>
                     {% endif %}
+                </div>
+                <div id="nav-menu" class="nav-right nav-menu">
                     <span class="nav-item">
-                            {{ render(controller('EcommerceBundle:Produits:recherche')) }}
-                        </span>
+                        {{ render(controller('EcommerceBundle:Produits:recherche')) }}
+                    </span>
                 </div>
             </div>
         </nav>
