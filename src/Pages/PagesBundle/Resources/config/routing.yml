@@ -5,3 +5,8 @@ pagesBundle_adminPages:
 page:
     path:  /page/{id}
     defaults: { _controller: PagesBundle:Pages:page }
+
+contact:
+    path:  /contact
+    defaults: { _controller: PagesBundle:Pages:Contact }
+    methods:  [GET, POST]
