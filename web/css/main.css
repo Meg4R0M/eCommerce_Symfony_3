@@ -29,6 +29,19 @@ HEADER
     transition: all 800ms;
 }
 
+.buttonmenu-vert {
+    background-color: #006A43;
+    border: 1px solid #006A43;
+    color: white !important;
+}
+
+.buttonmenu-vert:hover {
+    background-color: transparent;
+    border: 1px solid #006A43;
+    color: #006A43 !important;
+    transition: all 800ms;
+}
+
 .button-orange {
     background-color: white;
     border: 1px solid #F4742B;
@@ -42,76 +55,53 @@ HEADER
     color: white !important;
     transition: all 800ms;
 }
+
+.fa-square{
+    color: #006A43;
+}
 /*******************************************************************************
-partie blabla
+MENU
+*******************************************************************************/
+
+.menutitle{
+    font-size: 24px;
+}
+
+.bradl{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.bradr{
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+}
+/*******************************************************************************
+INDEX PAGE
 *******************************************************************************/
 .indieflower{
     font-family: 'Indie Flower', cursive;
     text-shadow: 1px 1px #006A43;
 }
-.sisi {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
+
+hr {
+    height: 1px;
+    padding: 0;
+    color: #006A43;
+    background-color: #006A43;
+    border: 0;
+}
+a.nav-item.is-tab.is-active {
+    border-bottom: 5px solid #006A43;
+    border-top: 5px solid transparent;
 }
 
-.text {
-    height: 250px;
-    width: 500px;
-    margin: 10px;
+a.nav-item.is-tab:hover {
+    border-bottom: 3px solid #006A43;
+    border-top: 3px solid transparent;
+    transition: all 400ms;
 }
-
-main section div h2 {
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-main section div p {
-    text-align: justify;
-
-}
-
-
-/*******************************************************************************
-partie photo
-*******************************************************************************/
-.coco {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.coco1 {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-
-.photo {
-    height: 200px;
-    width: 800px;
-    margin: 1px;
-    background-color: red;
-}
-
-.photo1 {
-    height: 200px;
-    width: 800px;
-    margin: 1px;
-    background-color: green;
-}
-
-.ligne {
-    display: flex;
-    justify-content: center;
-}
-
 /***********************************************************************
 PRODUITS
 ***********************************************************************/
