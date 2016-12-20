@@ -36,9 +36,7 @@ HEADER
 }
 
 .buttonmenu-vert:hover {
-    background-color: transparent;
-    border: 1px solid #006A43;
-    color: #006A43 !important;
+
     transition: all 800ms;
 }
 
@@ -65,6 +63,7 @@ MENU
 
 .menutitle{
     font-size: 24px;
+    color: #F4742B;
 }
 
 .bradl{
@@ -92,6 +91,11 @@ hr {
     background-color: #006A43;
     border: 0;
 }
+
+.hero.is-dark a.nav-item{
+    color: #F4742B;
+}
+
 a.nav-item.is-tab.is-active {
     border-bottom: 5px solid #006A43;
     border-top: 5px solid transparent;
@@ -109,6 +113,7 @@ PRODUITS
 .title{
     font-size: 20px;
     font-weight: bold;
+    color: #F4742B;
 }
 
 .minheight40px{
