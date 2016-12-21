@@ -38,7 +38,7 @@ class EnquiryType extends AbstractType
                                                    ))
             ->add('body', TextareaType::class, array('required' => true,
                                                      'label'  => 'Votre Message',
-                                                     'attr'=> array('class'=>'textarea is-9 ckeditor'),
+                                                     'attr'=> array('class'=>'textarea is-9'),
                                                      'label_attr'=> array('class'=>'label is-3')
                                                     ));
     }

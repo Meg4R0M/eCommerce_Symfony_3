@@ -6,7 +6,7 @@ body{
 HEADER
 *******************************************************************************/
 .spacer {
-    height:20px;
+    height:90px;
 }
 
 .navbar-fixed {
@@ -84,6 +84,15 @@ INDEX PAGE
     text-shadow: 1px 1px #006A43;
 }
 
+.content h4{
+    color: #F4742B;
+}
+
+.menu-list a:hover{
+    color: #006A43;
+    transition: all 600ms;
+}
+
 hr {
     height: 1px;
     padding: 0;
@@ -146,4 +155,16 @@ FOOTER
 
 .adressemt{
     margin-top: -65px;
+}
+
+.footer{
+    margin-top: -50px;
+}
+
+.footer a:not(.icon):hover{
+    border-bottom-color: #006A43;
+}
+
+.content a:not(.button):visited{
+    color: #006A43;
 }

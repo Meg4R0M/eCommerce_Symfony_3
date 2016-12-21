@@ -16,12 +16,11 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-    <header class="header">
-        <nav class="nav has-shadow hero is-dark">
+    <header class="navbar-fixed">
+        <nav id="navigation" class="nav has-shadow hero is-dark">
             <div class="container">
                 <div class="nav-left">
-                    <a class="nav-item" href="{{ path('adminProduits_index') }}"><h3 class="nav-item title is-5">Administration - Canturla Drive</h3></a>
-                    <a class="nav-item" href="{{ path('produits') }}"><img src="images/logo-small.png" alt="Canturla Logo Min"></a>
+                    <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" width="250px" class="is-12-desktop"></a>
                 </div>
             </div>
         </nav>
@@ -51,19 +50,18 @@
             </div>
         </div>
     </footer>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/js/bulma.js') }}"></script>
     <script src="{{ asset('bundles/pages/ckeditor/ckeditor.js') }}"></script>
 
     {% block javascripts %}{% endblock %}
     <script>
         $(document).ready(function() {
-            $(window).scroll(function() {
-                var headerHeight = $('header').height();
-                if($(window).scrollTop() > headerHeight) {
-                    $('header.header').addClass('navbar-fixed').fadeIn('fast');
-                } else if($(window).scrollTop() < headerHeight) {
-                    $('header.header').removeClass('navbar-fixed').fadeIn('fast');
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 60) {
+                    $("#navigation").css("background-color","rgba(54, 54, 54, 0.7)");
+                } else {
+                    $("#navigation").css("background-color","rgba(54, 54, 54, 1)");
                 }
             });
         });
