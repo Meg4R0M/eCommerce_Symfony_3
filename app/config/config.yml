@@ -35,11 +35,24 @@ framework:
     php_errors:
         log: true
 
-
 fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: Utilisateurs\UtilisateursBundle\Entity\Comment
+            thread: Utilisateurs\UtilisateursBundle\Entity\Thread
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+    bundles: [ "FOSCommentBundle" ]
 
 # Twig Configuration
 twig:

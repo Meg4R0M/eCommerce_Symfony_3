@@ -76,6 +76,15 @@
                         </article>
                     </div>
                 </div>
+
+                <div class="tile is-ancestor is-12">
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': produit.id} %}
+                        </article>
+                    </div>
+                </div>
+
             </div>
 
         </div>
