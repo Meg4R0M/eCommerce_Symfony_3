@@ -34,10 +34,10 @@
                         <article class="tile is-child box is-12">
                             <div class="columns">
                                 <div class="column has-text-left">
-                                    <h2 class="title is-3">Votre panier</h2>
+                                    <h2 class="title is-3 indieflower">Votre panier</h2>
                                 </div>
                                 <div class="column has-text-right">
-                                    <h2 class="title is-4">
+                                    <h2 class="title is-4 indieflower">
                                         {% if produits|length == 0 %}
                                             (Aucun article)
                                         {% elseif produits|length == 1 %}
@@ -96,7 +96,7 @@
                             <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
                                 <div class="column">
                                     <div class="has-text-left">
-                                        <h1 class="title">Quantité:</h1>
+                                        <h1 class="title indieflower">Quantité:</h1>
                                         <p class="control has-addons">
                                             <span class="select">
                                                 <select name="qte" onchange="this.form.submit()">
@@ -113,14 +113,14 @@
 
                             <div class="column">
                                 <div class="has-text-right">
-                                    <h1 class="title">Total HT</h1>
+                                    <h1 class="title indieflower">Total HT</h1>
                                     <div class="prix">
                                         {{ panier[produit.id] }} x {{ produit.prix }} €
                                         <br/>
                                         <b>=</b>
                                     </div>
                                     <div class="prix">
-                                        <h3 class="title is-3">{{ produit.prix * panier[produit.id] }}€</h3>
+                                        <h3 class="title is-3 indieflower">{{ produit.prix * panier[produit.id] }}€</h3>
                                     </div>
                                 </div>
                             </div>

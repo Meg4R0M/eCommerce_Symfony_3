@@ -24,7 +24,7 @@
 
                                 <div class="column is-5">
                                     <h5 class="categorie"><a href="{{ path('categorieProduits', { 'categorie' : produit.categorie.id }) }}">{{ produit.categorie.nom }}</a> >></h5>
-                                    <div class="title is-2">{{ produit.nom }}</div>
+                                    <div class="title is-3 indieflower">{{ produit.nom }}</div>
                                     <p class="indieflower title is-3 has-text-muted has-text-right">{{ produit.prix|tva(produit.tva.multiplicate) }} €</p>
                                     <hr>
                                     <p>{{ produit.description }}</p>

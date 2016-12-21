@@ -10,6 +10,9 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/bulma.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+            {% stylesheets '@FOSCommentBundle/Resources/public/css/comments.css' %}
+            <link rel="stylesheet" href="{{ asset('css/comments.css') }}" type="text/css" />
+            {% endstylesheets %}
             <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto">
         {% endblock %}
@@ -90,7 +93,7 @@
                 </div>
             </div>
         </footer>
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-1.8.0.min.js" integrity="sha256-jFdOCgY5bfpwZLi0YODkqNXQdIxKpm6y5O/fy0baSzE=" crossorigin="anonymous"></script>
         <script src="{{ asset('/js/bulma.js') }}"></script>
         <script src="{{ asset('bundles/pages/ckeditor/ckeditor.js') }}"></script>
 

@@ -9,7 +9,7 @@
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-12">
                         <article class="tile is-child box is-12">
-                            <h2 class="title is-3">Livraison</h2>
+                            <h2 class="title is-3 indieflower">Livraison</h2>
                         </article>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                                 <div class="tile is-ancestor">
                                     <div class="tile is-parent is-12">
                                         <article class="tile is-child box is-12">
-                                            <h4 class="title is-4">Adresse de livraison</h4>
+                                            <h4 class="title is-4 indieflower">Adresse de livraison</h4>
                                             {% for adresse in utilisateur.adresses %}
                                                 <label class="radio">
                                                     <input type="radio" name="livraison" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
@@ -40,7 +40,7 @@
                                 <div class="tile is-ancestor">
                                     <div class="tile is-parent is-12">
                                         <article class="tile is-child box is-12">
-                                            <h4 class="title is-4">Adresse de facturation</h4>
+                                            <h4 class="title is-4 indieflower">Adresse de facturation</h4>
                                             {% for adresse in utilisateur.adresses %}
                                                 <label class="radio">
                                                     <input type="radio" name="facturation" value="{{ adresse.id }}" {%  if loop.index0 == 0 %}checked="checked"{% endif %}>
@@ -65,9 +65,40 @@
                         <div class="tile is-ancestor">
                             <div class="tile is-parent is-12">
                                 <article class="tile is-child box is-12">
-                                    <h4 class="title is-4">Ajouter une nouvelle adresse</h4>
+                                    <h4 class="title is-4 indieflower">Ajouter une nouvelle adresse</h4>
                                     <form action="{{ path('livraison') }}" method="post">
-                                        {{ form_widget(form) }}
+                                        <p class="control">
+                                            {{ form_label(form.nom) }}
+                                            {{ form_widget(form.nom) }}
+                                        </p>
+                                        <p class="control">
+                                            {{ form_label(form.prenom) }}
+                                            {{ form_widget(form.prenom) }}
+                                        </p>
+                                        <p class="control">
+                                            {{ form_label(form.telephone) }}
+                                            {{ form_widget(form.telephone) }}
+                                        </p>
+                                        <p class="control">
+                                            {{ form_label(form.adresse) }}
+                                            {{ form_widget(form.adresse) }}
+                                        </p>
+                                        <p class="control">
+                                            {{ form_label(form.cp) }}
+                                            {{ form_widget(form.cp) }}
+                                        </p>
+                                        <p class="control">
+                                            {{ form_label(form.ville) }}
+                                            {{ form_widget(form.ville) }}
+                                        </p>
+                                        <p class="control">
+                                            {{ form_label(form.pays) }}
+                                            {{ form_widget(form.pays) }}
+                                        </p>
+                                        <p class="control">
+                                            {{ form_label(form.complement) }}
+                                            {{ form_widget(form.complement) }}
+                                        </p>
                                         <br />
                                         <button class="button button-vert" type="submit">Ajouter</button>
                                     </form>
