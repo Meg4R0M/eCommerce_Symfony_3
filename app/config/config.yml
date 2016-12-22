@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@EcommerceBundle/Resources/config/services.yml" }
+    - { resource: "@CommentairesBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -44,8 +45,9 @@ fos_comment:
     db_driver: orm
     class:
         model:
-            comment: Utilisateurs\UtilisateursBundle\Entity\Comment
-            thread: Utilisateurs\UtilisateursBundle\Entity\Thread
+            comment: Commentaires\CommentairesBundle\Entity\Comment
+            thread:  Commentaires\CommentairesBundle\Entity\Thread
+            vote:    Commentaires\CommentairesBundle\Entity\Vote
     acl: true
     service:
         acl:

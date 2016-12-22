@@ -115,5 +115,7 @@ a.fos_comment_thread_feed {
 }
 
 .fos_comment_comment_replies{
-    margin-left: 20px;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #F4742B;
 }

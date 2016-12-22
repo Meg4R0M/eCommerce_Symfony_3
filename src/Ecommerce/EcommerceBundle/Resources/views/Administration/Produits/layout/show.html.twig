@@ -4,7 +4,7 @@
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
             <article class="tile is-child box is-12">
-                <h2 class="title is-3">Details du Produit</h2>
+                <h2 class="title is-3 indieflower">Details du Produit</h2>
             </article>
         </div>
     </div>
@@ -55,7 +55,7 @@
                             <a href="{{ path('adminProduits_index') }}" class="button is-info is-outlined">Retour à la liste</a>
                         </p>
                         <p class="control">
-                            <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}" class="button is-info is-outlined">Editer</a>
+                            <a href="{{ path('adminProduits_edit', { 'id': entity.id }) }}" class="button button-vert is-outlined">Editer</a>
                         </p>
                         <p class="control">{{ form(delete_form) }}</p>
                     </div>

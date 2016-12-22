@@ -6,7 +6,7 @@
  * Time: 06:35
  */
 
-namespace Utilisateurs\UtilisateursBundle\Entity;
+namespace Commentaires\CommentairesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Thread as BaseThread;

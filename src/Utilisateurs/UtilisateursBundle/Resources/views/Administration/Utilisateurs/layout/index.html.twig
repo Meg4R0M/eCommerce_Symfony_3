@@ -4,7 +4,7 @@
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
             <article class="tile is-child box is-12">
-                <h2 class="title is-3">Liste des Utilisateurs</h2>
+                <h2 class="title is-3 indieflower">Liste des Utilisateurs</h2>
             </article>
         </div>
     </div>
@@ -26,7 +26,7 @@
                             <td>
                                 {% if utilisateur.adresses|length != 0 %}
                                     <a href="{{ path('adminAdressesUtilisateurs', { 'id': utilisateur.id }) }}"
-                                       title="Consulter les Adresses"><i class="fa fa-map-signs" aria-hidden="true"></i></a>
+                                       title="Consulter les Adresses"><i class="fa fa-map-signs" aria-hidden="true"></i></a>&nbsp;&nbsp;
                                 {% endif %}
                                 {% if utilisateur.commandes|length != 0 %}
                                     <a href="{{ path('adminFacturesUtilisateurs', { 'id': utilisateur.id }) }}"
