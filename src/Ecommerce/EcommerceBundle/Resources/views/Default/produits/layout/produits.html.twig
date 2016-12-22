@@ -45,7 +45,7 @@
                         {% endfor %}
 
                     </div>
-                    {% if '/produits/' in app.request.requestUri %}
+                    {% if not '/produits/recherche' in app.request.requestUri %}
                     <div class="navigation">
                         {{ knp_pagination_render(produits) }}
                     </div>
