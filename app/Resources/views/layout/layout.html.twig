@@ -23,7 +23,7 @@
         <nav id="navigation" class="nav has-shadow hero is-dark">
             <div class="container">
                 <div class="nav-left">
-                    <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" width="250px" class="is-12-desktop"></a>
+                    <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" width="250px" class="is-12-desktop shadowfilter"></a>
                 </div>
                 <span id="nav-toggle" class="nav-toggle">
                     <span></span>
@@ -33,7 +33,7 @@
                 </span>
                 <div id="nav-menu" class="nav-menu nav-menu1 nav-center">
                     <a class="nav-item is-tab{% if app.request.get('_route') == 'index' %} is-active{% endif %} indieflower menutitle" href="{{ path('index') }}">Accueil</a>
-                    <a class="nav-item is-tab{% if '/produits/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle" href="{{ path('produits') }}">Produits</a>
+                    <a class="nav-item is-tab{% if '/produits/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle" href="{{ path('categories') }}">Produits</a>
                     <a class="nav-item is-tab{% if '/panier/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle" href="{{ path('panier') }}">Panier</a>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <a class="nav-item is-tab{% if '/profile/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle" href="{{ path('fos_user_profile_show') }}">Profil</a>
@@ -69,7 +69,7 @@
                             <h4 class="title is-4 has-text-centered indieflower">Notre magasin</h4>
                             <hr>
                             <p class="about subheader">Canturla c'est une épicerie de produits locaux et en vrac,<br />un salon de thé, un lieu d'exposition<br /> et de vente de création à base de matériaux de récupération.</p>
-                            <p class="about subheader"><img src="{{ logocanturla|imagine_filter('logocanturla') }}" width="100px"></p>
+                            <p class="about subheader"><img src="{{ logocanturla|imagine_filter('logocanturla') }}" width="100px" class="shadowfilter"></p>
                         </div>
                     </div>
                     <div class="column">
@@ -93,13 +93,12 @@
                 </div>
             </div>
         </footer>
-        <script src="https://code.jquery.com/jquery-1.8.0.min.js" integrity="sha256-jFdOCgY5bfpwZLi0YODkqNXQdIxKpm6y5O/fy0baSzE=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+        <script src="{{ asset('/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('/js/clipboard.min.js') }}"></script>
+        <script src="{{ asset('/js/jquery.catslider.js') }}"></script>
+        <script src="{{ asset('/js/modernizr.custom.63321.js') }}"></script>
         <script src="{{ asset('/js/bulma.js') }}"></script>
         <script src="{{ asset('bundles/pages/ckeditor/ckeditor.js') }}"></script>
-
-        <!--<script src="template/js/modernizr.custom.63321.js"></script>
-        <script src="template/js/jquery.catslider.js"></script>  <!-- js slider -->
 
         {% block javascripts %}{% endblock %}
         <script>
@@ -113,9 +112,14 @@
                 });
             });
 
+            $(function() {
+                $( '#mi-slider' ).catslider();
+            });
+
             if($(window).width() < 800) {
                 $('div.nav-menu1').removeClass('nav-center');
             }
+
         </script>
     </body>
 </html>

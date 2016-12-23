@@ -2,6 +2,10 @@ index:
     path:  /
     defaults: { _controller: EcommerceBundle:Index:index }
 
+categories:
+    path: /categories
+    defaults: { _controller: EcommerceBundle:Produits:categories }
+
 routingAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingAdmin.yml"
     prefix: /admin

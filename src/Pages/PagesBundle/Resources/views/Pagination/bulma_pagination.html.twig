@@ -26,7 +26,7 @@
             <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}" class="button button-vert is-outlined">&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</a>
         </li>
     {% else %}
-        <li>
+        <li class="button button-vert">
             <span>&laquo;&nbsp;{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}</span>
         </li>
     {% endif %}
@@ -81,7 +81,7 @@
             <a href="{{ path(route, query|merge({(pageParameterName): next})) }}" class="button button-vert is-outlined">{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</a>
         </li>
     {% else %}
-        <li>
+        <li class="button button-vert">
             <span>{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}&nbsp;&raquo;</span>
         </li>
     {% endif %}

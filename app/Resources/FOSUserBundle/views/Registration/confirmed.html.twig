@@ -3,8 +3,30 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+    <div class="columns">
+
+        <div class="column is-3">
+            {% include '::modulesUsed/navigation.html.twig' %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+            {% else %}
+                {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+            {% endif %}
+            {{ render(controller('EcommerceBundle:Panier:menu')) }}
+        </div>
+
+        <div class="column is-9">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-12">
+                    <article class="tile is-child box is-12">
+                        <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                        {% if targetUrl %}
+                            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                        {% endif %}
+                    </article>
+                </div>
+            </div>
+        </div>
+
+    </div>
 {% endblock fos_user_content %}

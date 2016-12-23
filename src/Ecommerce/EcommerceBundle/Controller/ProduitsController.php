@@ -35,7 +35,17 @@ class ProduitsController extends Controller
         return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
                                                                                                  'panier' => $panier));
     }
-    
+
+    public function categoriesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('EcommerceBundle:Categories')->findAll();
+
+        if (!$categories) throw $this->createNotFoundException('La page n\'existe pas.');
+
+        return $this->render('EcommerceBundle:Default:produits/layout/categories.html.twig', array('categories' => $categories));
+    }
+
     public function presentationAction($id, Request $request)
     {
         $session = $request->getSession();

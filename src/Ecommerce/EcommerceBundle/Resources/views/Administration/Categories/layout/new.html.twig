@@ -12,6 +12,7 @@
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
             <article class="tile is-child box is-12">
+                {{ form_start(form, {'action': path('adminCategories_create'), 'method': 'POST' }) }}
                 <p class="control">
                     {{ form_label(form.nom) }}
                     {{ form_widget(form.nom) }}
@@ -35,8 +36,8 @@
                     <p class="control">
                         {{ form_widget(form.submit) }}
                     </p>
-                    {{ form_end(form) }}
                 </div>
+                {{ form_end(form) }}
             </article>
         </div>
     </div>

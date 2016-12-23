@@ -14,8 +14,8 @@
                 {{ render(controller('EcommerceBundle:Panier:menu')) }}
             </div>
 
-            <div class="column is-9">
-                {% if produits|length != 0 %}
+            {% if produits|length != 0 %}
+                <div class="column is-9">
                     <div class="tile is-ancestor">
 
                         {% for produit in produits %}
@@ -24,7 +24,7 @@
                                     <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
                                     <div class="caption">
                                         <h4 class="title is-4 minheight40px indieflower">{{ produit.nom }}</h4>
-                                        <p class="has-text-right title is-4 indieflower"><b>{{ produit.prix|tva(produit.tva.multiplicate) }}€/100Gr</b></p>
+                                        <p class="has-text-right is-5 indieflowerprix"><b>{{ produit.prix|tva(produit.tva.multiplicate) }}€/100Gr</b></p>
                                         <br />
                                         <div class="control is-grouped">
                                             <p class="control has-text-left">
@@ -45,15 +45,19 @@
                         {% endfor %}
 
                     </div>
-                    {% if not '/produits/recherche' in app.request.requestUri %}
-                    <div class="navigation">
-                        {{ knp_pagination_render(produits) }}
-                    </div>
-                    {% endif %}
-                {% else %}
-                    Aucun Produit
-                {% endif %}
+                </div>
             </div>
-        </div>
+                {% if '/produits/recherche' not in app.request.requestUri %}
+                    <div class="column is-12">
+                        <div class="navigation has-text-centered">
+                            {{ knp_pagination_render(produits) }}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% else %}
+                Aucun Produit
+            {% endif %}
+
     </div>
 {% endblock %}

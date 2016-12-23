@@ -164,6 +164,47 @@
                     </div>
                 </div>
 
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+
+                            <div class="has-text-centered">
+                                <header class="clearfix">
+
+                                    <h1 class="title is-4 indieflower">Nous vous proposons également :</h1>
+                                </header>
+                            </div>
+
+                            <div class="main">
+                                <div id="mi-slider" class="mi-slider">
+                                    {% for categorie in categories %}
+                                        {% for suggestion in suggestions %}
+                                            <ul>
+                                                {% for product in suggestion %}
+                                                    <li>
+                                                        <a href="{{ path('presentation', { 'id' : product.id }) }}">
+                                                            <img src="{{ product.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ product.image.name }}">
+                                                            <h4 class="indieflower">{{ product.nom }}</h4>
+                                                        </a>
+                                                        <h5 class="indieflowerprix">{{ product.prix }}€</h5>
+                                                        <a href="{{ path('ajouter', { 'id' :  product.id }) }}" class="button button-orange" style="padding-top: 3px">Ajouter</a>
+                                                    </li>
+                                                    {% endfor %}
+                                            </ul>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    <nav>
+                                        {% for categorie in categories %}
+                                            <a href="#">{{ categorie.nom }}</a>
+                                        {% endfor %}
+                                    </nav>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                </div>
+
             </div>
 
         </div>
