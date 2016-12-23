@@ -19,11 +19,13 @@ class ProduitsAdminController extends Controller
      * Lists all Produits entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EcommerceBundle:Produits')->findAll();
+        $produits = $em->getRepository('EcommerceBundle:Produits')->findAll();
+
+        $entities  = $this->get('knp_paginator')->paginate($produits,$request->query->get('page', 1),10);
 
         return $this->render('EcommerceBundle:Administration:Produits/layout/index.html.twig', array(
             'entities' => $entities,

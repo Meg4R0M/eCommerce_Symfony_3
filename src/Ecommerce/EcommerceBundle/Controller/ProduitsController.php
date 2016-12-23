@@ -30,7 +30,7 @@ class ProduitsController extends Controller
             $panier = false;
         }
 
-        $produits  = $this->get('knp_paginator')->paginate($findProduits,$request->query->get('page', 1),8);
+        $produits  = $this->get('knp_paginator')->paginate($findProduits,$request->query->get('page', 1),9);
 
         return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
                                                                                                  'panier' => $panier));

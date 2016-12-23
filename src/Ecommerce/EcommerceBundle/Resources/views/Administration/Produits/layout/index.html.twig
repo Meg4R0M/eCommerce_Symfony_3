@@ -50,4 +50,16 @@
             </article>
         </div>
     </div>
+
+
+        <div class="tile is-ancestor">
+            <div class="tile is-parent is-12">
+                <article class="tile is-child box is-12">
+                    <div class="navigation has-text-centered">
+                        {{ knp_pagination_render(entities) }}
+                    </div>
+                </article>
+            </div>
+        </div>
+
 {% endblock %}
