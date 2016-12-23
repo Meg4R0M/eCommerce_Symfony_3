@@ -69,7 +69,7 @@ class PanierController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $produits = $em->getRepository('EcommerceBundle:Produits')->findArray(array_keys($session->get('panier')));
-        $categories = $em->getRepository('EcommerceBundle:Categories')->findAll();
+        $categories = $em->getRepository('EcommerceBundle:Categories')->findBy(array(), array('id' => 'ASC'),4);
 
         foreach ($categories as $categorie)
         {

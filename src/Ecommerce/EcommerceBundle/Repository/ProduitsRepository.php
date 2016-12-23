@@ -42,7 +42,7 @@ class ProduitsRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function RandomProducts($nbSlotsOnPage, $categorie)
+    public function RandomProducts($nbProduits, $categorie)
     {
         $qbList=$this->createQueryBuilder('u');
 
@@ -55,6 +55,13 @@ class ProduitsRepository extends \Doctrine\ORM\EntityRepository
         // $list is not a simple list of values, but an nested associative array
         $list=$qbList->getQuery()->getScalarResult();
 
+        $qbcount=$this->createQueryBuilder('c')
+            ->select('COUNT(c)')
+            ->where('c.categorie = :categorie')
+            ->setParameter('categorie', $categorie)
+            ->getQuery()
+            ->getSingleScalarResult();
+
         // get rid of the nested array from ScalarResult
         $rawlist=array();
         foreach ($list as $keyword=>$value)
@@ -64,15 +71,29 @@ class ProduitsRepository extends \Doctrine\ORM\EntityRepository
             $rawlist[$id]=null;
         }
 
+        if ($qbcount >= $nbProduits)
+        {
+            $nbSlotsOnPage = 4;
+        }else{
+            $nbSlotsOnPage = $qbcount;
+        }
+
         $total=min($nbSlotsOnPage,count($rawlist));
         // pick only a few (i.e.$total)
         $keylist=array_rand($rawlist,$total);
 
         $qb=$this->createQueryBuilder('uw');
-        foreach ($keylist as $keyword=>$value)
+        if (is_array($keylist))
         {
-            $qb ->setParameter('keyword'.$keyword,$value)
-                ->orWhere('uw.id = :keyword'.$keyword)
+            foreach ($keylist as $keyword=>$value)
+            {
+                $qb ->setParameter('keyword'.$keyword,$value)
+                    ->orWhere('uw.id = :keyword'.$keyword)
+                ;
+            }
+        }else{
+            $qb ->setParameter('keyword'.$keylist, $keylist)
+                ->Where('uw.id = :keyword'.$keylist)
             ;
         }
 

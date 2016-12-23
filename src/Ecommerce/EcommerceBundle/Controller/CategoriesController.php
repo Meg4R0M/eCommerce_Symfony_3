@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function menuAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository('EcommerceBundle:Categories')->findAll();
+        $categories = $em->getRepository('EcommerceBundle:Categories')->findBy(array(), array('nom' => 'ASC'));
 
         return $this->render('EcommerceBundle:Default:categories/modulesUsed/menu.html.twig', array('categories' => $categories));
     }
