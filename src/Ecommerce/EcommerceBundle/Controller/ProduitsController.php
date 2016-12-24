@@ -79,10 +79,21 @@ class ProduitsController extends Controller
             $form->handleRequest($request);
             $em = $this->getDoctrine()->getManager();
             $produits = $em->getRepository('EcommerceBundle:Produits')->recherche($form['recherche']->getData());
+            $categories = $em->getRepository('EcommerceBundle:Categories')->findBy(array(), array('id' => 'ASC'),4);
+
+            foreach ($categories as $categorie)
+            {
+                $categorieid = $categorie->getId();
+                $suggestions[$categorieid] = $em->getRepository('EcommerceBundle:Produits')->RandomProducts(4, $categorieid);
+
+            }
+
         } else {
             throw $this->createNotFoundException('La page n\'existe pas.');
         }
 
-        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits));
+        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
+                                                                                                 'suggestions' => $suggestions,
+                                                                                                 'categories' => $categories));
     }
 }
