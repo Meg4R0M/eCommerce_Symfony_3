@@ -23,7 +23,7 @@
         <nav id="navigation" class="nav has-shadow hero is-dark">
             <div class="container">
                 <div class="nav-left">
-                    <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" width="250px" class="is-12-desktop shadowfilter"></a>
+                    <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" class="is-12-desktop shadowfilter logo"></a>
                 </div>
                 <span id="nav-toggle" class="nav-toggle">
                     <span></span>
@@ -31,7 +31,7 @@
                     <span></span>
                     <span></span>
                 </span>
-                <div id="nav-menu" class="nav-menu nav-menu1 nav-center">
+                <div id="nav-menu" class="nav-right nav-menu nav-menu1">
                     <a class="nav-item is-tab{% if app.request.get('_route') == 'index' %} is-active{% endif %} indieflower menutitle" href="{{ path('index') }}">Accueil</a>
                     <a class="nav-item is-tab{% if '/produits/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle" href="{{ path('categories') }}">Produits</a>
                     <a class="nav-item is-tab{% if '/panier/' in app.request.requestUri %} is-active{% endif %} indieflower menutitle" href="{{ path('panier') }}">Panier</a>
@@ -115,10 +115,6 @@
             $(function() {
                 $( '#mi-slider' ).catslider();
             });
-
-            if($(window).width() < 800) {
-                $('div.nav-menu1').removeClass('nav-center');
-            }
 
         </script>
     </body>
