@@ -1,7 +1,9 @@
 <form action="{{ path('rechercheProduits') }}" method="POST" class="control has-addons">
+    <span class="nav-item">
         {{ form_widget(form.recherche) }}
         <button class="button buttonsearch-vert" type="submit">
             <i class="fa fa-search" aria-hidden="true"></i>
         </button>
+            </span>
     {{ form_widget(form) }}
 </form>

@@ -17,7 +17,7 @@ class RechercheType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('recherche', TextType::class, array('label' => false,
-                                                          'attr' => array('class' => 'input-medium search-query')));
+                                                          'attr' => array('class' => 'input-medium search-query recherche')));
     }
 
     public function getName()

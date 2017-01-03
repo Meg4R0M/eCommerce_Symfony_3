@@ -16,6 +16,20 @@
 
             {% if produits|length != 0 %}
                 <div class="column is-9">
+                    {% if '/produits/recherche' in app.request.requestUri %}
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent is-12">
+                            <article class="tile is-child box is-12">
+                                <div class="navigation has-text-centered">
+                                        <header class="clearfix">
+                                            <h1 class="title is-4 indieflower">Resultat de votre recherche :</h1>
+                                        </header>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    {% endif %}
+
                     <div class="tile is-ancestor">
 
                         {% for produit in produits %}
@@ -47,13 +61,12 @@
                     </div>
                 </div>
 
-                {% if '/produits/recherche' not in app.request.requestUri %}
-                    <div class="column is-12">
-                        <div class="navigation has-text-centered">
-                            {{ knp_pagination_render(produits) }}
-                        </div>
+                </div>
+                <div class="column is-12">
+                    <div class="navigation has-text-centered">
+                        {{ knp_pagination_render(produits) }}
                     </div>
-                {% endif %}
+                </div>
 
             {% else %}
             <div class="column is-9">
@@ -61,7 +74,7 @@
                     <div class="tile is-parent is-12">
                         <article class="tile is-child box is-12">
                             <div class="navigation has-text-centered">
-                                {% if '/produits/recherche' not in app.request.requestUri %}
+                                {% if '/produits/recherche' in app.request.requestUri %}
                                     <header class="clearfix">
                                         <h1 class="title is-4 indieflower">Resultat de votre recherche :</h1>
                                     </header>
@@ -111,7 +124,7 @@
                     </div>
                 </div>
             </div>
+                </div>
             {% endif %}
         </div>
-    </div>
 {% endblock %}

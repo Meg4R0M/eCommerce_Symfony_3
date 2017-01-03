@@ -78,7 +78,8 @@ class ProduitsController extends Controller
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             $em = $this->getDoctrine()->getManager();
-            $produits = $em->getRepository('EcommerceBundle:Produits')->recherche($form['recherche']->getData());
+            $findProduits = $em->getRepository('EcommerceBundle:Produits')->recherche($form['recherche']->getData());
+            $produits  = $this->get('knp_paginator')->paginate($findProduits,$request->query->get('page', 1),100);
             $categories = $em->getRepository('EcommerceBundle:Categories')->findBy(array(), array('id' => 'ASC'),4);
 
             foreach ($categories as $categorie)
