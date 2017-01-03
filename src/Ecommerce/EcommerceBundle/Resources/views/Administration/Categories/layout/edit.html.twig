@@ -12,7 +12,7 @@
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
             <article class="tile is-child box is-12">
-                {{ form_start(edit_form, {'action': path('adminProduits_create', { 'id' : entity.id }), 'method': 'POST' }) }}
+                {{ form_start(edit_form, {'action': path('adminProduits_update', { 'id' : entity.id }), 'method': 'PUT' }) }}
                 <p class="control">
                     {{ form_label(edit_form.nom) }}
                     {{ form_widget(edit_form.nom) }}
