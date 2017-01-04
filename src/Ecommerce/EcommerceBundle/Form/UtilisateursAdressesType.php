@@ -59,9 +59,9 @@ class UtilisateursAdressesType extends AbstractType
                                                'label_attr'=> array('class'=>'label is-3')
                                               ))
             ->add('complement',TextType::class,array('required' => false,
-                                                     'label'  => 'Ville',
+                                                     'label'  => 'Complement',
                                                      'attr'=> array('class'=>'input is-9',
-                                                                    'placeholder'=>'Votre Ville'),
+                                                                    'placeholder'=>'Complement d\'adresse'),
                                                      'label_attr'=> array('class'=>'label is-3')
                                                     ))
         ;
