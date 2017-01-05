@@ -22,4 +22,16 @@ class CommandesRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function byDateCommand($date)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.date > :date')
+            ->andWhere('u.valider = 1')
+            ->orderBy('u.id')
+            ->setParameter('date', $date);
+
+        return $qb->getQuery()->getResult();
+    }
 }
