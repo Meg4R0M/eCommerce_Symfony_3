@@ -1,4 +1,4 @@
-<li><a href="{{ path('produits') }}">Voir tout les produits</a></li>
+<li><a href="{{ path('produits') }}" class="indieflower menusubtitle">Tout nos produits</a></li>
 {% for categorie in categories %}
-    <li><a href="{{ path('categorieProduits', { 'categorie' : categorie.id }) }}">{{ categorie.nom }}</a></li>
+    <li><a href="{{ path('categorieProduits', { 'categorie' : categorie.id }) }}" class="indieflower menusubtitle">{{ categorie.nom }}</a></li>
 {% endfor %}
