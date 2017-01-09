@@ -1,13 +1,3 @@
-/**
- * menu.js v1.0.0
- * http://www.codrops.com
- *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- * 
- * Copyright 2013, Codrops
- * http://www.codrops.com
- */
 (function() {
 	
 	function scrollY() {
@@ -44,17 +34,39 @@
 			contentWrapper = container.querySelector( '.wrapper' );
 
 		showMenu.addEventListener( clickevent, function( ev ) {
-			ev.stopPropagation();
-			ev.preventDefault();
-			docscroll = scrollY();
-			// change top of contentWrapper
-			contentWrapper.style.top = docscroll * -1 + 'px';
-			// mac chrome issue:
-			document.body.scrollTop = document.documentElement.scrollTop = 0;
-			// add modalview class
-			classie.add( perspectiveWrapper, 'modalview' );
-			// animate..
-			setTimeout( function() { classie.add( perspectiveWrapper, 'animate' ); }, 25 );
+            if( classie.has( perspectiveWrapper, 'animate') ) {
+                var onEndTransFn = function( ev ) {
+                    if( support && ( ev.target.className !== 'containersite' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
+                    this.removeEventListener( transEndEventName, onEndTransFn );
+                    classie.remove( perspectiveWrapper, 'modalview' );
+                    // mac chrome issue:
+                    document.body.scrollTop = document.documentElement.scrollTop = docscroll;
+                    // change top of contentWrapper
+                    contentWrapper.style.top = '0px';
+                };
+                if( support ) {
+                    perspectiveWrapper.addEventListener( transEndEventName, onEndTransFn );
+                }
+                else {
+                    onEndTransFn.call();
+                }
+                classie.remove( perspectiveWrapper, 'animate' );
+            }else {
+                console.log('je suis la');
+                ev.stopPropagation();
+                ev.preventDefault();
+                docscroll = scrollY();
+                // change top of contentWrapper
+                contentWrapper.style.top = docscroll * -1 + 'px';
+                // mac chrome issue:
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+                // add modalview class
+                classie.add(perspectiveWrapper, 'modalview');
+                // animate..
+                setTimeout(function () {
+                    classie.add(perspectiveWrapper, 'animate');
+                }, 25);
+            }
 		});
 
 		container.addEventListener( clickevent, function( ev ) {

@@ -111,7 +111,7 @@ html, body, .perspective {
 }
 
 .outer-nav.top {
-	top: 70px;
+	top: 72px;
 }
 
 .outer-nav.bottom {
@@ -170,8 +170,8 @@ html, body, .perspective {
 }
 
 .effect-laydown.animate .containersite {
-	-webkit-transform: translateZ(-500px) rotateX(30deg);
-	transform: translateZ(-500px) rotateX(30deg);
+	-webkit-transform: translateZ(-400px) rotateX(10deg);
+	transform: translateZ(-400px) rotateX(10deg);
 }
 
 .no-csstransforms3d .effect-laydown.animate .containersite {
@@ -231,7 +231,7 @@ html, body, .perspective {
 @media screen and (max-width: 77em) {
 	
 	.outer-nav.top {
-		top: 15%;
+		top: 71px;
 	}
 
 	.outer-nav.bottom {
@@ -242,7 +242,8 @@ html, body, .perspective {
 @media screen and (max-width: 36.625em), screen and (max-height: 41.75em) {
 
 	.outer-nav.top {
-		top: 5%;
+		top: 71px;
+
 	}
 
 	.outer-nav.bottom {
@@ -251,12 +252,12 @@ html, body, .perspective {
 	
 	.outer-nav.horizontal {
 		font-size: 1.7em;
-		width: 6.2em;
 	}
 
 	.outer-nav.horizontal a {
 		display: block;
 		text-align: left;
+        z-index: 1;
 	}
 
 	/* Special Case */
@@ -276,7 +277,7 @@ html, body, .perspective {
 	.outer-nav.horizontal,
 	.outer-nav.vertical {
 		font-size: 1.2em;
-		width: 6.8em;
+		width: 100%;
 	}
 
 	.outer-nav.right {

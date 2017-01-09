@@ -111,25 +111,28 @@ MENU
 #menu a {
     display:block;
     text-decoration:none;
+    z-index: 1;
 }
-#menu > li,
+#menu > li{
+    position: relative;
+    display:inline-block;
+    padding: 1px 1px;
+    background-color: transparent;
+}
+
 #menu > li li {
     position: relative;
     display:inline-block;
     width: 210px;
     padding: 1px 1px;
-    background-color: transparent;
-}
-#menu > li li {
     background: transparent none;
     height: 20px;
+    z-index: 1000;
 }
 
-/* (presque) fin de la partie positionnement/déco */
-/* dans cette déclaration, on fixe le max-height */
 #menu ul {
     position: absolute;
-    top: 2em; left: 25px;
+    top: 2em;
     max-height:0;
     margin: 0; padding: 0;
     background: #363636;
@@ -138,16 +141,16 @@ MENU
     border-radius: 0 0 8px 8px;
     text-align: left;
 }
-/* ici on change la valeur de max-height au :hover */
+
 #menu > li:hover ul {
-    /* à adapter, le minimum est le meilleur mais voyez large 😉 */
     max-height: 13em;
+    z-index: 1000;
 }
 
 .arrow-down {
     position: fixed;
     bottom: 5px;
-    left: 90%;
+    margin-left: 5px;
     width: 15px;
     height: 15px;
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNCAxNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjQgMTQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiNFNjgyNDY7fQ0KPC9zdHlsZT4NCjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMjEuMywwLjkgMTIsMTAuMiAyLjcsMC45IDEuMywyLjQgMTIsMTMuMSAyMi43LDIuNCAiLz4NCjwvc3ZnPg0K);

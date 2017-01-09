@@ -4,18 +4,8 @@
     <div class="container">
         <div class="columns">
 
-            <div class="column is-3">
-                {% include '::modulesUsed/navigation.html.twig' %}
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
-                {% else %}
-                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
-                {% endif %}
-                {{ render(controller('EcommerceBundle:Panier:menu')) }}
-            </div>
-
             {% if produits|length != 0 %}
-                <div class="column is-9">
+                <div class="column is-12">
                     {% if '/produits/recherche' in app.request.requestUri %}
                     <div class="tile is-ancestor">
                         <div class="tile is-parent is-12">
@@ -33,7 +23,7 @@
                     <div class="tile is-ancestor">
 
                         {% for produit in produits %}
-                            <div class="tile is-parent is-4">
+                            <div class="tile is-parent is-3">
                                 <article class="tile is-child box is-12">
                                     <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
                                     <div class="caption">
@@ -53,7 +43,7 @@
                                     </div>
                                 </article>
                             </div>
-                            {% if loop.index is divisible by(3) %}
+                            {% if loop.index is divisible by(4) %}
                                 </div><div class="tile is-ancestor">
                             {% endif %}
                         {% endfor %}
@@ -69,7 +59,7 @@
                 </div>
 
             {% else %}
-            <div class="column is-9">
+            <div class="column is-12">
                 <div class="tile is-ancestor">
                     <div class="tile is-parent is-12">
                         <article class="tile is-child box is-12">
