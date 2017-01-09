@@ -301,6 +301,13 @@ PRODUITS
 img{
     border-radius: 5px;
 }
+
+.wrapped{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 /***********************************************************************
 PANIER
 ***********************************************************************/
@@ -309,7 +316,7 @@ PANIER
 .mi-slider {
     position: relative;
     margin-top: 30px;
-    height: 490px;
+    height: 550px;
 }
 
 .mi-slider ul {
@@ -317,7 +324,6 @@ PANIER
     position: absolute;
     width: 100%;
     left: 0;
-    bottom: 140px;
     overflow: hidden;
     text-align: center;
     pointer-events: none;
@@ -382,7 +388,7 @@ PANIER
 
 .mi-slider nav {
     position: relative;
-    top: 400px;
+    top: 450px;
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
@@ -601,15 +607,16 @@ PANIER
 
 @media screen and (max-width: 740px){
     .mi-slider {
-        height: 300px;
+        height: 400px;
     }
     .mi-slider nav {
-        top: 220px;
+        top: 350px;
     }
 }
 
 @media screen and (max-width: 490px){
     .mi-slider {
+        display: none;
         text-align: center;
         height: auto;
     }

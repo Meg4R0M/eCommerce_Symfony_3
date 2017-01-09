@@ -183,8 +183,8 @@ liip_imagine:
         imgindex:
             quality: 100
             filters:
-                thumbnail: { size: [417, 313], mode: inset }
+                thumbnail: { size: [590, 338], mode: inset }
         imgindextop:
             quality: 100
             filters:
-                thumbnail: { size: [667, 333], mode: inset }
+                thumbnail: { size: [1180, 358], mode: inset }

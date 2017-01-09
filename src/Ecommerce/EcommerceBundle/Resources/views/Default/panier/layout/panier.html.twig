@@ -11,17 +11,7 @@
     <div class="container">
         <div class="columns">
 
-            <div class="column is-3">
-                {% include '::modulesUsed/navigation.html.twig' %}
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
-                {% else %}
-                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
-                {% endif %}
-                {{ render(controller('EcommerceBundle:Panier:menu')) }}
-            </div>
-
-            <div class="column is-9">
+            <div class="column is-12">
 
                 {% for flashMessage in app.session.flashbag.get('success') %}
                     <div class="notification is-success">
@@ -164,7 +154,7 @@
                     </div>
                 </div>
 
-                <div class="tile is-ancestor">
+                <div class="tile is-ancestor is-hidden-mobile">
                     <div class="tile is-parent is-12">
                         <article class="tile is-child box is-12">
 

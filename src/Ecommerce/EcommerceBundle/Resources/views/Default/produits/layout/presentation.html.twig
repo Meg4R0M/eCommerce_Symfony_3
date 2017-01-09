@@ -1,18 +1,10 @@
 {% extends "::layout/layout.html.twig" %}
 
-{% block titre %}Canturla - {{ produit.nom }}{% endblock %}
-{% block description %}{{ produit.description }}{% endblock %}
-
 {% block body %}
     <div class="container">
         <div class="columns">
 
-            <div class="column is-3">
-                {% include '::modulesUsed/navigation.html.twig' %}
-                {{ render(controller('EcommerceBundle:Panier:menu')) }}
-            </div>
-
-            <div class="column is-9">
+            <div class="column is-12">
                 <div class="tile is-ancestor is-12">
                     <div class="tile is-parent">
                         <article class="tile is-child box">
@@ -77,13 +69,15 @@
                     </div>
                 </div>
 
-                <div class="tile is-ancestor is-12">
-                    <div class="tile is-parent">
-                        <article class="tile is-child box">
-                            {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': produit.id} %}
-                        </article>
+                {% if is_granted('ROLE_USER') %}
+                    <div class="tile is-ancestor is-12">
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': produit.id} %}
+                            </article>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
 
             </div>
 

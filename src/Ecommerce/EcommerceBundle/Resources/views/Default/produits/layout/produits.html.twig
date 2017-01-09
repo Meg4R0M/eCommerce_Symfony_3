@@ -25,21 +25,21 @@
                         {% for produit in produits %}
                             <div class="tile is-parent is-3">
                                 <article class="tile is-child box is-12">
-                                    <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
+                                    <div class="is-12 has-text-centered">
+                                        <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
+                                    </div>
                                     <div class="caption">
-                                        <h4 class="title is-4 minheight40px indieflower">{{ produit.nom }}</h4>
+                                        <div style="display: flex; justify-content: space-around;">
+                                            <h4 class="title is-4 minheight40px indieflower">{{ produit.nom }}</h4>
+                                        </div>
                                         <p class="has-text-right is-5 indieflowerprix"><b>{{ produit.prix|tva(produit.tva.multiplicate) }}€/100Gr</b></p>
                                         <br />
-                                        <div class="control is-grouped">
-                                            <p class="control has-text-left">
-                                                <a class="button button-vert is-outlined" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
-                                            </p>
+                                        <p class="control wrapped is-12">
+                                            <a class="button button-vert is-outlined" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
                                             {% if panier[produit.id] is not defined %}
-                                                <p class="control has-text-right">
-                                                    <a class="button button-orange is-outlined" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
-                                                </p>
+                                                &nbsp;<a class="button button-orange is-outlined" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
                                             {% endif %}
-                                        </div>
+                                        </p>
                                     </div>
                                 </article>
                             </div>
