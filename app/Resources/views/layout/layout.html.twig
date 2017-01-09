@@ -25,18 +25,15 @@
 </head>
 <body>
 <header class="navbar-fixed">
-    <nav id="navigation" class="nav hero is-dark is-12-mobile">
-        <div class="container is-12-mobile">
+    <nav id="navigation" class="nav hero is-dark">
+        <div class="container placed">
             <div>
-                <a href="javascript:void(0)" id="showMenu" class="nav-item title indieflower is-3" style="margin: 10px 0 0 10px;"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;<span style="margin-top: 7px" class="is-hidden-mobile">MENU</span></a>
+                <a href="javascript:void(0)" id="showMenu" class="nav-item title indieflower is-3" style="margin: 8px 0 0 5px;"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;<span style="margin-top: 7px" class="is-hidden-mobile">Menu</span></a>
             </div>
-            <div class="nav-center">
+            <div style="margin-left: -40px;">
                 <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" class="shadowfilter logo"></a>
             </div>
-            <span id="nav-toggle" class="nav-toggle">
-                <span></span>
-            </span>
-            <div id="nav-menu" class="nav-menu" style="margin-top: 10px;">
+            <div>
                 {{ render(controller('EcommerceBundle:Produits:recherche')) }}
             </div>
         </div>
@@ -156,6 +153,46 @@
             }
         });
     });
+
+    $(document).ready(function(){
+        var submitIcon = $('.searchbox-icon');
+        var inputBox = $('.searchbox-input');
+        var searchBox = $('.searchbox');
+        var isOpen = false;
+        submitIcon.click(function(){
+            if(isOpen == false){
+                searchBox.addClass('searchbox-open');
+                inputBox.focus();
+                isOpen = true;
+            } else {
+                searchBox.removeClass('searchbox-open');
+                inputBox.focusout();
+                isOpen = false;
+            }
+        });
+        submitIcon.mouseup(function(){
+            return false;
+        });
+        searchBox.mouseup(function(){
+            return false;
+        });
+        $(document).mouseup(function(){
+            if(isOpen == true){
+                $('.searchbox-icon').css('display','block');
+                submitIcon.click();
+            }
+        });
+    });
+    function buttonUp(){
+        var inputVal = $('.searchbox-input').val();
+        inputVal = $.trim(inputVal).length;
+        if( inputVal !== 0){
+            $('.searchbox-icon').css('display','none');
+        } else {
+            $('.searchbox-input').val('');
+            $('.searchbox-icon').css('display','block');
+        }
+    }
 
     $(function () {
         $('#mi-slider').catslider();

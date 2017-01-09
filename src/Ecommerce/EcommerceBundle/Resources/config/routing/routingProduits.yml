@@ -13,3 +13,4 @@ categorieProduits:
 rechercheProduits:
     path:  /recherche
     defaults: { _controller: EcommerceBundle:Produits:rechercheTraitement }
+    methods:  [GET, POST]
