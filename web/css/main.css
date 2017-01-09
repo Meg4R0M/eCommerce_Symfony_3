@@ -107,7 +107,6 @@ MENU
     border-top-right-radius: 5px;
 }
 
-/* partie positionnement et déco */
 #menu a {
     display:block;
     text-decoration:none;
@@ -118,6 +117,16 @@ MENU
     display:inline-block;
     padding: 1px 1px;
     background-color: transparent;
+}
+
+#menu > ul {
+    height: 3.75em;
+}
+
+#menu > ul > li {
+    width: 25%;
+    height: 80%;
+    float: left;
 }
 
 #menu > li li {
@@ -145,6 +154,55 @@ MENU
 #menu > li:hover ul {
     max-height: 13em;
     z-index: 1000;
+}
+
+@media only screen and ( max-width: 40em ) /* 640 */
+{
+    #menu
+    {
+        position: relative;
+    }
+    #menu > a
+    {
+        max-height: 50px;
+    }
+
+    #menu:not( :target ) > a,
+    #menu:target > a
+    {
+        display: block;
+    }
+
+    /* first level */
+
+    #menu > li{
+        width: 100%;
+    }
+
+    #menu > ul
+    {
+        height: auto;
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    #menu:target > ul
+    {
+        display: block;
+    }
+    #menu > ul > li
+    {
+        width: 100%;
+        float: none;
+    }
+
+    /* second level */
+
+    #menu li ul
+    {
+        position: static;
+    }
 }
 
 .arrow-down {

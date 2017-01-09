@@ -231,7 +231,7 @@ html, body, .perspective {
 @media screen and (max-width: 77em) {
 	
 	.outer-nav.top {
-		top: 71px;
+		top: 70px;
 	}
 
 	.outer-nav.bottom {
@@ -242,7 +242,7 @@ html, body, .perspective {
 @media screen and (max-width: 36.625em), screen and (max-height: 41.75em) {
 
 	.outer-nav.top {
-		top: 71px;
+		top: 70px;
 
 	}
 
@@ -251,13 +251,14 @@ html, body, .perspective {
 	}
 	
 	.outer-nav.horizontal {
-		font-size: 1.7em;
+		font-size: 1.6em;
 	}
 
 	.outer-nav.horizontal a {
 		display: block;
 		text-align: left;
         z-index: 1;
+        margin: 15px 10px 0 15px;
 	}
 
 	/* Special Case */

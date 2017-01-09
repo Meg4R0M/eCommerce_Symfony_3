@@ -1,184 +1,167 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block titre %}Canturla - By Meg4R0M{% endblock %}</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content="{% block motsCles %}{% endblock %}" />
-        <meta name="description" content="{% block description %}{% endblock %}" />
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/bulma.css') }}" />
-            <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-            {% stylesheets '@FOSCommentBundle/Resources/public/css/comments.css' %}
-            <link rel="stylesheet" href="{{ asset('css/comments.css') }}" type="text/css" />
-            {% endstylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
-            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie+Flower%7CRoboto">
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block titre %}Canturla - By Meg4R0M{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="keywords" content="{% block motsCles %}{% endblock %}"/>
+    <meta name="description" content="{% block description %}{% endblock %}"/>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bulma.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+        {% stylesheets '@FOSCommentBundle/Resources/public/css/comments.css' %}
+        <link rel="stylesheet" href="{{ asset('css/comments.css') }}" type="text/css"/>
+        {% endstylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie+Flower%7CRoboto">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/component.css') }}" />
-        <!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load -->
-        <script src="{{ asset('/js/modernizr.custom.25376.js') }}"></script>
-    </head>
-    <body>
-    <header class="navbar-fixed">
-        <nav id="navigation" class="nav hero is-dark is-12-mobile">
-            <div class="container is-12-mobile">
-                    <div>
-                        <a href="" id="showMenu" class="nav-item title indieflower is-3" style="margin: 10px 0 0 10px;"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;<span style="margin-top: 7px" class="is-hidden-mobile">MENU</span></a>
-                    </div>
-                    <div class="nav-center">
-                        <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" class="shadowfilter logo"></a>
-                    </div>
-                    <span id="nav-toggle" class="nav-toggle">
-                    <span></span>
-                </span>
-                    <div id="nav-menu" class="nav-menu" style="margin-top: 10px;">
-                        {{ render(controller('EcommerceBundle:Produits:recherche')) }}
-                    </div>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/component.css') }}"/>
+    <!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load -->
+    <script src="{{ asset('/js/modernizr.custom.25376.js') }}"></script>
+</head>
+<body>
+<header class="navbar-fixed">
+    <nav id="navigation" class="nav hero is-dark is-12-mobile">
+        <div class="container is-12-mobile">
+            <div>
+                <a href="javascript:void(0)" id="showMenu" class="nav-item title indieflower is-3" style="margin: 10px 0 0 10px;"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;<span style="margin-top: 7px" class="is-hidden-mobile">MENU</span></a>
             </div>
-        </nav>
-    </header>
+            <div class="nav-center">
+                <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" class="shadowfilter logo"></a>
+            </div>
+            <span id="nav-toggle" class="nav-toggle">
+                <span></span>
+            </span>
+            <div id="nav-menu" class="nav-menu" style="margin-top: 10px;">
+                {{ render(controller('EcommerceBundle:Produits:recherche')) }}
+            </div>
+        </div>
+    </nav>
+</header>
 
-    <div class="spacer"></div>
-    <div id="perspective" class="perspective effect-laydown">
-        <div class="containersite">
-            <div class="wrapper">
-    {% block body %}{% endblock %}
-    <div class="has-text-centered">
-        <img src="{{ asset('img/hr.png') }}" alt="hr"/>
-    </div>
-        <footer class="footer">
-            <div class="container">
-                <div class="columns">
-                    <div class="column">
-                        <div class="content has-text-left">
-                            <h4 class="title is-4 has-text-left indieflower">Informations</h4>
-                            <hr>
-                            {{ render(controller('PagesBundle:Pages:menu')) }}
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="content has-text-centered">
-                            <h4 class="title is-4 has-text-centered indieflower">Notre magasin</h4>
-                            <hr>
-                            <p class="about subheader">Canturla c'est une épicerie de produits locaux et en vrac,<br />un salon de thé, un lieu d'exposition<br /> et de vente de création à base de matériaux de récupération.</p>
-                            <p class="about subheader"><img src="{{ 'img/logocanturla.png'|imagine_filter('logocanturla') }}" alt="logo footer" class="shadowfilter"></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="content has-text-right">
-                            <div class="canturlacontact">
-                                <h4 class="title is-4 has-text-right indieflower">Nous contacter</h4>
+<div class="spacer"></div>
+<div id="perspective" class="perspective effect-laydown">
+    <div class="containersite">
+        <div class="wrapper">
+            {% block body %}{% endblock %}
+            <div class="has-text-centered">
+                <img src="{{ asset('img/hr.png') }}" alt="hr"/>
+            </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content has-text-left">
+                                <h4 class="title is-4 has-text-left indieflower">Informations</h4>
                                 <hr>
-                                <p><a class="svn" href="https://www.facebook.com/canturla/">Suivez-nous</a> <span class="fa-stack fa-lg"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></p>
-                                <a href="https://www.google.fr/maps/place/49+Avenue+Gaston+Ribot,+30100+Al%C3%A8s/@44.1335763,4.0906704,17z/data=!3m1!4b1!4m5!3m4!1s0x12b4425ef4072d39:0x9eef73a6f0c28b9d!8m2!3d44.1335763!4d4.0928591" class="adressemr">49 av. Gaston Ribot,</a>
-                                <br />
-                                <a href="https://www.google.fr/maps/place/49+Avenue+Gaston+Ribot,+30100+Al%C3%A8s/@44.1335763,4.0906704,17z/data=!3m1!4b1!4m5!3m4!1s0x12b4425ef4072d39:0x9eef73a6f0c28b9d!8m2!3d44.1335763!4d4.0928591" class="adressemr">30100 Alès</a>
-                                <br />
-                                <span class="fa-stack fa-lg adressemt"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-map-marker fa-stack-1x fa-inverse"></i></span>
-                                <p>04 34 13 91 83 <span class="fa-stack fa-lg"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span></p>
+                                {{ render(controller('PagesBundle:Pages:menu')) }}
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-centered">
+                                <h4 class="title is-4 has-text-centered indieflower">Notre magasin</h4>
+                                <hr>
+                                <p class="about subheader">Canturla c'est une épicerie de produits locaux et en
+                                    vrac,<br/>un salon de thé, un lieu d'exposition<br/> et de vente de création à base
+                                    de matériaux de récupération.</p>
+                                <p class="about subheader"><img src="{{ 'img/logocanturla.png'|imagine_filter('logocanturla') }}" alt="logo footer" class="shadowfilter"></p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <div class="canturlacontact">
+                                    <h4 class="title is-4 has-text-right indieflower">Nous contacter</h4>
+                                    <hr>
+                                    <p>
+                                        <a class="svn" href="https://www.facebook.com/canturla/">Suivez-nous</a>
+                                        <span class="fa-stack fa-lg"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
+                                    </p>
+                                    <a href="https://www.google.fr/maps/place/49+Avenue+Gaston+Ribot,+30100+Al%C3%A8s/@44.1335763,4.0906704,17z/data=!3m1!4b1!4m5!3m4!1s0x12b4425ef4072d39:0x9eef73a6f0c28b9d!8m2!3d44.1335763!4d4.0928591" class="adressemr">49 av. Gaston Ribot,</a>
+                                    <br/>
+                                    <a href="https://www.google.fr/maps/place/49+Avenue+Gaston+Ribot,+30100+Al%C3%A8s/@44.1335763,4.0906704,17z/data=!3m1!4b1!4m5!3m4!1s0x12b4425ef4072d39:0x9eef73a6f0c28b9d!8m2!3d44.1335763!4d4.0928591" class="adressemr">30100 Alès</a>
+                                    <br/>
+                                    <span class="fa-stack fa-lg adressemt"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-map-marker fa-stack-1x fa-inverse"></i></span>
+                                    <p>04 34 13 91 83 <span class="fa-stack fa-lg"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span></p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="content has-text-centered">
+                        <p><span class="title is-5 indieflower">Copyright {{ "now"|date('Y') }} - <b>Geek-Avenue</b> (<a href="http://meg4r0m.ovh" target="_blank">Meg4R0M</a>)</span></p>
+                    </div>
                 </div>
-                <div class="content has-text-centered">
-                    <p><span class="title is-5 indieflower">Copyright {{ "now"|date('Y') }} - <b>Geek-Avenue</b> (<a href="http://meg4r0m.ovh" target="_blank">Meg4R0M</a>)</span></p>
-                </div>
-            </div>
-        </footer>
-            </div>
+            </footer>
         </div>
     </div>
-    <nav class="outer-nav top horizontal is-dark">
-        <ul id="menu">
-            <li><a href="{{ path('index') }}" class="indieflower menutitle">Accueil</a></li>
-            <li class="button-dropdown"><a href="javascript:void(0)" class="indieflower menutitle dropdown-toggle">Produits<span class="arrow-down"></span></a>
-                <ul class="dropdown-menu">
-                    {{  render(controller('EcommerceBundle:Categories:menu')) }}
+</div>
+<nav class="outer-nav top horizontal is-dark">
+    <ul id="menu">
+        <li><a href="{{ path('index') }}" class="indieflower menutitle">Accueil</a></li>
+        <li class="button-dropdown"><a href="javascript:void(0)" class="indieflower menutitle dropdown-toggle">Produits<span class="arrow-down"></span></a>
+            <ul>
+                {{ render(controller('EcommerceBundle:Categories:menu')) }}
+            </ul>
+        </li>
+        <li><a href="{{ path('panier') }}" class="indieflower menutitle">Panier</a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a class="indieflower menutitle" href="javascript:void(0)" aria-haspopup="true">Mon Compte<span class="arrow-down"></span></a>
+                <ul>
+                    <li><a href="{{ path('fos_user_profile_show') }}" class="indieflower menusubtitle">Mes informations</a></li>
+                    <li><a href="{{ path('fos_user_profile_edit') }}" class="indieflower menusubtitle">Editer mes informations</a></li>
+                    <li><a href="{{ path('fos_user_change_password') }}" class="indieflower menusubtitle">Changer mot de passe</a></li>
+                    <li><a href="{{ path('factures') }}" class="indieflower menusubtitle">Mes factures</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}" class="indieflower menusubtitle">Deconnexion</a></li>
                 </ul>
             </li>
-            <li><a href="{{ path('panier') }}" class="indieflower menutitle">Panier</a></li>
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <li class="button-dropdown"><a class="indieflower menutitle dropdown-toggle" href="javascript:void(0)">Mon Compte<span class="arrow-down"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('fos_user_profile_show') }}" class="indieflower menusubtitle">Mes informations</a></li>
-                        <li><a href="{{ path('fos_user_profile_edit') }}" class="indieflower menusubtitle">Editer mes informations</a></li>
-                        <li><a href="{{ path('fos_user_change_password') }}" class="indieflower menusubtitle">Changer mot de passe</a></li>
-                        <li><a href="{{ path('factures') }}" class="indieflower menusubtitle">Mes factures</a></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}" class="indieflower menusubtitle">Deconnexion</a></li>
-                    </ul>
-                </li>
-            {% else %}
-                <li><a class="indieflower menutitle" href="{{ path('fos_user_security_login') }}">Connection</a></li>
-                <li><a class="indieflower menutitle" href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
-            {% endif %}
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="button-dropdown"><a class="indieflower menutitle dropdown-toggle" href="javascript:void(0)">Administration<span class="arrow-down"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('adminProduits_index') }}" class="indieflower menusubtitle">Gestion des Produits</a></li>
-                        <li><a href="{{ path('adminCategories_index') }}" class="indieflower menusubtitle">Catégories produits</a></li>
-                        <li><a href="{{ path('adminUtilisateurs_index') }}" class="indieflower menusubtitle">Clients</a></li>
-                        <li><a href="{{ path('adminCommande') }}" class="indieflower menusubtitle">Commandes</a></li>
-                        <li><a href="{{ path('adminPages') }}" class="indieflower menusubtitle">Gestion des Pages</a></li>
-                    </ul>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-    <script src="{{ asset('/js/classie.js') }}"></script>
-    <script src="{{ asset('/js/menu.js') }}"></script>
-        <script src="{{ asset('/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('/js/clipboard.min.js') }}"></script>
-        <script src="{{ asset('/js/jquery.catslider.js') }}"></script>
-        <script src="{{ asset('/js/modernizr.custom.63321.js') }}"></script>
-        <script src="{{ asset('/js/bulma.js') }}"></script>
-        <script src="{{ asset('bundles/pages/ckeditor/ckeditor.js') }}"></script>
+        {% else %}
+            <li><a class="indieflower menutitle" href="{{ path('fos_user_security_login') }}">Connection</a></li>
+            <li><a class="indieflower menutitle" href="{{ path('fos_user_registration_register') }}">Inscription</a>
+            </li>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a class="indieflower menutitle" href="javascript:void(0)" aria-haspopup="true">Administration<span class="arrow-down"></span></a>
+                <ul>
+                    <li><a href="{{ path('adminProduits_index') }}" class="indieflower menusubtitle">Gestion des Produits</a></li>
+                    <li><a href="{{ path('adminCategories_index') }}" class="indieflower menusubtitle">Catégories produits</a></li>
+                    <li><a href="{{ path('adminUtilisateurs_index') }}" class="indieflower menusubtitle">Clients</a></li>
+                    <li><a href="{{ path('adminCommande') }}" class="indieflower menusubtitle">Commandes</a></li>
+                    <li><a href="{{ path('adminPages') }}" class="indieflower menusubtitle">Gestion des Pages</a></li>
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+<script src="{{ asset('/js/classie.js') }}"></script>
+<script src="{{ asset('/js/menu.js') }}"></script>
+<script src="{{ asset('/js/jquery.min.js') }}"></script>
+<script src="{{ asset('/js/clipboard.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.catslider.js') }}"></script>
+<script src="{{ asset('/js/modernizr.custom.63321.js') }}"></script>
+<script src="{{ asset('/js/bulma.js') }}"></script>
+<script src="{{ asset('bundles/pages/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('/js/doubletaptogo.min.js') }}"></script>
 
 
-        {% block javascripts %}{% endblock %}
-        <script>
-            $(document).ready(function() {
-                $(window).scroll(function () {
-                    if ($(window).scrollTop() > 80) {
-                        $("#navigation").css("background-color","rgba(54, 54, 54, 0.7)");
-                    } else {
-                        $("#navigation").css("background-color","rgba(54, 54, 54, 1)");
-                    }
-                });
-            });
+{% block javascripts %}{% endblock %}
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 80) {
+                $("#navigation").css("background-color", "rgba(54, 54, 54, 0.7)");
+            } else {
+                $("#navigation").css("background-color", "rgba(54, 54, 54, 1)");
+            }
+        });
+    });
 
-            $(function() {
-                $( '#mi-slider' ).catslider();
-            });
+    $(function () {
+        $('#mi-slider').catslider();
+        $('#menu li:has(ul)').doubleTapToGo();
+    });
 
-            jQuery(document).ready(function (e) {
-                function t(t) {
-                    e(t).bind("click", function (t) {
-                        t.preventDefault();
-                        e(this).parent().fadeOut()
-                    })
-                }
-                e(".dropdown-toggle").click(function () {
-                    var t = e(this).parents(".button-dropdown").children(".dropdown-menu").is(":hidden");
-                    e(".button-dropdown .dropdown-menu").hide();
-                    e(".button-dropdown .dropdown-toggle").removeClass("active");
-                    if (t) {
-                        e(this).parents(".button-dropdown").children(".dropdown-menu").toggle().parents(".button-dropdown").children(".dropdown-toggle").addClass("active")
-                    }
-                });
-                e(document).bind("click", function (t) {
-                    var n = e(t.target);
-                    if (!n.parents().hasClass("button-dropdown")) e(".button-dropdown .dropdown-menu").hide();
-                });
-                e(document).bind("click", function (t) {
-                    var n = e(t.target);
-                    if (!n.parents().hasClass("button-dropdown")) e(".button-dropdown .dropdown-toggle").removeClass("active");
-                })
-            });
-
-        </script>
-    </body>
+</script>
+</body>
 </html>

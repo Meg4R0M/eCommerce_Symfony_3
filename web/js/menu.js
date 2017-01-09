@@ -52,7 +52,6 @@
                 }
                 classie.remove( perspectiveWrapper, 'animate' );
             }else {
-                console.log('je suis la');
                 ev.stopPropagation();
                 ev.preventDefault();
                 docscroll = scrollY();
