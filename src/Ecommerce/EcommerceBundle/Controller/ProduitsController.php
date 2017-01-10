@@ -75,11 +75,13 @@ class ProduitsController extends Controller
     {
         $request = Request::createFromGlobals();
         $form = $this->createForm(RechercheType::class);
-        if ($request->getMethod() == 'POST') {
+        $searchTerm = $request->query->get('recherche');
+
+        if ($searchTerm != '') {
             $form->handleRequest($request);
             $em = $this->getDoctrine()->getManager();
-            $findProduits = $em->getRepository('EcommerceBundle:Produits')->recherche($form['recherche']->getData());
-            $produits  = $this->get('knp_paginator')->paginate($findProduits,$request->query->get('page', 1),100);
+            $findProduits = $em->getRepository('EcommerceBundle:Produits')->recherche($searchTerm['recherche']);
+            $produits  = $this->get('knp_paginator')->paginate($findProduits,$request->query->get('page', 1),8);
             $categories = $em->getRepository('EcommerceBundle:Categories')->findBy(array(), array('id' => 'ASC'),4);
 
             foreach ($categories as $categorie)
