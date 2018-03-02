@@ -93,7 +93,11 @@ class Media
             $this->file->move($this->getUploadRootDir(),$this->path);
             unset($this->file);
 
-            if ($this->oldFile != null) unlink($this->tempFile);
+            // Check if $this->oldFile was a link or file
+            if ($this->oldFile != null && strpos($this->oldFile, 'http') === false){
+                unlink($this->tempFile);
+            }
+
         }
     }
 

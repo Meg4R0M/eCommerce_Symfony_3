@@ -17,13 +17,16 @@ class CategoriesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', TextType::class, array('required' => true,
+            ->add('nom', TextType::class, array(
+                'required' => true,
                 'label'  => 'Nom du produit',
                 'attr'=> array('class'=>'input is-9',
                     'placeholder'=>'Nom du produit'),
                 'label_attr'=> array('class'=>'label is-3')
             ))
-            ->add('image', MediaType::class, array('label'  => 'Image du produit',
+            ->add('image', MediaType::class, array(
+                'data_class' => 'Ecommerce\EcommerceBundle\Entity\Media',
+                'label'  => 'Image du produit',
                 'attr'=> array('class'=>'is-9'),
                 'label_attr'=> array('class'=>'label is-3')
             ))

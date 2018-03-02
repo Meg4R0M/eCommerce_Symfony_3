@@ -28,7 +28,7 @@ class ProduitsType extends AbstractType
                                                 ))
             ->add('description', TextareaType::class, array('required' => true,
                                                             'label'  => 'Description du produit',
-                                                            'attr'=> array('class'=>'textarea is-9',
+                                                            'attr'=> array('class'=>'ckeditor is-9',
                                                                            'placeholder'=>'Description du produit'),
                                                             'label_attr'=> array('class'=>'label is-3')
                                                             ))
@@ -41,10 +41,12 @@ class ProduitsType extends AbstractType
             ->add('disponible', CheckboxType::class, array('label'  => 'Disponible',
                                                            'label_attr'=> array('class'=>'checkbox')
                                                           ))
-            ->add('image', MediaType::class, array('label'  => 'Image du produit',
-                                                  'attr'=> array('class'=>'is-9'),
-                                                  'label_attr'=> array('class'=>'label is-3')
-                                                 ))
+            ->add('image', MediaType::class, array(
+                'data_class' => 'Ecommerce\EcommerceBundle\Entity\Media',
+                'label'  => 'Image du produit',
+                'attr'=> array('class'=>'is-9'),
+                'label_attr'=> array('class'=>'label is-3')
+                ))
             ->add('categorie', null, array('label'  => 'Categorie du produit',
                                            'label_attr'=> array('class'=>'label is-3')
                                           ))

@@ -26,12 +26,6 @@ class Produits
      * @ORM\OneToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Media", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-     //* @Assert\Image(
-     //*     maxSize = "1024k",
-     //*     mimeTypes = {"image/png", "image/jpg", "image/bmp"},
-     //*     mimeTypesMessage = "Please upload a valid Image"
-     //* )
-     //*/
     private $image;
 
     /**

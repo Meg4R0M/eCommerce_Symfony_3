@@ -141,7 +141,7 @@ class CategoriesAdminController extends Controller
         $editForm->handleRequest($request);
         if ($editForm->isValid()) {
             $em->flush();
-            return $this->redirect($this->generateUrl('adminCategories_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('adminCategories_show', array('id' => $id)));
         }
         return $this->render('EcommerceBundle:Administration:Categories/layout/edit.html.twig', array(
             'entity'      => $entity,

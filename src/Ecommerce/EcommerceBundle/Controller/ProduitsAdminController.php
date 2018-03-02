@@ -140,7 +140,10 @@ class ProduitsAdminController extends Controller
      */
     private function createEditForm(Produits $entity)
     {
-        $form = $this->createForm(ProduitsType::class, $entity);
+        $form = $this->createForm(ProduitsType::class, $entity, array(
+            'action' => $this->generateUrl('adminProduits_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
 
         $form->add('submit', SubmitType::class, array('label' => 'Mettre à jour', 'attr'=> array('class'=>'button is-success is-outlined')));
 
@@ -164,10 +167,14 @@ class ProduitsAdminController extends Controller
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('adminProduits_edit', array('id' => $id)));
+        if ($editForm->isSubmitted()){
+            if ($editForm->isValid()) {
+                $em->flush();
+                return $this->redirect($this->generateUrl('adminProduits_show', array('id' => $id)));
+            }else{
+                die('test');
+                return $editForm->getErrors();
+            }
         }
 
         return $this->render('EcommerceBundle:Administration:Produits/layout/edit.html.twig', array(
