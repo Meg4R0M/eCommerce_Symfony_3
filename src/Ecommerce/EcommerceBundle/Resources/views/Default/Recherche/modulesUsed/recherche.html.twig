@@ -1,5 +1,14 @@
-<form action="{{ path('rechercheProduits') }}" method="POST" class="navbar-form form-search pull-right">
-    {{ form_widget(form.recherche) }}
-    <button type="submit" class="btn">Rechercher</button>
-    {{ form_widget(form) }}
+<form action="{{ path('rechercheProduits') }}" method="GET" name="test" class="control has-addons">
+    <div class="codecon_half">
+        <div class="expSearchBox">
+            <div class="expSearchFrom">
+                {{ form_widget(form.recherche) }}
+                <div class="close">
+                    <span class="front"></span>
+                    <span class="back"></span>
+                </div>
+                {{ form_widget(form) }}
+            </div>
+        </div>
+    </div>
 </form>

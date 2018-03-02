@@ -119,6 +119,10 @@ class CommandesController extends Controller
         $commande->setReference($this->container->get('setNewReference')->reference()); //Service a faire
         $em->flush();
 
+        $facture = $em->getRepository('EcommerceBundle:Commandes')->findOneBy(array('utilisateur' => $this->getUser(),
+            'valider' => 1,
+            'id' => $commande->getId()));
+
         $session = $request->getSession();
         $session->remove('adresse');
         $session->remove('panier');
@@ -131,7 +135,8 @@ class CommandesController extends Controller
             ->setTo($commande->getUtilisateur()->getEmailCanonical())
             ->setCharset('utf-8')
             ->setContentType('text/html')
-            ->setBody($this->renderView('EcommerceBundle:Default:SwiftLayout/validationCommande.html.twig',array('utilisateur' => $commande->getUtilisateur())));
+            ->setBody($this->renderView('EcommerceBundle:Default:SwiftLayout/validationCommande.html.twig',array('utilisateur' => $commande->getUtilisateur(),
+                                                                                                                 'facture' => $facture)));
 
         $this->get('mailer')->send($message);
 

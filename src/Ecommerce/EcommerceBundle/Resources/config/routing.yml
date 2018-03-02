@@ -1,3 +1,11 @@
+index:
+    path:  /
+    defaults: { _controller: EcommerceBundle:Index:index }
+
+categories:
+    path: /categories
+    defaults: { _controller: EcommerceBundle:Produits:categories }
+
 routingAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingAdmin.yml"
     prefix: /admin
@@ -8,7 +16,7 @@ routingPanier:
 
 routingProduits:
     resource: "@EcommerceBundle/Resources/config/routing/routingProduits.yml"
-    prefix: /
+    prefix: /produits
 
 routingProduitsAdmin:
     resource: "@EcommerceBundle/Resources/config/routing/routingProduitsAdmin.yml"

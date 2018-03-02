@@ -8,78 +8,195 @@
 {% endfor %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        
-        <div class="span3">
-            {% include '::modulesUsed/navigation.html.twig' %}
-        </div>
-        
-        <div class="span9">
+    <div class="container">
+        <div class="columns">
 
-            {% for flashMessage in app.session.flashbag.get('success') %}
-                <div class="alert alert-success">
-                    {{ flashMessage }}
+            <div class="column is-12">
+
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="notification is-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <div class="columns">
+                                <div class="column has-text-left">
+                                    <h2 class="title is-3 indieflower">Votre panier</h2>
+                                </div>
+                                <div class="column has-text-right">
+                                    <h2 class="title is-4 indieflower">
+                                        {% if produits|length == 0 %}
+                                            (Aucun article)
+                                        {% elseif produits|length == 1 %}
+                                            (1 article)
+                                        {% else %}
+                                            ({{ produits|length }} articles)
+                                        {% endif %}
+                                    </h2>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
                 </div>
-            {% endfor %}
 
-            <h2>Votre panier</h2>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Références</th>
-                        <th>Quantité</th>
-                        <th>Prix unitaire</th>
-                        <th>Total HT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% if produits|length == 0 %}
-                        <tr>
-                            <td colspan="4">Aucun articles dans votre panier</td>
-                        </tr>
-                    {% endif %}
-                    {% for produit in produits %}
-                        <tr>
+                {% if produits|length == 0 %}
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent is-12">
+                            <article class="tile is-child box is-12">
+                                <h6>Aucun articles dans votre panier</h6>
+                            </article>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% for produit in produits %}
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-two-thirds">
+                                <div class="content has-text-centered">
+
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <div class="image">
+                                                <figure class="image is-96x96">
+                                                    <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}"
+                                                         alt="{{ produit.image.name }}">
+                                                </figure>
+                                            </div>
+                                        </div>
+
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <h3><strong>{{ produit.nom }}</strong></h3>
+                                                <div class="texte">
+                                                    <p>{{ produit.description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </article>
+
+                                </div>
+                            </div>
+
                             <form action="{{ path('ajouter', { 'id' : produit.id }) }}" method="get">
-                                <td>{{ produit.nom }}</td>
-                                <td>
-                                    <select name="qte" class="span1" onchange="this.form.submit()">
-                                        {% for i in 1..10 %}
-                                            <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
-                                        {% endfor %}
-                                    </select>&nbsp;
-                                    <a href="{{ path('supprimer', { 'id' : produit.id }) }}"><i class="icon-trash"></i></a>
-                                </td>
-                                <td>{{ produit.prix }} €</td>
-                                <td>{{ produit.prix * panier[produit.id] }}€</td>
+                                <div class="column">
+                                    <div class="has-text-left">
+                                        <h1 class="title indieflower">Quantité:</h1>
+                                        <p class="control has-addons">
+                                            <span class="select">
+                                                <select name="qte" onchange="this.form.submit()">
+                                                    {% for i in 1..10 %}
+                                                        <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </span>
+                                            <a href="{{ path('supprimer', { 'id' : produit.id }) }}" class="button"><i class="fa fa-trash"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
                             </form>
-                        </tr>
-                        {% set totalHT = totalHT + (produit.prix * panier[produit.id]) %}
-                        {% set totalTTC = totalTTC + (produit.prix * panier[produit.id])|tva(produit.tva.multiplicate) %}
-                        {% set refTva = refTva|merge({ ('%' ~ produit.tva.valeur) : refTva['%' ~ produit.tva.valeur] + ( produit.prix * panier[produit.id])|montantTva(produit.tva.multiplicate) }) %}
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% if produits|length != 0 %}
-                <dl class="dl-horizontal pull-right">
-                    <dt>Total HT :</dt>
-                    <dd>{{ totalHT }} €</dd>
 
-                    {% for key, tva in refTva %}
-                        <dt>TVA {{ key }}:</dt>
-                        <dd>{{ tva }} €</dd>
-                    {% endfor %}
+                            <div class="column">
+                                <div class="has-text-right">
+                                    <h1 class="title indieflower">Total HT</h1>
+                                    <div class="prix">
+                                        {{ panier[produit.id] }} x {{ produit.prix }} €
+                                        <br/>
+                                        <b>=</b>
+                                    </div>
+                                    <div class="prix">
+                                        <h3 class="title is-3 indieflower">{{ produit.prix * panier[produit.id] }}€</h3>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <dt>Total TTC:</dt>
-                    <dd>{{ totalTTC }} €</dd>
-                </dl>
-                <div class="clearfix"></div>
-                <a href="{{ path('livraison') }}" class="btn btn-success pull-right">Valider mon panier</a>
-            {% endif %}
-            <a href="{{ path('produits') }}" class="btn btn-primary">Continuer mes achats</a>
+                        </div>
+                    </div>
+                    {% set totalHT = totalHT + (produit.prix * panier[produit.id]) %}
+                    {% set totalTTC = totalTTC + (produit.prix * panier[produit.id])|tva(produit.tva.multiplicate) %}
+                    {% set refTva = refTva|merge({ ('%' ~ produit.tva.valeur) : refTva['%' ~ produit.tva.valeur] + ( produit.prix * panier[produit.id])|montantTva(produit.tva.multiplicate) }) %}
+                {% endfor %}
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            {% if produits|length != 0 %}
+                                <div class="column is-3 is-pulled-right">
+                                    <table class="table is-striped">
+                                        <tr>
+                                            <td><b>Total HT:</b></td>
+                                            <td>{{ totalHT }} €</td>
+                                        </tr>
+
+                                        {% for key, tva in refTva %}
+                                            <tr>
+                                                <td><b>TVA {{ key }}:</b></td>
+                                                <td>{{ tva }} €</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        <tr>
+                                            <td><b>Total TTC:</b></td>
+                                            <td>{{ totalTTC }} €</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="is-clearfix"></div>
+                                <a href="{{ path('livraison') }}" class="button button-vert is-pulled-right">Valider mon panier</a>
+                            {% endif %}
+                            <a href="{{ path('produits') }}" class="button button-vert">Continuer mes achats</a>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="tile is-ancestor is-hidden-mobile">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+
+                            <div class="has-text-centered">
+                                <header class="clearfix">
+
+                                    <h1 class="title is-4 indieflower">Nous vous proposons également :</h1>
+                                </header>
+                            </div>
+
+                            <div class="main">
+                                <div id="mi-slider" class="mi-slider">
+                                    {% for categorie in categories %}
+                                        {% for suggestion in suggestions %}
+                                            <ul>
+                                                {% for product in suggestion %}
+                                                    <li>
+                                                        <a href="{{ path('presentation', { 'id' : product.id }) }}">
+                                                            <img src="{{ product.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ product.image.name }}">
+                                                            <h4 class="indieflower">{{ product.nom }}</h4>
+                                                        </a>
+                                                        <h5 class="indieflowerprix">{{ product.prix }}€</h5>
+                                                        <a href="{{ path('ajouter', { 'id' :  product.id }) }}" class="button button-orange" style="padding-top: 3px">Ajouter</a>
+                                                    </li>
+                                                    {% endfor %}
+                                            </ul>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    <nav>
+                                        {% for categorie in categories %}
+                                            <a href="#">{{ categorie.nom }}</a>
+                                        {% endfor %}
+                                    </nav>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-
     </div>
-</div>
 {% endblock %}

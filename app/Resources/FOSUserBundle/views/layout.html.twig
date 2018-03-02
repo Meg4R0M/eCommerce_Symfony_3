@@ -5,7 +5,8 @@
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
-                    <div class="flash-{{ type }}">
+                    <br />
+                    <div class="{{ type }} is-warning">
                         {{ message }}
                     </div>
                 {% endfor %}

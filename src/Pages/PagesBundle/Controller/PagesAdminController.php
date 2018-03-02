@@ -67,7 +67,7 @@ class PagesAdminController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+        $form->add('submit', SubmitType::class, array('label' => 'Créer', 'attr'=> array('class'=>'button is-success is-outlined',)));
 
         return $form;
     }
@@ -145,7 +145,7 @@ class PagesAdminController extends Controller
             'action' => $this->generateUrl('adminPages_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-        $form->add('submit', SubmitType::class, array('label' => 'Update'));
+        $form->add('submit', SubmitType::class, array('label' => 'Mettre à jour', 'attr'=> array('class'=>'button is-success is-outlined')));
 
         return $form;
     }
@@ -215,7 +215,7 @@ class PagesAdminController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('adminPages_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, array('label' => 'Delete'))
+            ->add('submit', SubmitType::class, array('label' => 'Supprimer', 'attr'=> array('class'=>'button is-danger is-outlined')))
             ->getForm()
             ;
     }

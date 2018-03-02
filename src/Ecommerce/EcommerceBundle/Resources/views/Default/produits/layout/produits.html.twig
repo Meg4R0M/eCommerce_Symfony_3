@@ -1,47 +1,120 @@
 {% extends "::layout/layout.html.twig" %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="columns">
 
-        <div class="span3">
-            {% include '::modulesUsed/navigation.html.twig' %}
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
-            {% else %}
-                {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
-            {% endif %}
-            {{ render(controller('EcommerceBundle:Panier:menu')) }}
-        </div>
-        
-        <div class="span9">
             {% if produits|length != 0 %}
-                <ul class="thumbnails">
-                    {% for produit in produits %}
-                    <li class="span3">
-                        <div class="thumbnail">
-                            <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
-                            <div class="caption">
-                                <h4>{{ produit.nom }}</h4>
-                                <p>{{ produit.prix|tva(produit.tva.multiplicate) }}€</p>
-                                <a class="btn btn-primary" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
-                                {% if panier[produit.id] is not defined %}
-                                    <a class="btn btn-success" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
-                                {% endif %}
-                            </div>
+                <div class="column is-12">
+                    {% if '/produits/recherche' in app.request.requestUri %}
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent is-12">
+                            <article class="tile is-child box is-12">
+                                <div class="navigation has-text-centered">
+                                        <header class="clearfix">
+                                            <h1 class="title is-4 indieflower">Resultat de votre recherche :</h1>
+                                        </header>
+                                </div>
+                            </article>
                         </div>
-                    </li>
-                    {% endfor %}
-                </ul>
+                    </div>
+                    {% endif %}
 
-                <div class="navigation">
-                    {{ knp_pagination_render(produits) }}
+                    <div class="tile is-ancestor">
+
+                        {% for produit in produits %}
+                            <div class="tile is-parent is-3">
+                                <article class="tile is-child box is-12">
+                                    <div class="is-12 has-text-centered">
+                                        <img src="{{ produit.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ produit.image.name }}" width="300" height="300">
+                                    </div>
+                                    <div class="caption">
+                                        <div style="display: flex; justify-content: space-around;">
+                                            <h4 class="title is-4 minheight40px indieflower">{{ produit.nom }}</h4>
+                                        </div>
+                                        <p class="has-text-right is-5 indieflowerprix"><b>{{ produit.prix|tva(produit.tva.multiplicate) }}€/100Gr</b></p>
+                                        <br />
+                                        <p class="control wrapped is-12">
+                                            <a class="button button-vert is-outlined" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
+                                            {% if panier[produit.id] is not defined %}
+                                                &nbsp;<a class="button button-orange is-outlined" href="{{ path('ajouter', { 'id' :  produit.id }) }}">Ajouter au panier</a>
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </article>
+                            </div>
+                            {% if loop.index is divisible by(4) %}
+                                </div><div class="tile is-ancestor">
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+                </div>
+                <div class="column is-12">
+                    <div class="navigation has-text-centered">
+                        {{ knp_pagination_render(produits) }}
+                    </div>
                 </div>
 
             {% else %}
-                Aucun Produit
+            <div class="column is-12">
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <div class="navigation has-text-centered">
+                                {% if '/produits/recherche' in app.request.requestUri %}
+                                    <header class="clearfix">
+                                        <h1 class="title is-4 indieflower">Resultat de votre recherche :</h1>
+                                    </header>
+                                    <br />
+                                {% endif %}
+                                Aucun Produit
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <div class="has-text-centered">
+                                <header class="clearfix">
+                                    <h1 class="title is-4 indieflower">Nous vous proposons également :</h1>
+                                </header>
+                            </div>
+
+                            <div class="main">
+                                <div id="mi-slider" class="mi-slider">
+                                    {% for categorie in categories %}
+                                        {% for suggestion in suggestions %}
+                                            <ul>
+                                                {% for product in suggestion %}
+                                                    <li>
+                                                        <a href="{{ path('presentation', { 'id' : product.id }) }}">
+                                                            <img src="{{ product.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ product.image.name }}">
+                                                            <h4 class="indieflower">{{ product.nom }}</h4>
+                                                        </a>
+                                                        <h5 class="indieflowerprix">{{ product.prix }}€</h5>
+                                                        <a href="{{ path('ajouter', { 'id' :  product.id }) }}" class="button button-orange" style="padding-top: 3px">Ajouter</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    <nav>
+                                        {% for categorie in categories %}
+                                            <a href="#">{{ categorie.nom }}</a>
+                                        {% endfor %}
+                                    </nav>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+                </div>
             {% endif %}
         </div>
-    </div>
-</div>
 {% endblock %}

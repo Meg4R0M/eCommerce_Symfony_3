@@ -19,11 +19,13 @@ class ProduitsAdminController extends Controller
      * Lists all Produits entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EcommerceBundle:Produits')->findAll();
+        $produits = $em->getRepository('EcommerceBundle:Produits')->findAll();
+
+        $entities  = $this->get('knp_paginator')->paginate($produits,$request->query->get('page', 1),10);
 
         return $this->render('EcommerceBundle:Administration:Produits/layout/index.html.twig', array(
             'entities' => $entities,
@@ -64,7 +66,7 @@ class ProduitsAdminController extends Controller
     {
         $form = $this->createForm(ProduitsType::class, $entity);
 
-        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+        $form->add('submit', SubmitType::class, array('label' => 'Ajouter', 'attr'=> array('class'=>'button is-success is-outlined',)));
 
         return $form;
     }
@@ -140,7 +142,7 @@ class ProduitsAdminController extends Controller
     {
         $form = $this->createForm(ProduitsType::class, $entity);
 
-        $form->add('submit', SubmitType::class, array('label' => 'Update'));
+        $form->add('submit', SubmitType::class, array('label' => 'Mettre à jour', 'attr'=> array('class'=>'button is-success is-outlined')));
 
         return $form;
     }
@@ -210,7 +212,7 @@ class ProduitsAdminController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('adminProduits_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, array('label' => 'Delete'))
+            ->add('submit', SubmitType::class, array('label' => 'Supprimer', 'attr'=> array('class'=>'button is-danger is-outlined')))
             ->getForm()
             ;
     }

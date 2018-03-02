@@ -6,7 +6,7 @@ use Ecommerce\EcommerceBundle\Entity\UtilisateursAdresses;
 use Ecommerce\EcommerceBundle\Form\UtilisateursAdressesType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Form;
+use Doctrine\ORM\EntityManager;
 
 class PanierController extends Controller
 {
@@ -69,9 +69,19 @@ class PanierController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $produits = $em->getRepository('EcommerceBundle:Produits')->findArray(array_keys($session->get('panier')));
+        $categories = $em->getRepository('EcommerceBundle:Categories')->findBy(array(), array('id' => 'ASC'),4);
+
+        foreach ($categories as $categorie)
+        {
+            $categorieid = $categorie->getId();
+            $suggestions[$categorieid] = $em->getRepository('EcommerceBundle:Produits')->RandomProducts(4, $categorieid);
+
+        }
 
         return $this->render('EcommerceBundle:Default:panier/layout/panier.html.twig', array('produits' => $produits,
-                                                                                             'panier' => $session->get('panier')));
+                                                                                             'panier' => $session->get('panier'),
+                                                                                             'suggestions' => $suggestions,
+                                                                                             'categories' => $categories));
     }
 
     public function adresseSuppressionAction($id)

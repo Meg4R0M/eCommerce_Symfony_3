@@ -1,19 +1,29 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Utilisateur adresses</h1>
-
-    {% for adresse in utilisateur.adresses %}
-        <div class="span12">
-            <div class="span4">
-                <h4>Adresse {{ loop.index }} :</h4>
-                {{ adresse.prenom }} {{ adresse.nom }}
-                <br />{{ adresse.adresse }},
-                <br />{{ adresse.cp }} {{ adresse.ville }}
-                <br />{{ adresse.pays }}
-                <br /><br />
-            </div>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3 indieflower">Adresse de l'utilisateur</h2>
+            </article>
         </div>
-    {% endfor %}
+    </div>
+
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                {% for adresse in utilisateur.adresses %}
+                    <div class="span12">
+                        <div class="span4">
+                            <h4 class="title is-5 indieflower">Adresse {{ loop.index }} :</h4>
+                            {{ adresse.prenom }} {{ adresse.nom }}
+                            <br/>{{ adresse.adresse }}, {{ adresse.cp }} {{ adresse.ville }} - {{ adresse.pays }}
+                            <br/><br/>
+                        </div>
+                    </div>
+                {% endfor %}
+            </article>
+        </div>
+    </div>
 
 {% endblock %}

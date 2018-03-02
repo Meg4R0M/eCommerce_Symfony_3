@@ -2,80 +2,120 @@
 
 {% block body %}
     <div class="container">
-        <div class="row">
+        <div class="columns">
 
-            <div class="span3">
-                {% include '::modulesUsed/navigation.html.twig' %}
-            </div>
+            <div class="column is-12">
 
-            <div class="span9">
-
-                <h2>Valider mon panier</h2>
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>Références</th>
-                        <th>Quantité</th>
-                        <th>Prix unitaire</th>
-                        <th>Total HT</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for produit in commande.commandes.produit %}
-                        <tr>
-                            <td>{{ produit.reference }}</td>
-                            <td>
-                                {{ produit.quantite }}
-                            </td>
-                            <td>{{ produit.prixHT }} €</td>
-                            <td>{{ produit.prixHT * produit.quantite }} €</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                <dl class="dl-horizontal pull-right">
-                    <dt>Total HT :</dt>
-                    <dd>{{ commande.commandes.prixHT }} €</dd>
-
-                    {% for key, tva in commande.commandes.tva %}
-                        <dt>TVA {{ key }}:</dt>
-                        <dd>{{ tva }} €</dd>
-                    {% endfor %}
-
-                    <dt>Total TTC:</dt>
-                    <dd>{{ commande.commandes.prixTTC }} €</dd>
-                </dl>
-
-                <div class="span3 pull-left">
-                    <dl class="pull-left">
-                        <dt><h4>Adresse de livraison</h4></dt>
-                        <dt>{{ commande.commandes.livraison.prenom }} {{ commande.commandes.livraison.nom }}</dt>
-                        <dt>{{ commande.commandes.livraison.adresse }} {{ commande.commandes.livraison.nom }}</dt>
-                        <dt>{{ commande.commandes.livraison.cp }} {{ commande.commandes.livraison.ville }} - {{ commande.commandes.livraison.pays }}</dt>
-                    </dl>
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <h2 class="title is-3 indieflower">Valider mon panier</h2>
+                        </article>
+                    </div>
                 </div>
 
-                <div class="span3 pull-left">
-                    <dl class="pull-left">
-                        <dt><h4>Adresse de facturation</h4></dt>
-                        <dt>{{ commande.commandes.facturation.prenom }} {{ commande.commandes.facturation.nom }}</dt>
-                        <dt>{{ commande.commandes.facturation.adresse }} {{ commande.commandes.facturation.nom }}</dt>
-                        <dt>{{ commande.commandes.facturation.cp }} {{ commande.commandes.facturation.ville }} - {{ commande.commandes.facturation.pays }}</dt>
-                    </dl>
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <table class="table is-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="title is-5 indieflower">Références</th>
+                                        <th class="title is-5 indieflower">Quantité</th>
+                                        <th class="title is-5 indieflower">Prix unitaire</th>
+                                        <th class="title is-5 indieflower">Total HT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for produit in commande.commandes.produit %}
+                                        <tr>
+                                            <td>{{ produit.reference }}</td>
+                                            <td class="has-text-centered">{{ produit.quantite }}</td>
+                                            <td class="has-text-centered">{{ produit.prixHT }} €</td>
+                                            <td class="has-text-centered">{{ produit.prixHT * produit.quantite }} €</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <div class="columns is-12">
+
+                                <div class="column is-5 is-pulled-left">
+                                    <table class="table is-striped">
+                                        <thead>
+                                            <tr>
+                                                <td><h4 class="title is-5 indieflower">Adresse de livraison</h4></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    {{ commande.commandes.livraison.prenom }} {{ commande.commandes.livraison.nom }}<br />
+                                                    {{ commande.commandes.livraison.adresse }}<br />
+                                                    {{ commande.commandes.livraison.cp }} {{ commande.commandes.livraison.ville }} - {{ commande.commandes.livraison.pays }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="column is-4 is-pulled-left">
+                                    <table class="table is-striped">
+                                        <thead>
+                                            <tr>
+                                                <td><h4 class="title is-5 indieflower">Adresse de facturation</h4></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    {{ commande.commandes.facturation.prenom }} {{ commande.commandes.facturation.nom }}<br />
+                                                    {{ commande.commandes.facturation.adresse }}<br />
+                                                    {{ commande.commandes.facturation.cp }} {{ commande.commandes.facturation.ville }} - {{ commande.commandes.facturation.pays }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="column is-3 is-pulled-right">
+                                    <table class="table is-striped">
+                                        <tr>
+                                            <td><b>Total HT:</b></td><td class="has-text-right">{{ commande.commandes.prixHT }} €</td>
+                                        </tr>
+
+                                        {% for key, tva in commande.commandes.tva %}
+                                            <tr>
+                                                <td><b>TVA {{ key }}:</b></td><td class="has-text-right">{{ tva }} €</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        <tr>
+                                            <td><b>Total TTC:</b></td><td class="has-text-right">{{ commande.commandes.prixTTC }} €</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="columns is-12">
+                                <div class="column is-6 is-pulled-left">
+                                    <a href="{{ path('livraison') }}" class="button button-vert">retour</a>
+                                </div>
+
+                                <div class="column is-6">
+                                    <form action="{{ path('validationCommande', { 'id' : commande.id }) }}" method="post" class="is-pulled-right">
+                                        <input name="token" type="hidden" value="{{ commande.commandes.token }}" />
+                                        <input name="prix" type="hidden" value="{{ commande.commandes.prixTTC }}" />
+                                        <input name="date" type="hidden" value="{{ commande.date|date('dmyhms') }}" />
+                                        <button type="submit" class="button button-vert">Payer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-
-                <div class="clearfix"></div>
-
-                <form action="{{ path('validationCommande', { 'id' : commande.id }) }}" method="post" >
-                    <input name="token" type="hidden" value="{{ commande.commandes.token }}" />
-                    <input name="prix" type="hidden" value="{{ commande.commandes.prixTTC }}" />
-                    <input name="date" type="hidden" value="{{ commande.date|date('dmyhms') }}" />
-                    <button type="submit" class="btn btn-success pull-right">Payer</button>
-                </form>
-
-                <a href="{{ path('livraison') }}" class="btn btn-primary">retour</a>
             </div>
-
         </div>
     </div>
 {% endblock %}

@@ -1,0 +1,105 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block titre %}Canturla - Contact{% endblock %}
+{% block description %}Contact Page{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="columns">
+
+            <div class="column is-3">
+                {% include '::modulesUsed/navigation.html.twig' %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+                {% else %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+                {% endif %}
+                {{ render(controller('EcommerceBundle:Panier:menu')) }}
+            </div>
+
+            <div class="column is-9">
+
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="notification is-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <h2 class="title is-3 indieflower">Contacter l'équipe Canturla</h2>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <p>Vous souhaitez obtenir des informations ? Vous desirez nous laisser un message ?<br />Remplissez ce formulaire afin d'entrer en contact avec notre équipe.</p>
+                            <br /><br />
+                            <form action="{{ path('contact') }}" method="post" class="blogger">
+                                {{ form_errors(form) }}
+                                <div class="control is-horizontal">
+                                    <div class="control-label">
+                                        <label class="label indieflower">Vos informations</label>
+                                    </div>
+                                    <div class="control is-grouped">
+                                        <p class="control is-expanded">
+                                            {{ form_widget(form.name) }}
+                                        </p>
+                                        <p class="control is-expanded">
+                                            {{ form_widget(form.email) }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="control is-horizontal">
+                                    <div class="control-label">
+                                        <label class="label indieflower">{{ form_label(form.subject) }}</label>
+                                    </div>
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            {{ form_widget(form.subject) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control is-horizontal">
+                                    <div class="control-label">
+                                        <label class="label indieflower">{{ form_label(form.body) }}</label>
+                                    </div>
+                                    <div class="control">
+                                        {{ form_widget(form.body) }}
+                                    </div>
+                                </div>
+                                {{ form_rest(form) }}
+                                <div class="has-text-right">
+                                    <button class="button button-vert" type="submit">Envoyer votre message</button>
+                                </div>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <h2 class="title is-3 indieflower">Nous situer</h2>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2863.5600542958755!2d4.090957915513384!3d44.13369587910777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b4425ef4072d39%3A0x9eef73a6f0c28b9d!2s49+Avenue+Gaston+Ribot%2C+30100+Al%C3%A8s!5e0!3m2!1sfr!2sfr!4v1482511649943" width="100%" height="450" frameborder="0" style="border:1px solid #006A43; border-radius: 5px" allowfullscreen></iframe>
+
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

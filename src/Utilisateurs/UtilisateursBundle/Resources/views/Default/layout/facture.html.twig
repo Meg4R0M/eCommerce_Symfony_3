@@ -1,58 +1,69 @@
 {% extends "::layout/layout.html.twig" %}
 
 {% block body %}
-	<div class="container">
-		<div class="row">
-            <div class="span3">
+    <div class="container">
+        <div class="columns">
+
+            <div class="column is-3">
                 {% include '::modulesUsed/navigation.html.twig' %}
                 {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
                 {{ render(controller('EcommerceBundle:Panier:menu')) }}
             </div>
-				<div class="span9">
 
-                    {% for flashMessage in app.session.flashbag.get('success') %}
-                        <div class="alert alert-success">
-                            {{ flashMessage }}
-                        </div>
-                    {% endfor %}
-                    {% for flashMessage in app.session.flashbag.get('error') %}
-                        <div class="alert alert-error">
-                            {{ flashMessage }}
-                        </div>
-                    {% endfor %}
+            <div class="column is-9">
 
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="notification is-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+                {% for flashMessage in app.session.flashbag.get('error') %}
+                    <div class="notification is-danger">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
 
-                    <h2>Factures</h2>
-                    <form>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Références</th>
-                                <th>Date</th>
-                                <th>Prix TTC</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% if factures|length == 0 %}
-                                <tr>
-                                    <td colspan="4">Aucune facture actuellement</td>
-                                </tr>
-                            {% endif %}
-                            {% for facture in factures %}
-                                <tr>
-                                    <td>ref : {{ facture.reference }}</td>
-                                    <td>{{ facture.date|date('d/m/Y') }}</td>
-                                    <td>{{ facture.commandes.prixTTC }} €</td>
-                                    <td><a href="{{ path('facturePDF', { 'id' : facture.id }) }}" target="_blank"><i class="icon-refresh"></i></a></td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </form>
-    
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <h2 class="title is-3 indieflower">Vos factures</h2>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <table class="table is-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="title is-5 indieflower">Références</th>
+                                        <th class="title is-5 indieflower">Date</th>
+                                        <th class="title is-5 indieflower">Prix TTC</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if factures|length == 0 %}
+                                        <tr>
+                                            <td colspan="4">Aucune facture actuellement</td>
+                                        </tr>
+                                    {% endif %}
+                                    {% for facture in factures %}
+                                        <tr>
+                                            <td>ref : {{ facture.reference }}</td>
+                                            <td>{{ facture.date|date('d/m/Y') }}</td>
+                                            <td>{{ facture.commandes.prixTTC }} €</td>
+                                            <td><a href="{{ path('facturePDF', { 'id' : facture.id }) }}" target="_blank" title="Consulter le PDF"><i class="fa fa-file-pdf-o"></i></a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </article>
+                    </div>
+                </div>
+
             </div>
-		
 		</div>
 	</div>
 {% endblock %}

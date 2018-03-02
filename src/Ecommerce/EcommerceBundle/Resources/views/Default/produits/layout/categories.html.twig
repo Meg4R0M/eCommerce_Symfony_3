@@ -1,0 +1,44 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="columns">
+
+            <div class="column is-3">
+                {% include '::modulesUsed/navigation.html.twig' %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateursConnecte.html.twig' %}
+                {% else %}
+                    {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}
+                {% endif %}
+                {{ render(controller('EcommerceBundle:Panier:menu')) }}
+            </div>
+
+            <div class="column is-9">
+                {% if categories|length != 0 %}
+                    <div class="tile is-ancestor">
+
+                        {% for categorie in categories %}
+                            <div class="tile is-parent is-4">
+                                <article class="tile is-child box is-12">
+                                    <div style="min-height: 250px">
+                                        <a href="{{ path('categorieProduits', { 'categorie' : categorie.id }) }}"><img src="{{ categorie.image.AssetPath|imagine_filter('produitThumb') }}" alt="{{ categorie.image.name }}" width="300" height="300"></a>
+                                    </div>
+                                    <div class="caption has-text-centered">
+                                        <a href="{{ path('categorieProduits', { 'categorie' : categorie.id }) }}"><h4 class="title is-4 minheight40px indieflower">{{ categorie.nom }}</h4></a>
+                                    </div>
+                                </article>
+                            </div>
+                            {% if loop.index is divisible by(3) %}
+                                </div><div class="tile is-ancestor">
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                {% else %}
+                    Aucune Catégorie
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

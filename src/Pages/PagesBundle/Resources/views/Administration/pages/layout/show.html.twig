@@ -1,36 +1,46 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
-{% block body -%}
-    <h1>Pages</h1>
+{% block body %}
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3 indieflower">Details de la page</h2>
+            </article>
+        </div>
+    </div>
 
-    <table class="record_properties">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Titre</th>
-            <td>{{ entity.titre }}</td>
-        </tr>
-        <tr>
-            <th>Contenu</th>
-            <td>{{ entity.contenu }}</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('adminPages') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('adminPages_edit', { 'id': entity.id }) }}">
-                Edit
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ entity.titre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Contenu</th>
+                        <td class="box">{{ entity.contenu|raw }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br />
+                <nav class="level">
+                    <div class="control is-grouped">
+                        <p class="control">
+                            <a href="{{ path('adminPages') }}" class="button is-info is-outlined">Retour a la liste des pages</a>
+                        </p>
+                        <p class="control">
+                            <a href="{{ path('adminPages_edit', { 'id': entity.id }) }}" class="button is-info is-outlined">Editer</a>
+                        </p>
+                        <p class="control">{{ form(delete_form) }}</p>
+                    </div>
+                </nav>
+            </article>
+        </div>
+    </div>
 {% endblock %}

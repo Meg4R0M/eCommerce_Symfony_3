@@ -34,4 +34,6 @@ twig:
         facebook: 'Votre lien facebook'
         adresse: 'Votre adresse'
         cpville: ' Code postal - Ville'
+        pathDefault: 'Url/vers/RepertoireSymfony/Web/'
+    ...
 ```

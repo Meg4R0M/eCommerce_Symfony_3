@@ -1,0 +1,48 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="columns">
+
+            <div class="column is-12">
+
+                <div class="tile is-ancestor">
+
+                    <div class="tile is-parent is-12">
+                        <article class="tile is-child box is-12">
+                            <div class="columns is-12">
+                                <div class="column is-12 has-text-centered"><img src="{{ 'img/index.jpg'|imagine_filter('imgindextop') }}" alt="image index"></div>
+                            </div>
+                            <div class="columns is-12">
+                                <div class="column">
+                                    <h2 class="title is-4 has-text-centered indieflower">Canturla? Qu’es aquò ?</h2>
+                                    <p class="">En Occitan, c’est le bon sens, ça se prononce «canturle».<br /><br />
+                                        Au départ il y a plusieurs constats, une grande partie de nos déchets sont des emballages. Ils ne nous servent que du magasin à chez nous et nous les payons deux fois, à l'achat du produit et pour leur élimination. Ces mêmes produits viennent parfois de très loin alors que nous avons des producteurs à proximité!<br />
+                                        <br />
+                                        Logiquement Canturla fait donc le choix de l’anti-gaspillage, du zéro déchet et des circuits courts.</p>
+                                    <hr>
+                                </div>
+
+                                <div class="column">
+                                    <h2 class="title is-4 has-text-centered indieflower">Comment ça fonctionne ?</h2>
+                                    <p>Venez chez nous avec vos bocaux, remplissez la quantité dont vous avez besoin et ne payez que le produit, pas l’emballage.<br />
+                                        Vous trouverez une sélection des meilleurs produits locaux/bio, une large gamme de thé, café et sirops que vous pourrez goûter dans notre salon de thé.<br />
+                                        Vous découvrirez également ce que vos artisans créent avec des matériaux récupérés.<br />
+                                        <br />
+                                        Moins d'emballages, moins de transports, du bon sens écologique et économique alors à vos bocaux !</p>
+                                    <hr>
+                                </div>
+                            </div>
+
+                            <div class="columns is-12">
+                                <div class="column is-6 has-text-centered"><img src="{{ 'img/IMG_7666.jpg'|imagine_filter('imgindex') }}" alt="Magasin 1"></div>
+                                <div class="column is-6 has-text-centered"><img src="{{ 'img/IMG_7671.jpg'|imagine_filter('imgindex') }}" alt="Magasin 2"></div>
+                            </div>
+
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

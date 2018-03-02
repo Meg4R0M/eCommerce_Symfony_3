@@ -1,18 +1,69 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Produits edit</h1>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3 indieflower">Edition du Produit</h2>
+            </article>
+        </div>
+    </div>
 
-    {{ form_start(edit_form, {'action': path('adminProduits_create', { 'id' : entity.id }), 'method': 'POST' }) }}
-    {{ form_widget(edit_form) }}
-    {{ form_end(edit_form) }}
-
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('adminProduits_index') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                {{ form_start(edit_form, {'action': path('adminProduits_update', { 'id' : entity.id }), 'method': 'PUT' }) }}
+                <p class="control">
+                    {{ form_label(edit_form.nom) }}
+                    {{ form_widget(edit_form.nom) }}
+                </p>
+                <p class="control">
+                    {{ form_label(edit_form.description) }}
+                    {{ form_widget(edit_form.description) }}
+                </p>
+                <p class="control">
+                    {{ form_label(edit_form.prix) }}
+                    {{ form_widget(edit_form.prix) }}
+                </p>
+                <p class="control">
+                    {{ form_widget(edit_form.disponible) }}
+                    {{ form_label(edit_form.disponible) }}
+                </p>
+                <fieldset style="border: none; margin-bottom: 5px">
+                    <legend>{{ form_label(edit_form.image) }}</legend>
+                    <p class="control has-addons">
+                        {{ form_widget(edit_form.image.file) }}
+                    </p>
+                    <p class="control">
+                        {{ form_label(edit_form.image.name) }}
+                        {{ form_widget(edit_form.image.name) }}
+                    </p>
+                </fieldset>
+                <p class="control">
+                    {{ form_label(edit_form.categorie) }}
+                    <span class="select">
+                        {{ form_widget(edit_form.categorie) }}
+                    </span>
+                </p>
+                <p class="control">
+                    {{ form_label(edit_form.tva) }}
+                    <span class="select">
+                        {{ form_widget(edit_form.tva) }}
+                    </span>
+                </p>
+                <div class="control is-grouped">
+                    <p class="control">
+                        <a href="{{ path('adminProduits_index') }}" class="button is-info is-outlined">Retour à la liste</a>
+                    </p>
+                    <p class="control">
+                        {{ form_widget(edit_form.submit) }}
+                    </p>
+                    {{ form_end(edit_form) }}
+                    <p class="control">
+                        {{ form(delete_form) }}
+                    </p>
+                </div>
+            </article>
+        </div>
+    </div>
 {% endblock %}

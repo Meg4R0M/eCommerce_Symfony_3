@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@EcommerceBundle/Resources/config/services.yml" }
+    - { resource: "@CommentairesBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -11,7 +12,7 @@ parameters:
 
 framework:
     #esi:             ~
-    translator:      ~
+    translator: ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -35,11 +36,51 @@ framework:
     php_errors:
         log: true
 
-
 fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: Commentaires\CommentairesBundle\Entity\Comment
+            thread:  Commentaires\CommentairesBundle\Entity\Thread
+            vote:    Commentaires\CommentairesBundle\Entity\Vote
+    acl: true
+    service:
+        acl:
+            thread:  fos_comment.acl.thread.roles
+            comment: fos_comment.acl.comment.roles
+            vote:    fos_comment.acl.vote.roles
+        manager:
+            thread:  fos_comment.manager.thread.acl
+            comment: fos_comment.manager.comment.acl
+            vote:    fos_comment.manager.vote.acl
+    acl_roles:
+        comment:
+            create: ROLE_USER
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: ROLE_ADMIN
+            delete: ROLE_ADMIN
+        thread:
+            create: ROLE_USER
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: ROLE_ADMIN
+            delete: ROLE_ADMIN
+        vote:
+            create: ROLE_USER
+            view: IS_AUTHENTICATED_ANONYMOUSLY
+            edit: ROLE_ADMIN
+            delete: ROLE_ADMIN
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+    bundles: [ "FOSCommentBundle" ]
 
 # Twig Configuration
 twig:
@@ -118,8 +159,8 @@ knp_paginator:
         sort_direction_name: direction # sort direction query parameter name
         distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
     template:
-        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig     # sliding pagination controls template
-        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+        pagination: PagesBundle:Pagination:bulma_pagination.html.twig     # sliding pagination controls template
+        sortable: PagesBundle:Pagination:sortable_link.html.twig # sort link template
 
 liip_imagine:
     resolvers:
@@ -128,11 +169,27 @@ liip_imagine:
 
     filter_sets:
         cache: ~
+        produitThumbAdmin:
+            quality: 100
+            filters:
+                thumbnail: { size: [135, 135], mode: inset }
         produitThumb:
-            quality: 80
+            quality: 100
             filters:
                 thumbnail: { size: [270, 270], mode: inset }
         produit:
-            quality: 75
+            quality: 100
             filters:
                 thumbnail: { size: [470, 470], mode: inset }
+        logocanturla:
+            quality: 100
+            filters:
+                thumbnail: { size: [100, 100], mode: inset }
+        imgindex:
+            quality: 100
+            filters:
+                thumbnail: { size: [590, 338], mode: inset }
+        imgindextop:
+            quality: 100
+            filters:
+                thumbnail: { size: [1180, 358], mode: inset }

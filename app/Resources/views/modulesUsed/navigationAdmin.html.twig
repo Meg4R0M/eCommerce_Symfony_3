@@ -1,32 +1,24 @@
-<div class="span3">
+<div class="box related-list">
+    <p class="menu-label title indieflower">
+        Administration
+    </p>
+    <ul class="menu-list">
+        <li>
+            <a href="{{ path('adminProduits_index') }}">Gestion des Produits</a>
+        </li>
+        <li>
+            <a href="{{ path('adminCategories_index') }}">Catégories produits</a>
+        </li>
 
-    <div class="well">
-        <ul class="nav nav-list">
-            <li>
-                <a href="{{ path('adminProduits_index') }}">Produits</a>
-            </li>
-            <li>
-                <a href="{{ path('adminCategories_index') }}">Catégories produits</a>
-            </li>
-        </ul>
-    </div>
+        <li>
+            <a href="{{ path('adminUtilisateurs_index') }}">Clients</a>
+        </li>
+        <li>
+            <a href="{{ path('adminCommande') }}">Commandes</a>
+        </li>
 
-    <div class="well">
-        <ul class="nav nav-list">
-            <li>
-                <a href="{{ path('adminUtilisateurs_index') }}">Clients</a>
-            </li>
-            <li>
-                <a href="{{ path('adminCommande') }}">Commandes</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="well">
-        <ul class="nav nav-list">
-            <li>
-                <a href="{{ path('adminPages') }}">Pages</a>
-            </li>
-        </ul>
-    </div>
+        <li>
+            <a href="{{ path('adminPages') }}">Gestion des Pages</a>
+        </li>
+    </ul>
 </div>

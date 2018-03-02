@@ -4,43 +4,68 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
+<div class="container">
 
-    <div class="row">
-        <div class="span12">
-            <h2>Connexion</h2>
-            <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                    <div class="span4">
-                        <h4>Pas encore inscrit ?</h4>
-                        <em>
-                            nous vous invitons à vous inscrire<br />
-                            afin de passer votre commande et de manger équilibré.
-                        </em>
-                        <br /><br />
-                        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">S'inscrire</a>
-
-                    </div>
-
-                    <div class="span4 offset2">
-                        <h4>Connexion</h4>
-                        <form action="{{ path("fos_user_security_check") }}" method="post">
-                            {% if csrf_token %}
-                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-                            {% endif %}
-                            <label for="username">{{ 'security.login.username'|trans }}</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"/>
-
-                            <label for="password">{{ 'security.login.password'|trans }}</label>
-                            <input type="password" id="password" name="_password" required="required"/>
-                            <br />
-                            <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
-                        </form>
-                    </div>
-                    <div class="span10">
-                        <a href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
-                    </div>
+    <div class="columns">
+        <div class="column is-12">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-12">
+                    <article class="tile is-child box is-12">
+                        <h2 class="title is-3">Connexion</h2>
+                    </article>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="columns">
+
+        <div class="column is-6">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-12">
+                    <article class="tile is-child box is-12">
+                        <h2 class="title is-3">Pas encore inscrit ?</h2>
+                        <em>
+                            Nous vous invitons à vous inscrire afin de profiter plainement des fonctionnalitées des notre site.
+                            Ainsi vous pourrez profiter de toutes nos offres, passer commande et venir les retirer en magasin dans l'heure.
+                        </em>
+                        <br /><br />
+                        <a href="{{ path('fos_user_registration_register') }}" class="button button-vert">S'inscrire</a>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-12">
+                    <article class="tile is-child box is-12">
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                            {% if csrf_token %}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                            {% endif %}
+                            <label for="username" class="label">{{ 'security.login.username'|trans }}</label>
+                            <p class="control has-icon">
+                                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="input"/>
+                                <i class="fa fa-user"></i>
+                            </p>
+
+                            <label for="password" class="label">{{ 'security.login.password'|trans }}</label>
+                            <p class="control has-icon">
+                                <input type="password" id="password" name="_password" required="required" class="input"/>
+                                <i class="fa fa-lock"></i>
+                            </p>
+
+                            <p class="has-text-right">
+                                <input class="button button-vert" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
+                            </p>
+                        </form>
+                    </article>
+                </div>
+            </div>
+            <div class="has-text-centered">
+                <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a> | <a href="#">Besoin d'aide?</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -35,7 +35,17 @@ class ProduitsController extends Controller
         return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
                                                                                                  'panier' => $panier));
     }
-    
+
+    public function categoriesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('EcommerceBundle:Categories')->findAll();
+
+        if (!$categories) throw $this->createNotFoundException('La page n\'existe pas.');
+
+        return $this->render('EcommerceBundle:Default:produits/layout/categories.html.twig', array('categories' => $categories));
+    }
+
     public function presentationAction($id, Request $request)
     {
         $session = $request->getSession();
@@ -65,14 +75,28 @@ class ProduitsController extends Controller
     {
         $request = Request::createFromGlobals();
         $form = $this->createForm(RechercheType::class);
-        if ($request->getMethod() == 'POST') {
+        $searchTerm = $request->query->get('recherche');
+
+        if ($searchTerm != '') {
             $form->handleRequest($request);
             $em = $this->getDoctrine()->getManager();
-            $produits = $em->getRepository('EcommerceBundle:Produits')->recherche($form['recherche']->getData());
+            $findProduits = $em->getRepository('EcommerceBundle:Produits')->recherche($searchTerm['recherche']);
+            $produits  = $this->get('knp_paginator')->paginate($findProduits,$request->query->get('page', 1),8);
+            $categories = $em->getRepository('EcommerceBundle:Categories')->findBy(array(), array('id' => 'ASC'),4);
+
+            foreach ($categories as $categorie)
+            {
+                $categorieid = $categorie->getId();
+                $suggestions[$categorieid] = $em->getRepository('EcommerceBundle:Produits')->RandomProducts(4, $categorieid);
+
+            }
+
         } else {
             throw $this->createNotFoundException('La page n\'existe pas.');
         }
 
-        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits));
+        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits' => $produits,
+                                                                                                 'suggestions' => $suggestions,
+                                                                                                 'categories' => $categories));
     }
 }

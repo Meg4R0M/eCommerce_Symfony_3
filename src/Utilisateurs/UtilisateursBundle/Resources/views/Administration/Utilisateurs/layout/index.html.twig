@@ -1,29 +1,43 @@
 {% extends '::layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Utilisateurs list</h1>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <h2 class="title is-3 indieflower">Liste des Utilisateurs</h2>
+            </article>
+        </div>
+    </div>
 
-    <table class="table table-striped table-hover">
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for utilisateur in utilisateurs %}
-            <tr>
-                <td>{{ utilisateur.username }}</td>
-                <td>
-                    {% if utilisateur.adresses|length != 0 %}
-                        <a href="{{ path('adminAdressesUtilisateurs', { 'id': utilisateur.id }) }}" title="Consulter les Adresses"><i class="icon-book"></i></a>
-                    {% endif %}
-                    {% if utilisateur.commandes|length != 0 %}
-                        <a href="{{ path('adminFacturesUtilisateurs', { 'id': utilisateur.id }) }}" title="Consulter les Factures"><i class="icon-book"></i></a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+            <article class="tile is-child box is-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for utilisateur in utilisateurs %}
+                        <tr>
+                            <td>{{ utilisateur.username }}</td>
+                            <td>
+                                {% if utilisateur.adresses|length != 0 %}
+                                    <a href="{{ path('adminAdressesUtilisateurs', { 'id': utilisateur.id }) }}"
+                                       title="Consulter les Adresses"><i class="fa fa-map-signs" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                {% endif %}
+                                {% if utilisateur.commandes|length != 0 %}
+                                    <a href="{{ path('adminFacturesUtilisateurs', { 'id': utilisateur.id }) }}"
+                                       title="Consulter les Factures"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </article>
+        </div>
+    </div>
 {% endblock %}

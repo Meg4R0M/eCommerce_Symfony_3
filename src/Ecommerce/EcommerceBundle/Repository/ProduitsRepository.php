@@ -2,6 +2,7 @@
 
 namespace Ecommerce\EcommerceBundle\Repository;
 
+use Doctrine\ORM\EntityManager;
 /**
  * ProduitsRepository
  *
@@ -32,12 +33,75 @@ class ProduitsRepository extends \Doctrine\ORM\EntityRepository
 
     public function recherche($chaine)
     {
-        $qb = $this->createQueryBuilder('u')
-            ->select('u')
-            ->where('u.nom like :chaine')
+        $qb = $this->createQueryBuilder('u');
+            $qb->select('u')
+            ->where($qb->expr()->like('u.nom', ':chaine'))
             ->andWhere('u.disponible = 1')
             ->orderBy('u.id')
-            ->setParameter('chaine', $chaine);
+            ->setParameter('chaine', '%'.$chaine.'%');
         return $qb->getQuery()->getResult();
+    }
+
+    public function RandomProducts($nbProduits, $categorie)
+    {
+        $qbList=$this->createQueryBuilder('u');
+
+        // get all the relevant id's from the entity
+        $qbList ->select('u.id')
+            ->where('u.categorie = :categorie')
+            ->andWhere('u.disponible = 1')
+            ->setParameter('categorie', $categorie);
+
+        // $list is not a simple list of values, but an nested associative array
+        $list=$qbList->getQuery()->getScalarResult();
+
+        $qbcount=$this->createQueryBuilder('c')
+            ->select('COUNT(c)')
+            ->where('c.categorie = :categorie')
+            ->setParameter('categorie', $categorie)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        // get rid of the nested array from ScalarResult
+        $rawlist=array();
+        foreach ($list as $keyword=>$value)
+        {
+            // entity id's have to figure as keyword as array_rand() will pick only keywords - not values
+            $id=$value['id'];
+            $rawlist[$id]=null;
+        }
+
+        if ($qbcount >= $nbProduits)
+        {
+            $nbSlotsOnPage = 4;
+        }else{
+            $nbSlotsOnPage = $qbcount;
+        }
+
+        $total=min($nbSlotsOnPage,count($rawlist));
+        // pick only a few (i.e.$total)
+        $keylist=array_rand($rawlist,$total);
+
+        $qb=$this->createQueryBuilder('uw');
+        if (is_array($keylist))
+        {
+            foreach ($keylist as $keyword=>$value)
+            {
+                $qb ->setParameter('keyword'.$keyword,$value)
+                    ->orWhere('uw.id = :keyword'.$keyword)
+                ;
+            }
+        }else{
+            $qb ->setParameter('keyword'.$keylist, $keylist)
+                ->Where('uw.id = :keyword'.$keylist)
+            ;
+        }
+
+        $result=$qb->getQuery()->getResult();
+
+        // if mixing the results is also required (could also be done by orderby rand();
+        shuffle($result);
+
+        return $result;
     }
 }

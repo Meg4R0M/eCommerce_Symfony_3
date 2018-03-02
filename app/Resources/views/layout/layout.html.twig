@@ -1,66 +1,204 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block titre %}Canturla - By Meg4R0M{% endblock %}</title>
-        <meta name="keywords" content="{% block motsCles %}{% endblock %}" />
-        <meta name="description" content="{% block description %}{% endblock %}" />
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="brand" href="{{ path('produits') }}">Canturla</a>
-                    <div class="nav-collapse collapse">
-                        {{ render(controller('EcommerceBundle:Produits:recherche')) }}
-                    </div>
-                </div>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block titre %}Canturla - By Meg4R0M{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="keywords" content="{% block motsCles %}{% endblock %}"/>
+    <meta name="description" content="{% block description %}{% endblock %}"/>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bulma.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+        {% stylesheets '@FOSCommentBundle/Resources/public/css/comments.css' %}
+        <link rel="stylesheet" href="{{ asset('css/comments.css') }}" type="text/css"/>
+        {% endstylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie+Flower%7CRoboto">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/component.css') }}"/>
+    <!-- csstransforms3d-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load -->
+    <script src="{{ asset('/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/js/modernizr.custom.25376.js') }}"></script>
+</head>
+<body>
+<header class="navbar-fixed">
+    <nav id="navigation" class="nav hero is-dark">
+        <div class="container placed">
+            <div>
+                <a href="javascript:void(0)" id="showMenu" class="nav-item title indieflower is-3" style="margin: 8px 0 0 5px;"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;<span style="margin-top: 7px" class="is-hidden-mobile">Menu</span></a>
+            </div>
+            <div style="margin-left: -40px;">
+                <a href="{{ path('index') }}"><img src="{{ asset('img/canturladrive.png') }}" alt="Canturla Logo Min" class="shadowfilter logo"></a>
+            </div>
+            <div>
+                {{ render(controller('EcommerceBundle:Produits:recherche')) }}
             </div>
         </div>
-        {% block body %}{% endblock %}
-        <hr />
-        <footer id="footer" class="vspace20">
-            <div class="container">
-                <div class="row">
-                    <div class="span4 offset1">
-                        <h4>Informations</h4>
-                        <ul class="nav nav-stacked">
-                            {{ render(controller('PagesBundle:Pages:menu')) }}
-                        </ul>
-                    </div> 
+    </nav>
+</header>
 
-                    <div class="span4">
-                        <h4>Notre magasin</h4>
-                        <p><i class="icon-map-marker"></i>&nbsp;{{ adresse }}<br />&nbsp;&nbsp;{{ cpville }}</p>
-                    </div>
-
-                    <div class="span2">
-                        <h4>Nous contacter</h4>
-                        <p><i class="icon-phone"></i>&nbsp;Tel: {{ telephone }}</p>
-                        <p><i class="icon-facebook-sign"></i>&nbsp; Facebook: <a href="{{ facebook }}" target="_blank">Canturla</a></p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="span4">
-                        <p>&copy; Copyright {{ "now"|date('Y') }} - Canturla - Developped by <a href="http://meg4r0m.ovh" target="_blank">Meg4R0M</a></p>
-                    </div>
-                </div>
+<div class="spacer"></div>
+<div id="perspective" class="perspective effect-laydown">
+    <div class="containersite">
+        <div class="wrapper">
+            {% block body %}{% endblock %}
+            <div class="has-text-centered">
+                <img src="{{ asset('img/hr.png') }}" alt="hr"/>
             </div>
-        </footer>	
-        <script src="{{ asset('js/jquery-1.10.0.min.js') }}"></script>
-        <script src="{{ asset('/js/bootstrap.js') }}"></script>
-        {% block javascripts %}{% endblock %}
-    </body>
+            <footer class="footer">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content has-text-left">
+                                <h4 class="title is-4 has-text-left indieflower">Informations</h4>
+                                <hr>
+                                {{ render(controller('PagesBundle:Pages:menu')) }}
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-centered">
+                                <h4 class="title is-4 has-text-centered indieflower">Notre magasin</h4>
+                                <hr>
+                                <p class="about subheader">Canturla c'est une épicerie de produits locaux et en
+                                    vrac,<br/>un salon de thé, un lieu d'exposition<br/> et de vente de création à base
+                                    de matériaux de récupération.</p>
+                                <p class="about subheader"><img src="{{ 'img/logocanturla.png'|imagine_filter('logocanturla') }}" alt="logo footer" class="shadowfilter"></p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <div class="canturlacontact">
+                                    <h4 class="title is-4 has-text-right indieflower">Nous contacter</h4>
+                                    <hr>
+                                    <p>
+                                        <a class="svn" href="https://www.facebook.com/canturla/">Suivez-nous</a>
+                                        <span class="fa-stack fa-lg"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
+                                    </p>
+                                    <a href="https://www.google.fr/maps/place/49+Avenue+Gaston+Ribot,+30100+Al%C3%A8s/@44.1335763,4.0906704,17z/data=!3m1!4b1!4m5!3m4!1s0x12b4425ef4072d39:0x9eef73a6f0c28b9d!8m2!3d44.1335763!4d4.0928591" class="adressemr">49 av. Gaston Ribot,</a>
+                                    <br/>
+                                    <a href="https://www.google.fr/maps/place/49+Avenue+Gaston+Ribot,+30100+Al%C3%A8s/@44.1335763,4.0906704,17z/data=!3m1!4b1!4m5!3m4!1s0x12b4425ef4072d39:0x9eef73a6f0c28b9d!8m2!3d44.1335763!4d4.0928591" class="adressemr">30100 Alès</a>
+                                    <br/>
+                                    <span class="fa-stack fa-lg adressemt"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-map-marker fa-stack-1x fa-inverse"></i></span>
+                                    <p>04 34 13 91 83 <span class="fa-stack fa-lg"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-phone fa-stack-1x fa-inverse"></i></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content has-text-centered">
+                        <p><span class="title is-5 indieflower">Copyright {{ "now"|date('Y') }} - <b>Geek-Avenue</b> (<a href="http://meg4r0m.ovh" target="_blank">Meg4R0M</a>)</span></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<nav class="outer-nav top horizontal is-dark">
+    <ul id="menu">
+        <li><a href="{{ path('index') }}" class="indieflower menutitle">Accueil</a></li>
+        <li class="button-dropdown"><a href="javascript:void(0)" class="indieflower menutitle dropdown-toggle">Produits<span class="arrow-down"></span></a>
+            <ul>
+                {{ render(controller('EcommerceBundle:Categories:menu')) }}
+            </ul>
+        </li>
+        <li><a href="{{ path('panier') }}" class="indieflower menutitle">Panier</a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a class="indieflower menutitle" href="javascript:void(0)" aria-haspopup="true">Mon Compte<span class="arrow-down"></span></a>
+                <ul>
+                    <li><a href="{{ path('fos_user_profile_show') }}" class="indieflower menusubtitle">Mes informations</a></li>
+                    <li><a href="{{ path('fos_user_profile_edit') }}" class="indieflower menusubtitle">Editer mes informations</a></li>
+                    <li><a href="{{ path('fos_user_change_password') }}" class="indieflower menusubtitle">Changer mot de passe</a></li>
+                    <li><a href="{{ path('factures') }}" class="indieflower menusubtitle">Mes factures</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}" class="indieflower menusubtitle">Deconnexion</a></li>
+                </ul>
+            </li>
+        {% else %}
+            <li><a class="indieflower menutitle" href="{{ path('fos_user_security_login') }}">Connection</a></li>
+            <li><a class="indieflower menutitle" href="{{ path('fos_user_registration_register') }}">Inscription</a>
+            </li>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a class="indieflower menutitle" href="javascript:void(0)" aria-haspopup="true">Administration<span class="arrow-down"></span></a>
+                <ul>
+                    <li><a href="{{ path('adminProduits_index') }}" class="indieflower menusubtitle">Gestion des Produits</a></li>
+                    <li><a href="{{ path('adminCategories_index') }}" class="indieflower menusubtitle">Catégories produits</a></li>
+                    <li><a href="{{ path('adminUtilisateurs_index') }}" class="indieflower menusubtitle">Clients</a></li>
+                    <li><a href="{{ path('adminCommande') }}" class="indieflower menusubtitle">Commandes</a></li>
+                    <li><a href="{{ path('adminPages') }}" class="indieflower menusubtitle">Gestion des Pages</a></li>
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+<script src="{{ asset('/js/classie.js') }}"></script>
+<script src="{{ asset('/js/menu.js') }}"></script>
+<script src="{{ asset('/js/clipboard.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.catslider.js') }}"></script>
+<script src="{{ asset('/js/modernizr.custom.63321.js') }}"></script>
+<script src="{{ asset('/js/bulma.js') }}"></script>
+<script src="{{ asset('bundles/pages/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('/js/doubletaptogo.min.js') }}"></script>
+
+
+{% block javascripts %}{% endblock %}
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 80) {
+                $("#navigation").css("background-color", "rgba(54, 54, 54, 0.7)");
+            } else {
+                $("#navigation").css("background-color", "rgba(54, 54, 54, 1)");
+            }
+        });
+    });
+
+    $(document).ready(function(){
+        var submitIcon = $('.searchbox-icon');
+        var inputBox = $('.searchbox-input');
+        var searchBox = $('.searchbox');
+        var isOpen = false;
+        submitIcon.click(function(){
+            if(isOpen == false){
+                searchBox.addClass('searchbox-open');
+                inputBox.focus();
+                isOpen = true;
+            } else {
+                searchBox.removeClass('searchbox-open');
+                inputBox.focusout();
+                isOpen = false;
+            }
+        });
+        submitIcon.mouseup(function(){
+            return false;
+        });
+        searchBox.mouseup(function(){
+            return false;
+        });
+        $(document).mouseup(function(){
+            if(isOpen == true){
+                $('.searchbox-icon').css('display','block');
+                submitIcon.click();
+            }
+        });
+    });
+    function buttonUp(){
+        var inputVal = $('.searchbox-input').val();
+        inputVal = $.trim(inputVal).length;
+        if( inputVal !== 0){
+            $('.searchbox-icon').css('display','none');
+        } else {
+            $('.searchbox-input').val('');
+            $('.searchbox-icon').css('display','block');
+        }
+    }
+
+    $(function () {
+        $('#mi-slider').catslider();
+        $('#menu li:has(ul)').doubleTapToGo();
+    });
+
+</script>
+</body>
 </html>

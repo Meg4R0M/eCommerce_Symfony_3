@@ -1,48 +1,86 @@
 {% extends "::layout/layout.html.twig" %}
 
-{% block titre %}Canturla - {{ produit.nom }}{% endblock %}
-{% block description %}{{ produit.description }}{% endblock %}
-
 {% block body %}
-<div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="columns">
 
-        <div class="span3">
-            {% include '::modulesUsed/navigation.html.twig' %}
-            {{ render(controller('EcommerceBundle:Panier:menu')) }}
-        </div>
+            <div class="column is-12">
+                <div class="tile is-ancestor is-12">
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            <div class="columns">
 
-            <div class="span9">
-                <div class="row">
-                    <div class="span5">
-                        <img src="{{ produit.image.AssetPath|imagine_filter('produit') }}" alt="{{ produit.image.name }}" width="470" height="310">
-                    </div>
-
-                    <div class="span4">
-                        <h4>{{ produit.nom }}</h4>
-                        <h5>{{ produit.categorie.nom }}</h5>
-                        <p>{{ produit.description }}</p>
-                        <h4>{{ produit.prix|tva(produit.tva.multiplicate) }}€</h4>
-                        {% if panier[produit.id] is not defined %}
-                            <form action="{{  path('ajouter', { 'id' :  produit.id }) }}" method="get">
-                                <select name="qte" class="span1">
-                                    {% for i in 1..10 %}
-                                        <option value="{{ i }}">{{ i }}</option>
-                                    {% endfor %}
-                                </select>
-
-                                <div>
-                                    <button class="btn btn-primary">Ajouter au panier</button>
+                                <div class="column is-7">
+                                    <img src="{{ produit.image.AssetPath|imagine_filter('produit') }}" alt="{{ produit.image.name }}" width="470" height="310">
                                 </div>
-                            </form>
-                        {% else %}
-                            <div>
-                                <a href="{{ path('panier') }}" class="btn btn-primary">Le produit est déjà dans votre panier</a>
+
+                                <div class="column is-5">
+                                    <h5 class="categorie"><a href="{{ path('categorieProduits', { 'categorie' : produit.categorie.id }) }}">{{ produit.categorie.nom }}</a> >></h5>
+                                    <div class="title is-3 indieflower">{{ produit.nom }}</div>
+                                    <p class="indieflower title is-3 has-text-muted has-text-right">{{ produit.prix|tva(produit.tva.multiplicate) }} €</p>
+                                    <hr>
+                                    <p>{{ produit.description }}</p>
+                                    <br /><br />
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="has-text-right">
+                                                    <strong>Référence</strong>
+                                                </td>
+                                                <td>{{ produit.id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="has-text-right">
+                                                    <strong>Ajouté le</strong>
+                                                </td>
+                                                <td>A faire (SQL)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="has-text-right">
+                                                    <strong>Vues</strong>
+                                                </td>
+                                                <td>A faire (SQL)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    {% if panier[produit.id] is not defined %}
+                                        <form action="{{  path('ajouter', { 'id' :  produit.id }) }}" method="get">
+                                            <p class="control has-addons">
+                                                <span class="select">
+                                                    <select name="qte">
+                                                        {% for i in 1..10 %}
+                                                            <option value="{{ i }}">{{ i }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </span>
+                                                <button class="button button-vert">Ajouter au panier</button>
+                                            </p>
+                                        </form>
+                                    {% else %}
+                                        <div class="has-text-right">
+                                            <a href="{{ path('panier') }}" class="button button-vert">Ce produit est déjà dans votre panier</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+
                             </div>
-                        {% endif %}
+                        </article>
                     </div>
                 </div>
+
+                {% if is_granted('ROLE_USER') %}
+                    <div class="tile is-ancestor is-12">
+                        <div class="tile is-parent">
+                            <article class="tile is-child box">
+                                {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': produit.id} %}
+                            </article>
+                        </div>
+                    </div>
+                {% endif %}
+
             </div>
+
         </div>
     </div>
 {% endblock %}
