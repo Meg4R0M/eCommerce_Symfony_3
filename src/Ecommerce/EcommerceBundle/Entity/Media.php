@@ -49,7 +49,10 @@ class Media
      */
     private $path;
 
-    private $file;
+    /**
+     * @var string $file
+     */
+    public $file;
 
     public function getUploadRootDir()
     {
@@ -109,6 +112,7 @@ class Media
     {
         if (file_exists($this->tempFile)) unlink($this->tempFile);
     }
+
     /**
      * Get id
      *
@@ -132,5 +136,65 @@ class Media
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return String
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+        return $this;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     * @return String
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+        return $this;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return String
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     *
+     * @return Media
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
     }
 }

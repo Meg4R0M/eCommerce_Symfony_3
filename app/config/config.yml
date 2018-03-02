@@ -45,6 +45,11 @@ fos_user:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        telephone: 'Votre num Telephone'
+        facebook: 'Votre lien facebook'
+        adresse: 'Votre adresse'
+        cpville: ' Code postal - Ville'
 
 # Doctrine Configuration
 doctrine:

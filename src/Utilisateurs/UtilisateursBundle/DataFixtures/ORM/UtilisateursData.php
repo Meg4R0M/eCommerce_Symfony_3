@@ -28,38 +28,38 @@ class UtilisateursData extends AbstractFixture implements FixtureInterface, Cont
     public function load(ObjectManager $manager)
     {
         $utilisateur1 = new Utilisateurs();
-        $utilisateur1->setUsername('Meg4R0M');
-        $utilisateur1->setEmail('psykoterro@gmail.com');
+        $utilisateur1->setUsername('Admin1');
+        $utilisateur1->setEmail('Admin1@gmail.com');
         $utilisateur1->setEnabled(1);
-        $utilisateur1->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur1)->encodePassword('panas0n1c1', $utilisateur1->getSalt()));
+        $utilisateur1->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur1)->encodePassword('password1', $utilisateur1->getSalt()));
         $manager->persist($utilisateur1);
 
         $utilisateur2 = new Utilisateurs();
-        $utilisateur2->setUsername('Meg4R0M30');
-        $utilisateur2->setEmail('meg4r0m30@gmail.com');
+        $utilisateur2->setUsername('Admin2');
+        $utilisateur2->setEmail('Admin2@gmail.com');
         $utilisateur2->setEnabled(1);
-        $utilisateur2->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur2)->encodePassword('panas0n1c2', $utilisateur2->getSalt()));
+        $utilisateur2->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur2)->encodePassword('password2', $utilisateur2->getSalt()));
         $manager->persist($utilisateur2);
 
         $utilisateur3 = new Utilisateurs();
-        $utilisateur3->setUsername('Meg4R0M34');
-        $utilisateur3->setEmail('meg4r0m34@gmail.com');
+        $utilisateur3->setUsername('Admin3');
+        $utilisateur3->setEmail('Admin3@gmail.com');
         $utilisateur3->setEnabled(1);
-        $utilisateur3->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur3)->encodePassword('panas0n1c3', $utilisateur3->getSalt()));
+        $utilisateur3->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur3)->encodePassword('password3', $utilisateur3->getSalt()));
         $manager->persist($utilisateur3);
 
         $utilisateur4 = new Utilisateurs();
-        $utilisateur4->setUsername('Meg4R0M81');
-        $utilisateur4->setEmail('meg4r0m81@gmail.com');
+        $utilisateur4->setUsername('Admin4');
+        $utilisateur4->setEmail('Admin4@gmail.com');
         $utilisateur4->setEnabled(1);
-        $utilisateur4->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur4)->encodePassword('panas0n1c4', $utilisateur4->getSalt()));
+        $utilisateur4->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur4)->encodePassword('password4', $utilisateur4->getSalt()));
         $manager->persist($utilisateur4);
 
         $utilisateur5 = new Utilisateurs();
-        $utilisateur5->setUsername('Meg4R0M13');
-        $utilisateur5->setEmail('meg4r0m13@gmail.com');
+        $utilisateur5->setUsername('Admin5');
+        $utilisateur5->setEmail('Admin5@gmail.com');
         $utilisateur5->setEnabled(1);
-        $utilisateur5->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur5)->encodePassword('panas0n1c5', $utilisateur5->getSalt()));
+        $utilisateur5->setPassword($this->container->get('security.encoder_factory')->getEncoder($utilisateur5)->encodePassword('password5', $utilisateur5->getSalt()));
         $manager->persist($utilisateur5);
 
         $manager->flush();
